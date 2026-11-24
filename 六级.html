@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="artifact-type" content="tool">
 <meta name="design-style" content="haven">
-<title>大学英语六级（CET-6）700核心词汇备考工作台</title>
+<title>大学英语六级（CET-6）核心词汇备考工作台</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
@@ -114,7 +114,7 @@ button, input, select, textarea { font-family: inherit; }
   padding: var(--space-lg);
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: clip;
 }
 .page-grid * { min-width: 0; }
 
@@ -197,6 +197,16 @@ button, input, select, textarea { font-family: inherit; }
   background: var(--tertiary);
   flex-shrink: 0;
 }
+.sync-pill.is-save-warning {
+  position: fixed;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 3;
+  max-width: calc(100% - var(--space-md));
+  background: var(--warning-container);
+  color: var(--warning);
+  white-space: normal;
+}
 
 /* Dashboard Grid */
 .dashboard-grid {
@@ -255,11 +265,6 @@ button, input, select, textarea { font-family: inherit; }
   background: var(--primary);
   transition: width var(--dur-short) var(--ease-out);
 }
-.progress-fill-learning {
-  height: 100%;
-  background: var(--tertiary);
-  transition: width var(--dur-short) var(--ease-out);
-}
 .progress-legend {
   display: flex;
   flex-wrap: wrap;
@@ -280,7 +285,6 @@ button, input, select, textarea { font-family: inherit; }
   flex-shrink: 0;
 }
 .swatch-mastered { background: var(--primary); }
-.swatch-learning { background: var(--tertiary); }
 .swatch-unseen { background: var(--data-context); }
 
 /* Dashboard middle panel */
@@ -553,6 +557,33 @@ button, input, select, textarea { font-family: inherit; }
   border-radius: var(--rounded);
 }
 .is-hidden { display: none !important; }
+.filter-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+.filter-checkbox input { accent-color: var(--primary); }
+.quick-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-md);
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+}
+.quick-toolbar .filter-group-row { gap: var(--space-xs); }
+.quick-toolbar .pill-btn {
+  min-height: 2.25rem;
+  padding: 0 var(--space-sm);
+  font-size: 0.8125rem;
+}
+.quick-toolbar .results-summary { margin-left: auto; }
+#word-grid-container { overflow-anchor: none; }
 
 /* Self-test toggle bar */
 .toolbar-meta-row {
@@ -660,14 +691,17 @@ button, input, select, textarea { font-family: inherit; }
   background: var(--background);
   color: var(--on-surface-variant);
 }
-.badge-learning {
-  background: var(--warning-container);
-  color: var(--warning);
-}
 .badge-mastered {
   background: var(--positive-container);
   color: var(--positive);
 }
+button.mastery-badge {
+  flex-shrink: 0;
+  min-height: 1.75rem;
+  border: 1px solid currentColor;
+  cursor: pointer;
+}
+button.mastery-badge:hover { background: var(--surface-container-high); }
 
 /* Word Headword */
 .word-head {
@@ -734,6 +768,7 @@ button, input, select, textarea { font-family: inherit; }
 .card-body.is-masked:hover {
   background: var(--surface-container-high);
 }
+.card-hide-answer { align-self: flex-end; }
 .mask-prompt {
   font-size: 0.875rem;
   font-weight: 500;
@@ -793,15 +828,19 @@ button, input, select, textarea { font-family: inherit; }
   background: var(--primary);
   border-color: var(--primary);
 }
-.meter-dot.is-mastered {
-  background: var(--secondary);
-  border-color: var(--secondary);
-}
 .card-actions {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
 }
+.checkin-count {
+  margin-left: auto;
+  color: var(--on-surface-variant);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+.sprint-checkins { justify-content: center; }
+.data-error { color: var(--error); }
 .check-btn {
   display: inline-flex;
   align-items: center;
@@ -820,15 +859,6 @@ button, input, select, textarea { font-family: inherit; }
 }
 .check-btn:hover {
   background: var(--primary);
-  color: var(--on-primary);
-}
-.check-btn.is-mastered {
-  background: var(--surface-container);
-  border-color: var(--secondary);
-  color: var(--secondary);
-}
-.check-btn.is-mastered:hover {
-  background: var(--secondary);
   color: var(--on-primary);
 }
 .undo-btn {
@@ -1025,6 +1055,10 @@ button, input, select, textarea { font-family: inherit; }
     gap: var(--space-md);
     width: 100%;
   }
+  .controls-panel .field-block { min-width: 0; }
+  .controls-panel .field-block-compact { flex: 1 1 9rem; }
+  .quick-toolbar .btn-sm { padding-inline: var(--space-xs); }
+  .quick-toolbar .results-summary { margin-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1042,14 +1076,14 @@ button, input, select, textarea { font-family: inherit; }
   <!-- Header -->
   <header class="masthead">
     <div>
-      <span class="label">CET-6 备考词汇追踪 · 700 核心词全覆盖</span>
-      <h1 class="headline title-display">大学英语六级 <strong>700核心词汇</strong> 备考工作台</h1>
-      <p class="caption-sage">科学分块突破 · 打卡累加熟练度 · 一键筛除已熟练词 · 卡片翻牌自测与随机冲刺</p>
+      <span class="label">CET-6 备考词汇追踪</span>
+      <h1 class="headline title-display">大学英语六级 <strong>核心词汇</strong> 备考工作台</h1>
+      <p class="caption-sage">自主标记掌握状态 · 自由刷词与随机抽查 · 卡片翻牌自测与随机冲刺</p>
     </div>
     <div class="masthead-meta">
-      <span class="sync-pill" id="sync-status">
+      <span class="sync-pill" id="sync-status" role="status">
         <span class="sync-dot" aria-hidden="true"></span>
-        <span id="sync-status-text">自动存档已就绪</span>
+        <span id="sync-status-text">正在检查本地存储…</span>
       </span>
     </div>
   </header>
@@ -1059,20 +1093,18 @@ button, input, select, textarea { font-family: inherit; }
     <!-- Overall Mastery -->
     <div class="panel stat-panel">
       <div>
-        <span class="label">总掌握进度（打卡 ≥ 3 次计为已熟练）</span>
+        <span class="label">总掌握进度</span>
         <div class="stat-figure-row">
-          <div class="stat-figure" id="stat-mastered">0<span class="sub-unit">/ 700 词</span></div>
+          <div class="stat-figure" id="stat-mastered">0<span class="sub-unit">词</span></div>
           <div class="stat-pct" id="stat-mastered-pct">0.0%</div>
         </div>
       </div>
-      <div class="progress-track" role="progressbar" aria-label="词汇掌握总进度" aria-valuemin="0" aria-valuemax="700" aria-valuenow="0" id="total-progressbar">
+      <div class="progress-track" role="progressbar" aria-label="词汇掌握总进度" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0" id="total-progressbar">
         <div class="progress-fill-mastered" id="bar-mastered" style="width: 0%;"></div>
-        <div class="progress-fill-learning" id="bar-learning" style="width: 0%;"></div>
       </div>
       <div class="progress-legend">
-        <span class="legend-item"><span class="legend-swatch swatch-mastered" aria-hidden="true"></span>已熟练 (≥3次): <strong id="count-mastered">0</strong></span>
-        <span class="legend-item"><span class="legend-swatch swatch-learning" aria-hidden="true"></span>巩固中 (1–2次): <strong id="count-learning">0</strong></span>
-        <span class="legend-item"><span class="legend-swatch swatch-unseen" aria-hidden="true"></span>未打卡 (0次): <strong id="count-unseen">700</strong></span>
+        <span class="legend-item"><span class="legend-swatch swatch-mastered" aria-hidden="true"></span>已掌握 <strong id="count-mastered">0</strong></span>
+        <span class="legend-item"><span class="legend-swatch swatch-unseen" aria-hidden="true"></span>未掌握 <strong id="count-unmastered">0</strong></span>
       </div>
     </div>
 
@@ -1091,18 +1123,27 @@ button, input, select, textarea { font-family: inherit; }
         </div>
         <div class="substat-item">
           <span class="label">已触达词数</span>
-          <span class="substat-val" id="stat-touched">0 / 700</span>
+          <span class="substat-val" id="stat-touched">0</span>
+        </div>
+        <div class="substat-item">
+          <span class="label">曾遗忘词数</span>
+          <span class="substat-val" id="stat-forgotten">0</span>
         </div>
       </div>
       <div class="dash-actions">
-        <button type="button" class="btn btn-sm btn-sage" onclick="exportProgressCsv()">导出打卡记录 CSV</button>
+        <button type="button" class="btn btn-sm btn-sage" onclick="exportProgressCsv()">全部词汇 CSV</button>
+        <button type="button" class="btn btn-sm" onclick="exportProgressCsv(true)">未掌握词汇 CSV</button>
+        <button type="button" class="btn btn-sm" onclick="exportProgressJson()">备份 JSON</button>
+        <button type="button" class="btn btn-sm" onclick="document.getElementById('import-progress-file').click()">导入 JSON</button>
+        <input type="file" id="import-progress-file" accept=".json,application/json" hidden onchange="importProgressJson(this)">
         <button type="button" class="btn btn-sm btn-danger-ghost" id="reset-progress-btn" onclick="handleResetProgress(this)">重置全部进度</button>
       </div>
+      <p class="results-summary is-hidden" id="data-feedback" role="status"></p>
     </div>
 
     <!-- Category Mastery Breakdown -->
     <div class="panel stat-panel">
-      <span class="label">五大模块熟练分布（点击模块快速切换）</span>
+      <span class="label">分类掌握进度（点击模块筛选）</span>
       <div class="cat-breakdown" id="cat-breakdown"></div>
     </div>
   </section>
@@ -1113,7 +1154,7 @@ button, input, select, textarea { font-family: inherit; }
       <button type="button" role="tab" class="nav-tab is-active" id="tab-list" aria-selected="true" onclick="switchMode('list')">词库列表与自测</button>
       <button type="button" role="tab" class="nav-tab" id="tab-sprint" aria-selected="false" onclick="switchMode('sprint')">随机抽词冲刺</button>
     </div>
-    <div class="results-summary" id="mode-helper-text">共收录 700 个核心词条 · 支持点击卡片发音与打卡累加</div>
+    <div class="results-summary" id="mode-helper-text"></div>
   </nav>
 
   <!-- VIEW 1: List & Self-Test Workbench -->
@@ -1121,21 +1162,32 @@ button, input, select, textarea { font-family: inherit; }
     <div class="panel controls-panel">
       <!-- Category Pills -->
       <div>
-        <span class="label" style="margin-bottom: var(--space-xs);">一、词汇分类分组</span>
+        <span class="label" style="margin-bottom: var(--space-xs);">词汇分类</span>
         <div class="filter-group-row" id="category-tabs"></div>
       </div>
 
-      <!-- Mastery Quick Filters -->
-      <div>
-        <span class="label" style="margin-bottom: var(--space-xs);">二、熟练度筛选（靶向攻克薄弱词）</span>
-        <div class="filter-group-row" id="mastery-filters">
-          <button type="button" class="pill-btn is-active" data-filter="all" onclick="setMasteryFilter('all')">全部词汇 <span class="pill-count" id="fc-all">700</span></button>
-          <button type="button" class="pill-btn" data-filter="weak" onclick="setMasteryFilter('weak')">待强化（&lt;3次） <span class="pill-count" id="fc-weak">700</span></button>
-          <button type="button" class="pill-btn" data-filter="unseen" onclick="setMasteryFilter('unseen')">未打卡（0次） <span class="pill-count" id="fc-unseen">700</span></button>
-          <button type="button" class="pill-btn" data-filter="reinforce" onclick="setMasteryFilter('reinforce')">巩固中（1–2次） <span class="pill-count" id="fc-reinforce">0</span></button>
-          <button type="button" class="pill-btn" data-filter="mastered" onclick="setMasteryFilter('mastered')">已熟练（≥3次） <span class="pill-count" id="fc-mastered">0</span></button>
-          <button type="button" class="pill-btn" data-filter="custom" onclick="setMasteryFilter('custom')">自定义筛选</button>
+      <div class="fields-row">
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="count-filter">打卡次数</label>
+          <select class="select-input" id="count-filter" onchange="applyFilters()">
+            <option value="all">全部</option>
+            <option value="unseen">未打卡</option>
+            <option value="seen">已打卡</option>
+            <option value="custom">自定义次数</option>
+          </select>
         </div>
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="exam-tag-filter">真题考点</label>
+          <select class="select-input" id="exam-tag-filter" onchange="applyFilters()">
+            <option value="all">全部考点</option>
+            <option value="synonym">阅读同义替换高频</option>
+          </select>
+        </div>
+        <div class="field-block">
+          <label class="field-label" for="search-input">搜索单词、释义或搭配</label>
+          <input type="search" class="text-input" id="search-input" placeholder="如：erode / 侵蚀 / weaken" oninput="onSearchInput(this.value)">
+        </div>
+        <label class="filter-checkbox"><input type="checkbox" id="forgotten-filter" onchange="applyFilters()">曾经遗忘</label>
       </div>
 
       <!-- Custom Filter Bar -->
@@ -1150,56 +1202,69 @@ button, input, select, textarea { font-family: inherit; }
           </select>
         </div>
         <div class="field-block field-block-compact">
-          <label class="field-label" for="custom-threshold">目标次数（0–20）</label>
-          <input type="number" class="text-input" id="custom-threshold" min="0" max="20" value="3" oninput="applyFilters()">
-        </div>
-        <div class="field-block">
-          <label class="field-label" for="exam-tag-filter">真题考点聚焦</label>
-          <select class="select-input" id="exam-tag-filter" onchange="applyFilters()">
-            <option value="all">显示全部考点词</option>
-            <option value="synonym">仅看阅读同义替换高频词（71词）</option>
-          </select>
+          <label class="field-label" for="custom-threshold">目标次数</label>
+          <input type="number" class="text-input" id="custom-threshold" min="0" step="1" value="3" oninput="applyFilters()">
         </div>
       </div>
 
-      <!-- Search, Sort, Self-Test -->
       <div class="fields-row">
-        <div class="field-block">
-          <label class="field-label" for="search-input">搜索单词、释义或搭配</label>
-          <input type="search" class="text-input" id="search-input" placeholder="如：erode / 侵蚀 / weaken..." oninput="onSearchInput(this.value)">
-        </div>
         <div class="field-block field-block-compact">
           <label class="field-label" for="sort-select">排序方式</label>
-          <select class="select-input" id="sort-select" onchange="applyFilters()">
+          <select class="select-input" id="sort-select" onchange="setSortMode(this.value)">
             <option value="default">默认词表顺序</option>
             <option value="count-asc">打卡从少到多</option>
             <option value="count-desc">打卡从多到少</option>
             <option value="alpha">字母 A–Z</option>
+            <option value="random">随机打乱</option>
+            <option value="forgotten">遗忘次数从高到低</option>
+            <option value="oldest">最久未复习优先</option>
           </select>
         </div>
         <div class="field-block field-block-compact">
           <label class="field-label" for="page-size-select">每页显示</label>
           <select class="select-input" id="page-size-select" onchange="changePageSize(this.value)">
-            <option value="24" selected>24 词 / 页</option>
+            <option value="999" selected>显示全部</option>
+            <option value="24">24 词 / 页</option>
             <option value="48">48 词 / 页</option>
             <option value="96">96 词 / 页</option>
-            <option value="999">显示全部</option>
           </select>
         </div>
-      </div>
-
-      <!-- Self-test bar -->
-      <div class="toolbar-meta-row">
-        <div class="filter-group-row">
-          <button type="button" class="toggle-chip" id="self-test-toggle" aria-pressed="false" onclick="toggleSelfTestMode()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-            <span id="self-test-label">自测模式：当前显示释义（点击隐去）</span>
-          </button>
-          <button type="button" class="btn btn-sm is-hidden" id="reveal-all-btn" onclick="revealAllCurrentPage()">本页全部显示</button>
-          <button type="button" class="btn btn-sm is-hidden" id="hide-all-btn" onclick="hideAllCurrentPage()">本页全部隐去</button>
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="sample-size">随机抽查数量</label>
+          <select class="select-input" id="sample-size" onchange="changeSampleSize()">
+            <option value="20">20 词</option>
+            <option value="50">50 词</option>
+            <option value="100">100 词</option>
+            <option value="200">200 词</option>
+            <option value="custom">自定义数量</option>
+            <option value="all">全部匹配词汇</option>
+          </select>
         </div>
-        <div class="results-summary" id="results-summary">显示第 1–24 词，共 700 词</div>
+        <div class="field-block field-block-compact is-hidden" id="sample-custom-field">
+          <label class="field-label" for="sample-custom-size">抽查词数</label>
+          <input type="number" class="text-input" id="sample-custom-size" min="1" step="1" value="20" oninput="changeSampleSize()">
+        </div>
+        <div class="filter-group-row sample-actions">
+          <button type="button" class="btn btn-sage" id="draw-sample-btn" onclick="drawSample()">开始抽查</button>
+          <button type="button" class="btn is-hidden" id="exit-sample-btn" onclick="exitSample()">退出抽查</button>
+        </div>
       </div>
+      <div class="results-summary is-hidden" id="sample-note">抽查词与顺序已锁定。重新抽取将使用当前筛选，退出后恢复完整筛选结果。</div>
+    </div>
+
+    <div class="panel quick-toolbar" id="quick-toolbar" aria-label="刷词快捷操作">
+      <div class="filter-group-row" id="mastery-filters" role="group" aria-label="掌握状态筛选">
+        <button type="button" class="pill-btn" data-filter="all" onclick="setMasteryFilter('all')">全部词汇 <span class="pill-count" id="fc-all">0</span></button>
+        <button type="button" class="pill-btn" data-filter="unmastered" onclick="setMasteryFilter('unmastered')">未掌握 <span class="pill-count" id="fc-unmastered">0</span></button>
+        <button type="button" class="pill-btn" data-filter="mastered" onclick="setMasteryFilter('mastered')">已掌握 <span class="pill-count" id="fc-mastered">0</span></button>
+      </div>
+      <div class="filter-group-row">
+        <button type="button" class="btn btn-sm" id="self-test-toggle" aria-pressed="false" onclick="setSelfTestMode(true)">隐藏释义</button>
+        <button type="button" class="btn btn-sm" id="show-answers-btn" onclick="setSelfTestMode(false)">显示释义</button>
+        <button type="button" class="btn btn-sm" id="shuffle-btn" onclick="setSortMode('random')">随机打乱</button>
+        <button type="button" class="btn btn-sm" id="undo-mastery-btn" onclick="undoMastery()" disabled>撤销掌握修改</button>
+      </div>
+      <div class="results-summary" id="results-summary" role="status"></div>
     </div>
 
     <!-- Card Grid -->
@@ -1210,39 +1275,42 @@ button, input, select, textarea { font-family: inherit; }
     <!-- Empty State -->
     <div class="panel empty-state is-hidden" id="empty-state" style="margin-top: var(--space-md);">
       <h2 class="empty-title">当前筛选条件下暂无词汇</h2>
-      <p class="empty-desc">可能是已将该分类词汇全部刷至熟练，或搜索关键词过窄。点击下方按钮查看全部词库。</p>
+      <p class="empty-desc">请调整筛选条件或查看全部词库。</p>
       <button type="button" class="btn btn-primary" onclick="resetFilters()">恢复全部词汇视图</button>
     </div>
 
     <!-- Pagination -->
     <div class="pagination-bar" id="pagination-bar">
-      <div class="results-summary" id="pagination-info">第 1 / 30 页</div>
+      <div class="results-summary" id="pagination-info"></div>
       <div class="pagination-controls">
         <button type="button" class="btn btn-sm" id="prev-page-btn" onclick="goPage(-1)">上一页</button>
-        <span class="page-indicator" id="page-num-badge">1 / 30</span>
+        <span class="page-indicator" id="page-num-badge"></span>
         <button type="button" class="btn btn-sm" id="next-page-btn" onclick="goPage(1)">下一页</button>
       </div>
     </div>
   </section>
 
   <!-- VIEW 2: Random Flashcard Sprint -->
-  <section id="view-sprint" class="is-hidden" aria-label="随机抽词冲刺模式">
+  <section id="view-sprint" class="is-hidden" aria-label="随机抽词冲刺模式" tabindex="-1">
     <div class="sprint-layout">
       <div class="panel sprint-controls">
         <div class="field-block" style="flex: 1 1 14rem;">
           <label class="field-label" for="sprint-scope">抽词范围</label>
           <select class="select-input" id="sprint-scope" onchange="rebuildSprintQueue()">
-            <option value="weak">仅抽待强化词（打勾 &lt; 3 次）</option>
-            <option value="unseen">仅抽未打卡词（0 次）</option>
-            <option value="category">当前所选分类随机抽词</option>
-            <option value="all">全库 700 词随机抽词</option>
+            <option value="all">全部词汇</option>
+            <option value="unmastered">未掌握词汇</option>
+            <option value="mastered">已掌握词汇</option>
+            <option value="unseen">未打卡词汇</option>
+            <option value="forgotten">曾经遗忘的词汇</option>
+            <option value="category">当前分类词汇</option>
           </select>
         </div>
         <div class="substat-item">
           <span class="label">本轮队列进度</span>
           <span class="substat-val" id="sprint-queue-status">0 / 0</span>
         </div>
-        <button type="button" class="btn" onclick="rebuildSprintQueue()">重新随机洗牌</button>
+        <button type="button" class="btn btn-sm" onclick="rebuildSprintQueue()">重新随机洗牌</button>
+        <button type="button" class="btn btn-sm" id="sprint-undo-mastery-btn" onclick="undoMastery()" disabled>撤销掌握修改</button>
       </div>
 
       <div id="sprint-feedback" class="sprint-feedback is-hidden" role="status" aria-live="polite"></div>
@@ -1253,7 +1321,7 @@ button, input, select, textarea { font-family: inherit; }
             <span class="tag-sage" id="sprint-cat-tag">高频核心动词</span>
             <span class="tag-syn is-hidden" id="sprint-syn-tag">阅读同义替换高频</span>
           </div>
-          <span class="mastery-badge badge-unseen" id="sprint-mastery-badge">未打卡 0次</span>
+          <button type="button" class="mastery-badge badge-unseen" id="sprint-mastery-badge" aria-pressed="false" onclick="toggleSprintMastery()">未掌握</button>
         </div>
 
         <div class="sprint-word-stage">
@@ -1284,22 +1352,26 @@ button, input, select, textarea { font-family: inherit; }
           <button type="button" class="btn" id="sprint-skip-btn" onclick="stepSprint(1)">还需巩固（下一词）</button>
           <button type="button" class="btn btn-primary" id="sprint-check-btn" onclick="checkInSprintWord()">✓ 记住了，打卡 +1</button>
         </div>
+        <div class="filter-group-row sprint-checkins">
+          <span class="results-summary" id="sprint-tick-summary"></span>
+          <button type="button" class="btn btn-sm" id="sprint-undo-tick-btn" onclick="undoSprintTick()">撤回本词打卡</button>
+        </div>
       </div>
 
       <div class="panel empty-state is-hidden" id="sprint-empty">
-        <h2 class="empty-title">该抽词范围内词汇已全部达标</h2>
-        <p class="empty-desc">恭喜！当前范围内已没有符合条件的待强化词。你可以切换抽词范围至“全库 700 词”进行巩固复习。</p>
-        <button type="button" class="btn btn-primary" onclick="switchSprintToAll()">切换至全库 700 词复习</button>
+        <h2 class="empty-title">该抽词范围内暂无词汇</h2>
+        <p class="empty-desc">请选择其他范围或切换至全部词汇。</p>
+        <button type="button" class="btn btn-primary" onclick="switchSprintToAll()">切换至全部词汇</button>
       </div>
 
-      <p class="shortcut-hint">桌面端快捷键：Space 翻牌显示释义 · Enter 打卡 +1 并跳下一词 · → 下一词</p>
+      <p class="shortcut-hint">桌面端快捷键：Space 翻牌显示释义 · Enter 打卡 +1 并跳下一词 · ← / → 上一词 / 下一词</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="page-footer">
-    <span>词汇来源：全国大学英语四、六级考试大纲及历年 CET-6 真题高频阅读、写作与翻译词库（共 700 核心词条）。</span>
-    <span>提示：每个单词累计打卡 ≥ 3 次自动标记为“已熟练”，可随时一键筛除后专注薄弱词。</span>
+    <span>词汇来源：全国大学英语四、六级考试大纲及历年 CET-6 真题高频阅读、写作与翻译词库。</span>
+    <span>打卡记录复习次数，掌握状态由你标记。可通过 JSON 备份学习记录。</span>
   </footer>
 </main>
 
@@ -2074,33 +2146,53 @@ function getLocalDateKey() {
   return y + '-' + m + '-' + d;
 }
 
-const APP_STATE = {
-  counts: {},
-  todayDate: getLocalDateKey(),
-  todayTicks: 0,
-  totalTicks: 0,
-  activeCategory: 'all',
-  masteryFilter: 'all',
-  customOp: 'lt',
-  customThreshold: 3,
-  examTagFilter: 'all',
-  sortMode: 'default',
-  pageSize: 24,
-  selfTestMode: false,
-  mode: 'list',
-  sprintScope: 'weak'
+const STORAGE_KEY = 'cet6-vocabulary-workbench';
+const STATE_FORMAT = 'cet6-vocabulary-workbench';
+const STATE_VERSION = 1;
+const PREFERENCE_OPTIONS = {
+  activeCategory: ['all', ...CATEGORY_META.map(c => c.key)],
+  masteryFilter: ['all', 'unmastered', 'mastered'],
+  countFilter: ['all', 'unseen', 'seen', 'custom'],
+  customOp: ['lt', 'lte', 'eq', 'gte'],
+  examTagFilter: ['all', 'synonym'],
+  sortMode: ['default', 'count-asc', 'count-desc', 'alpha', 'random', 'forgotten', 'oldest'],
+  pageSize: [999, 24, 48, 96],
+  sampleSize: ['20', '50', '100', '200', 'custom', 'all'],
+  mode: ['list', 'sprint'],
+  sprintScope: ['all', 'unmastered', 'mastered', 'unseen', 'forgotten', 'category']
 };
 
-let currentPage = 1;
-let searchQuery = '';
-let searchDebounceTimer = null;
+const EMPTY_WORD = {
+  count: 0, mastered: false, forgotten: 0, reviewedAt: null, masteryChangedAt: null, checkInDays: {}
+};
+
+function createDefaultState() {
+  return {
+    words: {}, dailyTicks: {}, totalTicks: 0, undoMastery: null,
+    preferences: {
+      activeCategory: 'all', masteryFilter: 'all', countFilter: 'all', customOp: 'lt',
+      customThreshold: 3, examTagFilter: 'all', forgottenOnly: false, searchQuery: '',
+      sortMode: 'default', randomOrder: [], sampleIds: null, sampleSize: '20',
+      customSampleSize: 20, pageSize: 999, currentPage: 1, selfTestMode: false,
+      revealedIds: [], mode: 'list', sprintScope: 'unmastered'
+    }
+  };
+}
+
+let APP_STATE = createDefaultState();
+let prefs = APP_STATE.preferences;
 let revealedIds = new Set();
 let sprintQueue = [];
 let sprintIndex = 0;
 let sprintRevealed = false;
 let resetConfirmTimer = null;
 let resetArmed = false;
-let saveDebounceTimer = null;
+let protectStoredState = false;
+let lastStoredValue = null;
+
+function byId(id) {
+  return document.getElementById(id);
+}
 
 function escapeHtml(str) {
   return String(str)
@@ -2111,606 +2203,696 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-function getWordCount(wordId) {
-  const val = APP_STATE.counts[wordId];
-  return typeof val === 'number' && val > 0 ? val : 0;
+function wordRecord(id) {
+  return APP_STATE.words[id] || EMPTY_WORD;
 }
 
-function setSyncStatus(text, isSaving) {
-  const statusTextEl = document.getElementById('sync-status-text');
-  const dotEl = document.querySelector('#sync-status .sync-dot');
-  if (statusTextEl) {
-    statusTextEl.textContent = text;
-  }
-  if (dotEl) {
-    dotEl.style.background = isSaving ? 'var(--warning)' : 'var(--positive)';
-  }
+function editWordRecord(id) {
+  if (!APP_STATE.words[id]) APP_STATE.words[id] = { ...EMPTY_WORD, checkInDays: {} };
+  return APP_STATE.words[id];
 }
 
-function schedulePersistState() {
-  setSyncStatus('正在同步记录…', true);
-  if (saveDebounceTimer) {
-    clearTimeout(saveDebounceTimer);
-  }
-  saveDebounceTimer = setTimeout(function () {
-    persistStateNow();
-  }, 150);
+function getWordCount(id) {
+  return wordRecord(id).count;
 }
 
-async function persistStateNow() {
-  const compactCounts = {};
-  Object.keys(APP_STATE.counts).forEach(function (k) {
-    const v = APP_STATE.counts[k];
-    if (typeof v === 'number' && v > 0 && WORD_BY_ID[k]) {
-      compactCounts[k] = Math.min(99, Math.floor(v));
-    }
-  });
-  const payload = {
-    counts: compactCounts,
-    todayDate: APP_STATE.todayDate,
-    todayTicks: APP_STATE.todayTicks,
-    totalTicks: APP_STATE.totalTicks,
-    activeCategory: APP_STATE.activeCategory,
-    masteryFilter: APP_STATE.masteryFilter,
-    customOp: APP_STATE.customOp,
-    customThreshold: APP_STATE.customThreshold,
-    examTagFilter: APP_STATE.examTagFilter,
-    sortMode: APP_STATE.sortMode,
-    pageSize: APP_STATE.pageSize,
-    selfTestMode: APP_STATE.selfTestMode,
-    mode: APP_STATE.mode,
-    sprintScope: APP_STATE.sprintScope
+function isRecord(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function isCount(value) {
+  return Number.isSafeInteger(value) && value >= 0;
+}
+
+function isTimestamp(value) {
+  return value === null || (isCount(value) && value <= 8.64e15);
+}
+
+function isDateKey(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(value + 'T00:00:00Z');
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}
+
+function validateDayCounts(values) {
+  if (!isRecord(values) || Object.entries(values).some(([date, count]) => !isDateKey(date) || !isCount(count))) {
+    throw new Error('每日打卡记录格式有误');
+  }
+  return values;
+}
+
+function validateIds(ids) {
+  if (!Array.isArray(ids) || ids.length > WORDS.length || ids.some(id => typeof id !== 'string' || !Object.hasOwn(WORD_BY_ID, id))
+      || new Set(ids).size !== ids.length) {
+    throw new Error('词汇顺序或抽查记录格式有误');
+  }
+  return ids;
+}
+
+function validatePreferences(saved) {
+  if (!isRecord(saved)) throw new Error('显示偏好格式有误');
+  const clean = createDefaultState().preferences;
+  for (const [name, allowed] of Object.entries(PREFERENCE_OPTIONS)) {
+    if (!allowed.includes(saved[name])) throw new Error('显示偏好超出支持范围');
+    clean[name] = saved[name];
+  }
+  if (!isCount(saved.customThreshold) || !isCount(saved.customSampleSize) || saved.customSampleSize < 1
+      || !isCount(saved.currentPage) || saved.currentPage < 1 || typeof saved.forgottenOnly !== 'boolean'
+      || typeof saved.searchQuery !== 'string' || typeof saved.selfTestMode !== 'boolean') {
+    throw new Error('筛选条件或分页格式有误');
+  }
+  const randomOrder = validateIds(saved.randomOrder);
+  if (clean.sortMode === 'random' && randomOrder.length !== WORDS.length) {
+    throw new Error('随机顺序记录不完整');
+  }
+  return {
+    ...clean, customThreshold: saved.customThreshold, customSampleSize: saved.customSampleSize,
+    currentPage: saved.currentPage, forgottenOnly: saved.forgottenOnly, searchQuery: saved.searchQuery,
+    selfTestMode: saved.selfTestMode, randomOrder, revealedIds: validateIds(saved.revealedIds),
+    sampleIds: saved.sampleIds === null ? null : validateIds(saved.sampleIds)
   };
-  try {
-    if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
-      await window.notebookAppApi.setAppState(payload);
+}
+
+function migrateLegacyState(saved) {
+  if (!isRecord(saved.counts) || (!Object.keys(saved.counts).length && !Object.hasOwn(saved, 'totalTicks'))) {
+    throw new Error('未找到可迁移的旧版打卡记录');
+  }
+  const state = createDefaultState();
+  for (const [id, rawCount] of Object.entries(saved.counts)) {
+    const count = Number(rawCount);
+    if (!Object.hasOwn(WORD_BY_ID, id) || !['number', 'string'].includes(typeof rawCount) || !isCount(count)) {
+      throw new Error('旧版打卡次数格式有误');
     }
-    setSyncStatus('进度已自动保存', false);
-  } catch (err) {
-    setSyncStatus('保存异常，请勿立即关闭', true);
+    if (count > 0) state.words[id] = { ...EMPTY_WORD, count, checkInDays: {} };
+  }
+  const sum = Object.values(state.words).reduce((total, record) => total + record.count, 0);
+  if (!isCount(sum)) throw new Error('旧版累计打卡次数超出支持范围');
+  state.totalTicks = Math.max(sum, isCount(Number(saved.totalTicks)) ? Number(saved.totalTicks) : 0);
+  if (isRecord(saved.dailyTicks)) state.dailyTicks = { ...validateDayCounts(saved.dailyTicks) };
+  if (isDateKey(saved.todayDate) && isCount(Number(saved.todayTicks)) && !Object.hasOwn(state.dailyTicks, saved.todayDate)) {
+    state.dailyTicks[saved.todayDate] = Number(saved.todayTicks);
+  }
+  for (const key of ['activeCategory', 'customOp', 'examTagFilter', 'sortMode', 'pageSize', 'mode', 'sprintScope']) {
+    if (PREFERENCE_OPTIONS[key].includes(saved[key]) && saved[key] !== 'random') state.preferences[key] = saved[key];
+  }
+  const threshold = Number(saved.customThreshold);
+  if (isCount(threshold)) state.preferences.customThreshold = threshold;
+  if (typeof saved.selfTestMode === 'boolean') state.preferences.selfTestMode = saved.selfTestMode;
+  if (saved.sprintScope === 'weak') state.preferences.sprintScope = 'unmastered';
+  if (saved.masteryFilter === 'unseen' || saved.masteryFilter === 'custom') {
+    state.preferences.countFilter = saved.masteryFilter;
+  }
+  if (saved.masteryFilter === 'reinforce') state.preferences.countFilter = 'seen';
+  if (saved.masteryFilter === 'weak') state.preferences.masteryFilter = 'unmastered';
+  return state;
+}
+
+function decodeState(payload) {
+  if (!isRecord(payload)) throw new Error('这不是有效的学习记录');
+  if (!Object.hasOwn(payload, 'format') && !Object.hasOwn(payload, 'version')) return migrateLegacyState(payload);
+  if (payload.format !== STATE_FORMAT || payload.version !== STATE_VERSION || !isRecord(payload.data)) {
+    throw new Error('不支持此学习记录格式或版本');
+  }
+
+  const { words, dailyTicks, totalTicks, undoMastery, preferences } = payload.data;
+  if (!isRecord(words) || !isCount(totalTicks)) throw new Error('学习记录或累计打卡次数格式有误');
+  const cleanWords = {};
+  let countSum = 0;
+  const daily = validateDayCounts(dailyTicks);
+  const trackedByDay = {};
+  for (const [id, record] of Object.entries(words)) {
+    if (!Object.hasOwn(WORD_BY_ID, id) || !isRecord(record) || !isCount(record.count)
+        || typeof record.mastered !== 'boolean' || !isCount(record.forgotten)
+        || !isTimestamp(record.reviewedAt) || !isTimestamp(record.masteryChangedAt)) {
+      throw new Error('单词学习记录格式有误');
+    }
+    const days = validateDayCounts(record.checkInDays);
+    let tracked = 0;
+    for (const [date, count] of Object.entries(days)) {
+      tracked += count;
+      trackedByDay[date] = (trackedByDay[date] || 0) + count;
+      if (trackedByDay[date] > (daily[date] || 0)) throw new Error('每日打卡记录数量不一致');
+    }
+    if (tracked > record.count) throw new Error('单词打卡记录数量不一致');
+    countSum += record.count;
+    cleanWords[id] = {
+      count: record.count, mastered: record.mastered, forgotten: record.forgotten,
+      reviewedAt: record.reviewedAt, masteryChangedAt: record.masteryChangedAt, checkInDays: days
+    };
+  }
+  if (countSum > totalTicks) throw new Error('累计打卡记录数量不一致');
+
+  let undo = null;
+  if (undoMastery !== null) {
+    if (!isRecord(undoMastery) || !Object.hasOwn(cleanWords, undoMastery.id) || typeof undoMastery.mastered !== 'boolean'
+        || !isCount(undoMastery.forgotten) || !isTimestamp(undoMastery.changedAt)) {
+      throw new Error('掌握状态撤销记录格式有误');
+    }
+    const { id, mastered, forgotten, changedAt } = undoMastery;
+    const current = cleanWords[id];
+    if (current.mastered === mastered || current.forgotten !== forgotten + Number(mastered)) {
+      throw new Error('掌握状态撤销记录与当前状态不一致');
+    }
+    undo = { id, mastered, forgotten, changedAt };
+  }
+  return { words: cleanWords, dailyTicks: daily, totalTicks, undoMastery: undo, preferences: validatePreferences(preferences) };
+}
+
+function activateState(state) {
+  APP_STATE = state;
+  prefs = APP_STATE.preferences;
+  revealedIds = new Set(prefs.revealedIds);
+}
+
+function encodeState(state) {
+  return JSON.stringify({ format: STATE_FORMAT, version: STATE_VERSION, data: state });
+}
+
+function setSyncStatus(text, failed = false) {
+  if (byId('sync-status-text').textContent !== text) byId('sync-status-text').textContent = text;
+  byId('sync-status').classList.toggle('is-save-warning', failed);
+  document.querySelector('#sync-status .sync-dot').style.background = failed ? 'var(--warning)' : 'var(--positive)';
+}
+
+function persistState(state = APP_STATE, replace = false) {
+  if (protectStoredState && !replace) {
+    setSyncStatus('未覆盖无法读取的存档，可先备份 JSON', true);
+    return false;
+  }
+  try {
+    const storage = window.localStorage;
+    if (!replace && storage.getItem(STORAGE_KEY) !== lastStoredValue) {
+      setSyncStatus('其他页面已更新存档，请先备份本页记录再刷新', true);
+      return false;
+    }
+    const payload = encodeState(state);
+    storage.setItem(STORAGE_KEY, payload);
+    if (storage.getItem(STORAGE_KEY) !== payload) throw new Error('存储读回失败');
+    lastStoredValue = payload;
+    protectStoredState = false;
+    setSyncStatus('进度已保存到本地');
+    return true;
+  } catch {
+    setSyncStatus('本地保存失败，请导出 JSON 备份', true);
+    return false;
   }
 }
 
 async function loadPersistedState() {
+  let storage;
+  let writable = false;
   try {
-    if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
-      const saved = await window.notebookAppApi.getAppState();
-      if (saved && typeof saved === 'object') {
-        if (saved.counts && typeof saved.counts === 'object') {
-          const cleanCounts = {};
-          Object.keys(saved.counts).forEach(function (k) {
-            const val = Number(saved.counts[k]);
-            if (WORD_BY_ID[k] && Number.isFinite(val) && val > 0) {
-              cleanCounts[k] = Math.min(99, Math.floor(val));
-            }
-          });
-          APP_STATE.counts = cleanCounts;
-        }
-        const today = getLocalDateKey();
-        if (saved.todayDate === today) {
-          APP_STATE.todayDate = today;
-          APP_STATE.todayTicks = Number(saved.todayTicks) || 0;
-        } else {
-          APP_STATE.todayDate = today;
-          APP_STATE.todayTicks = 0;
-        }
-        APP_STATE.totalTicks = Number(saved.totalTicks) || 0;
-        if (typeof saved.activeCategory === 'string') APP_STATE.activeCategory = saved.activeCategory;
-        if (typeof saved.masteryFilter === 'string') APP_STATE.masteryFilter = saved.masteryFilter;
-        if (typeof saved.customOp === 'string') APP_STATE.customOp = saved.customOp;
-        if (Number.isFinite(Number(saved.customThreshold))) APP_STATE.customThreshold = Number(saved.customThreshold);
-        if (typeof saved.examTagFilter === 'string') APP_STATE.examTagFilter = saved.examTagFilter;
-        if (typeof saved.sortMode === 'string') APP_STATE.sortMode = saved.sortMode;
-        if (Number.isFinite(Number(saved.pageSize))) APP_STATE.pageSize = Number(saved.pageSize);
-        if (typeof saved.selfTestMode === 'boolean') APP_STATE.selfTestMode = saved.selfTestMode;
-        if (saved.mode === 'list' || saved.mode === 'sprint') APP_STATE.mode = saved.mode;
-        if (typeof saved.sprintScope === 'string') APP_STATE.sprintScope = saved.sprintScope;
-        setSyncStatus('已恢复上次学习记录', false);
+    storage = window.localStorage;
+    lastStoredValue = storage.getItem(STORAGE_KEY);
+    const probeKey = STORAGE_KEY + ':probe:' + Math.random().toString(36).slice(2);
+    try {
+      storage.setItem(probeKey, '1');
+      writable = storage.getItem(probeKey) === '1';
+    } finally {
+      storage.removeItem(probeKey);
+    }
+  } catch {
+    writable = false;
+  }
+
+  if (lastStoredValue !== null) {
+    try {
+      const saved = JSON.parse(lastStoredValue);
+      activateState(decodeState(saved));
+      if (writable && !Object.hasOwn(saved, 'format')) {
+        if (persistState()) setSyncStatus('已迁移旧版打卡记录');
+      } else {
+        setSyncStatus(writable ? '已恢复本地学习记录' : '已读取记录，但本地存储不可写', !writable);
       }
+    } catch {
+      protectStoredState = true;
+      setSyncStatus('本地存档无法读取，已保留原记录', true);
     }
-  } catch (err) {
-    setSyncStatus('自动存档已就绪', false);
+    return;
   }
+
+  // The original webpage stored its state through the notebook host.
+  if (typeof window.notebookAppApi?.getAppState === 'function') {
+    try {
+      const legacy = await window.notebookAppApi.getAppState();
+      if (legacy !== null && legacy !== undefined && !(isRecord(legacy) && Object.keys(legacy).length === 0)) {
+        activateState(decodeState(legacy));
+        if (persistState()) setSyncStatus('已迁移旧版打卡记录');
+        return;
+      }
+    } catch {
+      protectStoredState = true;
+      setSyncStatus('旧版记录暂时无法读取，已保留原记录', true);
+      return;
+    }
+  }
+  setSyncStatus(writable ? '本地存储已就绪' : '本地存储不可用，请导出 JSON 备份', !writable);
 }
 
-function getMasteryInfo(count) {
-  if (count >= 3) {
-    return {
-      status: 'mastered',
-      badgeClass: 'badge-mastered',
-      label: '已熟练 ' + count + '次',
-      cardClass: 'is-mastered'
-    };
-  }
-  if (count >= 1) {
-    return {
-      status: 'reinforce',
-      badgeClass: 'badge-learning',
-      label: '巩固中 ' + count + '次',
-      cardClass: 'is-learning'
-    };
-  }
-  return {
-    status: 'unseen',
-    badgeClass: 'badge-unseen',
-    label: '未打卡 0次',
-    cardClass: ''
-  };
+function matchesCount(count) {
+  if (prefs.countFilter === 'unseen') return count === 0;
+  if (prefs.countFilter === 'seen') return count > 0;
+  if (prefs.countFilter !== 'custom') return true;
+  const threshold = prefs.customThreshold;
+  if (prefs.customOp === 'lt') return count < threshold;
+  if (prefs.customOp === 'lte') return count <= threshold;
+  if (prefs.customOp === 'eq') return count === threshold;
+  return count >= threshold;
 }
 
-function matchesMasteryCondition(count) {
-  const filter = APP_STATE.masteryFilter;
-  if (filter === 'all') return true;
-  if (filter === 'weak') return count < 3;
-  if (filter === 'unseen') return count === 0;
-  if (filter === 'reinforce') return count >= 1 && count <= 2;
-  if (filter === 'mastered') return count >= 3;
-  if (filter === 'custom') {
-    const threshold = Math.max(0, Math.min(20, Number(APP_STATE.customThreshold) || 0));
-    const op = APP_STATE.customOp;
-    if (op === 'lt') return count < threshold;
-    if (op === 'lte') return count <= threshold;
-    if (op === 'eq') return count === threshold;
-    if (op === 'gte') return count >= threshold;
-  }
-  return true;
-}
-
-function getFilteredWords() {
-  const q = searchQuery.trim().toLowerCase();
-  const filtered = WORDS.filter(function (w) {
-    if (APP_STATE.activeCategory !== 'all' && w.category !== APP_STATE.activeCategory) {
-      return false;
-    }
-    if (APP_STATE.examTagFilter === 'synonym' && !w.isSyn) {
-      return false;
-    }
-    const count = getWordCount(w.id);
-    if (!matchesMasteryCondition(count)) {
-      return false;
-    }
-    if (q) {
-      const haystack = (w.word + ' ' + w.def + ' ' + w.syn + ' ' + w.colloc).toLowerCase();
-      if (haystack.indexOf(q) === -1) return false;
-    }
-    return true;
+function getFilterScope() {
+  const query = prefs.searchQuery.trim().toLowerCase();
+  return WORDS.filter(function (w) {
+    const record = wordRecord(w.id);
+    return (prefs.activeCategory === 'all' || w.category === prefs.activeCategory)
+      && (prefs.examTagFilter !== 'synonym' || w.isSyn)
+      && (!prefs.forgottenOnly || record.forgotten > 0)
+      && matchesCount(record.count)
+      && (!query || (w.word + ' ' + w.def + ' ' + w.syn + ' ' + w.colloc).toLowerCase().includes(query));
   });
+}
 
-  const sortMode = APP_STATE.sortMode;
-  if (sortMode === 'count-asc') {
-    filtered.sort(function (a, b) {
-      return getWordCount(a.id) - getWordCount(b.id) || a.order - b.order;
-    });
-  } else if (sortMode === 'count-desc') {
-    filtered.sort(function (a, b) {
-      return getWordCount(b.id) - getWordCount(a.id) || a.order - b.order;
-    });
-  } else if (sortMode === 'alpha') {
-    filtered.sort(function (a, b) {
-      return a.word.localeCompare(b.word);
-    });
+function filterMastery(scope) {
+  if (prefs.masteryFilter === 'all') return scope;
+  const mastered = prefs.masteryFilter === 'mastered';
+  return scope.filter(w => wordRecord(w.id).mastered === mastered);
+}
+
+function sortWords(words) {
+  const sorted = words.slice();
+  if (prefs.sortMode === 'random') {
+    const rank = new Map(prefs.randomOrder.map((id, index) => [id, index]));
+    return sorted.sort((a, b) => rank.get(a.id) - rank.get(b.id));
   }
-  return filtered;
+  const compare = {
+    'count-asc': (a, b) => getWordCount(a.id) - getWordCount(b.id),
+    'count-desc': (a, b) => getWordCount(b.id) - getWordCount(a.id),
+    alpha: (a, b) => a.word.localeCompare(b.word),
+    forgotten: (a, b) => wordRecord(b.id).forgotten - wordRecord(a.id).forgotten,
+    oldest: (a, b) => (wordRecord(a.id).reviewedAt ?? -1) - (wordRecord(b.id).reviewedAt ?? -1)
+  }[prefs.sortMode];
+  return compare ? sorted.sort((a, b) => compare(a, b) || a.order - b.order) : sorted;
+}
+
+function updateTodayStats() {
+  byId('stat-today-ticks').textContent = (APP_STATE.dailyTicks[getLocalDateKey()] || 0) + ' 次';
 }
 
 function updateDashboard() {
   const total = WORDS.length;
+  const catStats = Object.fromEntries(CATEGORY_META.map(c => [c.key, { total: 0, mastered: 0 }]));
   let mastered = 0;
-  let learning = 0;
-  let unseen = 0;
-
-  const catStats = {};
-  CATEGORY_META.forEach(function (c) {
-    catStats[c.key] = { total: 0, mastered: 0, weak: 0 };
-  });
-
-  WORDS.forEach(function (w) {
-    const c = getWordCount(w.id);
-    if (c >= 3) {
+  let touched = 0;
+  let forgotten = 0;
+  for (const w of WORDS) {
+    const record = wordRecord(w.id);
+    const category = catStats[w.category];
+    category.total += 1;
+    if (record.mastered) {
       mastered += 1;
-      catStats[w.category].mastered += 1;
-    } else {
-      catStats[w.category].weak += 1;
-      if (c >= 1) learning += 1;
-      else unseen += 1;
+      category.mastered += 1;
     }
-    catStats[w.category].total += 1;
-  });
-
-  const touched = mastered + learning;
-  const pct = total > 0 ? ((mastered / total) * 100).toFixed(1) : '0.0';
-  const masteredPctWidth = total > 0 ? (mastered / total) * 100 : 0;
-  const learningPctWidth = total > 0 ? (learning / total) * 100 : 0;
-
-  const statMasteredEl = document.getElementById('stat-mastered');
-  const statMasteredPctEl = document.getElementById('stat-mastered-pct');
-  const barMasteredEl = document.getElementById('bar-mastered');
-  const barLearningEl = document.getElementById('bar-learning');
-  const progressBarEl = document.getElementById('total-progressbar');
-  const countMasteredEl = document.getElementById('count-mastered');
-  const countLearningEl = document.getElementById('count-learning');
-  const countUnseenEl = document.getElementById('count-unseen');
-  const totalTicksEl = document.getElementById('stat-total-ticks');
-  const todayTicksEl = document.getElementById('stat-today-ticks');
-  const touchedEl = document.getElementById('stat-touched');
-
-  if (statMasteredEl) statMasteredEl.innerHTML = mastered + '<span class="sub-unit">/ ' + total + ' 词</span>';
-  if (statMasteredPctEl) statMasteredPctEl.textContent = pct + '%';
-  if (barMasteredEl) barMasteredEl.style.width = masteredPctWidth.toFixed(2) + '%';
-  if (barLearningEl) barLearningEl.style.width = learningPctWidth.toFixed(2) + '%';
-  if (progressBarEl) {
-    progressBarEl.setAttribute('aria-valuemax', String(total));
-    progressBarEl.setAttribute('aria-valuenow', String(mastered));
+    if (record.count > 0 || record.reviewedAt !== null || record.masteryChangedAt !== null) touched += 1;
+    if (record.forgotten > 0) forgotten += 1;
   }
-  if (countMasteredEl) countMasteredEl.textContent = String(mastered);
-  if (countLearningEl) countLearningEl.textContent = String(learning);
-  if (countUnseenEl) countUnseenEl.textContent = String(unseen);
-  if (totalTicksEl) totalTicksEl.innerHTML = APP_STATE.totalTicks + '<span class="sub-unit">次</span>';
-  if (todayTicksEl) todayTicksEl.textContent = APP_STATE.todayTicks + ' 次';
-  if (touchedEl) touchedEl.textContent = touched + ' / ' + total;
+  const percent = total ? mastered * 100 / total : 0;
+  byId('stat-mastered').innerHTML = mastered + '<span class="sub-unit">/ ' + total + ' 词</span>';
+  byId('stat-mastered-pct').textContent = percent.toFixed(1) + '%';
+  byId('bar-mastered').style.width = percent + '%';
+  byId('total-progressbar').setAttribute('aria-valuenow', String(mastered));
+  byId('total-progressbar').setAttribute('aria-valuemax', String(total));
+  byId('count-mastered').textContent = mastered;
+  byId('count-unmastered').textContent = total - mastered;
+  byId('stat-total-ticks').innerHTML = APP_STATE.totalTicks + '<span class="sub-unit">次</span>';
+  byId('stat-touched').textContent = touched + ' / ' + total;
+  byId('stat-forgotten').textContent = forgotten;
+  updateTodayStats();
 
-  // Update category breakdown in dashboard
-  const breakdownEl = document.getElementById('cat-breakdown');
-  if (breakdownEl) {
-    breakdownEl.innerHTML = CATEGORY_META.map(function (c) {
-      const st = catStats[c.key];
-      const ratio = st.total > 0 ? Math.round((st.mastered / st.total) * 100) : 0;
-      return (
-        '<div class="cat-row" role="button" tabindex="0" onclick="selectCategoryFromDash(\'' + c.key + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectCategoryFromDash(\'' + c.key + '\');}">' +
-          '<span class="cat-row-name">' + escapeHtml(c.shortLabel) + '</span>' +
-          '<div class="cat-mini-track" aria-hidden="true"><div class="cat-mini-fill" style="width:' + ratio + '%"></div></div>' +
-          '<span class="cat-row-stat">' + st.mastered + '/' + st.total + '</span>' +
-        '</div>'
-      );
-    }).join('');
+  const breakdown = byId('cat-breakdown');
+  if (!breakdown.children.length) {
+    breakdown.innerHTML = CATEGORY_META.map(c =>
+      '<div class="cat-row" role="button" tabindex="0" data-category="' + c.key
+        + '" onclick="selectCategoryFromDash(this.dataset.category)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();this.click();}">'
+        + '<span class="cat-row-name">' + escapeHtml(c.shortLabel) + '</span>'
+        + '<div class="cat-mini-track" aria-hidden="true"><div class="cat-mini-fill"></div></div>'
+        + '<span class="cat-row-stat"></span></div>'
+    ).join('');
+    byId('category-tabs').innerHTML = [{ key: 'all', label: '全部分类' }, ...CATEGORY_META].map(c =>
+      '<button type="button" class="pill-btn" data-category="' + c.key + '" onclick="setCategoryFilter(this.dataset.category)">'
+        + escapeHtml(c.label) + ' <span class="pill-count">' + (catStats[c.key]?.total ?? total) + '</span></button>'
+    ).join('');
   }
-
-  // Update category filter pills
-  const catTabsEl = document.getElementById('category-tabs');
-  if (catTabsEl) {
-    const allActive = APP_STATE.activeCategory === 'all' ? ' is-active' : '';
-    let html = '<button type="button" class="pill-btn' + allActive + '" onclick="setCategoryFilter(\'all\')">全部分类 <span class="pill-count">' + total + '</span></button>';
-    CATEGORY_META.forEach(function (c) {
-      const st = catStats[c.key];
-      const act = APP_STATE.activeCategory === c.key ? ' is-active' : '';
-      html += '<button type="button" class="pill-btn' + act + '" onclick="setCategoryFilter(\'' + c.key + '\')">' +
-        escapeHtml(c.label) + ' <span class="pill-count">' + st.total + '</span></button>';
-    });
-    catTabsEl.innerHTML = html;
+  for (const row of breakdown.children) {
+    const stats = catStats[row.dataset.category];
+    row.querySelector('.cat-mini-fill').style.width = (stats.total ? stats.mastered * 100 / stats.total : 0) + '%';
+    row.querySelector('.cat-row-stat').textContent = stats.mastered + '/' + stats.total;
   }
-
-  // Update mastery counts within active category
-  let scopeWords = WORDS;
-  if (APP_STATE.activeCategory !== 'all') {
-    scopeWords = WORDS.filter(function (w) { return w.category === APP_STATE.activeCategory; });
-  }
-  let fAll = scopeWords.length;
-  let fWeak = 0;
-  let fUnseen = 0;
-  let fReinforce = 0;
-  let fMastered = 0;
-  scopeWords.forEach(function (w) {
-    const cnt = getWordCount(w.id);
-    if (cnt >= 3) {
-      fMastered += 1;
-    } else {
-      fWeak += 1;
-      if (cnt === 0) fUnseen += 1;
-      else fReinforce += 1;
-    }
-  });
-  const fcAll = document.getElementById('fc-all');
-  const fcWeak = document.getElementById('fc-weak');
-  const fcUnseen = document.getElementById('fc-unseen');
-  const fcReinforce = document.getElementById('fc-reinforce');
-  const fcMastered = document.getElementById('fc-mastered');
-  if (fcAll) fcAll.textContent = String(fAll);
-  if (fcWeak) fcWeak.textContent = String(fWeak);
-  if (fcUnseen) fcUnseen.textContent = String(fUnseen);
-  if (fcReinforce) fcReinforce.textContent = String(fReinforce);
-  if (fcMastered) fcMastered.textContent = String(fMastered);
 }
 
 function renderDotsHtml(count) {
   let dots = '';
   for (let i = 1; i <= 3; i += 1) {
-    dots += '<span class="tick-dot' + (count >= i ? ' is-filled' : '') + '"></span>';
+    dots += '<span class="meter-dot' + (count >= i ? ' is-filled' : '') + '"></span>';
   }
-  return '<span class="tick-dots" aria-hidden="true">' + dots + '</span>';
+  return '<span class="dots-meter" aria-hidden="true">' + dots + '</span>';
 }
 
-function renderCards() {
-  const filtered = getFilteredWords();
-  const totalFiltered = filtered.length;
-  const pageSize = APP_STATE.pageSize >= 999 ? Math.max(1, totalFiltered) : APP_STATE.pageSize;
-  const totalPages = Math.max(1, Math.ceil(totalFiltered / pageSize));
-  if (currentPage > totalPages) currentPage = totalPages;
-  if (currentPage < 1) currentPage = 1;
+function masteryClass(mastered) {
+  return mastered ? 'badge-mastered' : 'badge-unseen';
+}
 
-  const startIdx = (currentPage - 1) * pageSize;
-  const endIdx = Math.min(totalFiltered, startIdx + pageSize);
-  const pageItems = filtered.slice(startIdx, endIdx);
+function masteryLabel(mastered) {
+  return mastered ? '已掌握' : '未掌握';
+}
 
-  const gridEl = document.getElementById('word-grid');
-  const gridWrapEl = document.getElementById('word-grid-container');
-  const emptyEl = document.getElementById('empty-state');
-  const paginationEl = document.getElementById('pagination-bar');
-  const summaryEl = document.getElementById('results-summary');
-  const pageInfoEl = document.getElementById('pagination-info');
-  const pageBadgeEl = document.getElementById('page-num-badge');
-  const prevBtn = document.getElementById('prev-page-btn');
-  const nextBtn = document.getElementById('next-page-btn');
+function renderCard(w) {
+  const record = wordRecord(w.id);
+  const showAnswer = !prefs.selfTestMode || revealedIds.has(w.id);
+  const safeId = escapeHtml(w.id);
+  const catShort = CATEGORY_MAP[w.category].shortLabel;
+  const answer = showAnswer
+    ? '<div class="word-def">' + escapeHtml(w.def) + '</div>'
+      + (w.syn ? '<div class="word-syn">' + escapeHtml(w.syn) + '</div>' : '')
+      + (w.colloc ? '<div class="word-colloc">' + escapeHtml(w.colloc) + '</div>' : '')
+      + (prefs.selfTestMode ? '<button type="button" class="btn btn-sm card-hide-answer" data-action="flip">收起释义</button>' : '')
+    : '<button type="button" class="btn btn-sm" data-action="flip">翻牌显示释义与搭配</button>';
 
-  if (totalFiltered === 0) {
-    if (gridWrapEl) gridWrapEl.classList.add('is-hidden');
-    if (emptyEl) emptyEl.classList.remove('is-hidden');
-    if (paginationEl) paginationEl.classList.add('is-hidden');
-    if (summaryEl) summaryEl.textContent = '共找到 0 个匹配词条';
-    return;
+  return '<article class="word-card' + (record.mastered ? ' is-mastered' : '') + '" data-word-id="' + safeId + '">'
+    + '<div class="card-top"><div class="card-tags">'
+    + '<span class="tag-sage">' + escapeHtml(catShort) + '</span>'
+    + (w.isSyn ? '<span class="tag-syn">同义替换高频</span>' : '')
+    + '</div><button type="button" class="mastery-badge ' + masteryClass(record.mastered)
+    + '" data-action="mastery" aria-pressed="' + record.mastered + '">' + masteryLabel(record.mastered) + '</button></div>'
+    + '<div class="word-head"><div class="word-title-wrap">'
+    + '<h3 class="word-title">' + escapeHtml(w.word) + '</h3>'
+    + (w.ipa ? '<span class="word-ipa">' + escapeHtml(w.ipa) + '</span>' : '')
+    + '</div><button type="button" class="speak-btn" data-action="speak" aria-label="朗读 ' + escapeHtml(w.word) + '">'
+    + '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>'
+    + '</button></div>'
+    + '<div class="card-body' + (showAnswer ? '' : ' is-masked') + '">' + answer + '</div>'
+    + '<div class="card-actions">'
+    + '<button type="button" class="btn btn-sm undo-btn" data-action="decrement" aria-label="撤回一次打卡"'
+    + (record.count === 0 ? ' disabled' : '') + '>−1</button>'
+    + '<button type="button" class="check-btn" data-action="checkin">✓ 打卡 +1</button>'
+    + renderDotsHtml(record.count) + '<span class="checkin-count" aria-label="累计打卡 ' + record.count + ' 次">'
+    + record.count + ' 次</span></div></article>';
+}
+
+function rememberGridPosition(grid, nextIds) {
+  if (prefs.mode !== 'list' || grid.children.length === 0) return null;
+  const visibleTop = Math.max(0, byId('quick-toolbar').getBoundingClientRect().bottom);
+  for (const card of grid.children) {
+    const rect = card.getBoundingClientRect();
+    if (rect.top > window.innerHeight) break;
+    if (rect.bottom > visibleTop && nextIds.has(card.dataset.wordId)) {
+      return { id: card.dataset.wordId, top: rect.top, scrollY: window.scrollY };
+    }
+  }
+  return { scrollY: window.scrollY };
+}
+
+function updateGrid(grid, pageItems, { wordId, refreshAll, keepScroll }) {
+  const existing = Array.from(grid.children);
+  const sameOrder = existing.length === pageItems.length
+    && pageItems.every((w, i) => existing[i].dataset.wordId === w.id);
+  if (sameOrder && !refreshAll && !wordId) return;
+
+  const ids = keepScroll ? new Set(pageItems.map(w => w.id)) : null;
+  const position = ids && rememberGridPosition(grid, ids);
+  const focused = grid.contains(document.activeElement) ? document.activeElement : null;
+  const focusedId = focused?.closest('.word-card')?.dataset.wordId;
+  const focusedAction = focused?.dataset.action;
+
+  if (!sameOrder || refreshAll) {
+    grid.innerHTML = pageItems.map(renderCard).join('');
+  } else {
+    const index = pageItems.findIndex(w => w.id === wordId);
+    if (index === -1) return;
+    existing[index].outerHTML = renderCard(pageItems[index]);
   }
 
-  if (gridWrapEl) gridWrapEl.classList.remove('is-hidden');
-  if (emptyEl) emptyEl.classList.add('is-hidden');
-  if (paginationEl) paginationEl.classList.remove('is-hidden');
-
-  if (summaryEl) {
-    summaryEl.textContent = '显示第 ' + (startIdx + 1) + '–' + endIdx + ' 词，共 ' + totalFiltered + ' 词';
+  if (focusedId && focusedAction) {
+    const button = grid.querySelector('[data-word-id="' + CSS.escape(focusedId) + '"] [data-action="' + focusedAction + '"]');
+    button?.focus({ preventScroll: true });
   }
-  if (pageInfoEl) {
-    pageInfoEl.textContent = '第 ' + currentPage + ' / ' + totalPages + ' 页（每页 ' + (APP_STATE.pageSize >= 999 ? '全部' : pageSize) + ' 词）';
+  if (position) {
+    const anchor = position.id && grid.querySelector('[data-word-id="' + CSS.escape(position.id) + '"]');
+    const top = anchor ? window.scrollY + anchor.getBoundingClientRect().top - position.top : position.scrollY;
+    if (Math.abs(top - window.scrollY) >= 1) window.scrollTo({ top, behavior: 'instant' });
   }
-  if (pageBadgeEl) pageBadgeEl.textContent = currentPage + ' / ' + totalPages;
-  if (prevBtn) prevBtn.disabled = currentPage <= 1;
-  if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+}
 
-  if (!gridEl) return;
+function syncSampleUI(matchCount) {
+  const active = prefs.sampleIds !== null;
+  const custom = prefs.sampleSize === 'custom';
+  byId('sample-custom-field').classList.toggle('is-hidden', !custom);
+  byId('draw-sample-btn').textContent = active ? '重新抽取' : '开始抽查';
+  byId('draw-sample-btn').disabled = matchCount === 0 || (custom && !isValidSampleCount());
+  byId('exit-sample-btn').classList.toggle('is-hidden', !active);
+  byId('sample-note').classList.toggle('is-hidden', !active);
+  byId('page-size-select').disabled = active;
+  byId('sort-select').disabled = active;
+  byId('shuffle-btn').disabled = active;
+}
 
-  gridEl.innerHTML = pageItems.map(function (w) {
-    const count = getWordCount(w.id);
-    const info = getMasteryInfo(count);
-    const isHiddenInSelfTest = APP_STATE.selfTestMode && !revealedIds.has(w.id);
-    const safeId = escapeHtml(w.id);
-    const catShort = CATEGORY_MAP[w.category] ? CATEGORY_MAP[w.category].shortLabel : w.categoryLabel;
+function renderCards(options = {}) {
+  const scope = getFilterScope();
+  const mastered = scope.reduce((count, w) => count + Number(wordRecord(w.id).mastered), 0);
+  byId('fc-all').textContent = scope.length;
+  byId('fc-unmastered').textContent = scope.length - mastered;
+  byId('fc-mastered').textContent = mastered;
+  const matches = filterMastery(scope);
+  const activeSample = prefs.sampleIds !== null;
+  const displayed = activeSample ? prefs.sampleIds.map(id => WORD_BY_ID[id]) : sortWords(matches);
+  const count = displayed.length;
+  const pageSize = prefs.pageSize === 999 ? Math.max(1, count) : prefs.pageSize;
+  const pages = Math.max(1, Math.ceil(count / pageSize));
+  if (!activeSample) prefs.currentPage = Math.min(prefs.currentPage, pages);
+  const start = activeSample ? 0 : (prefs.currentPage - 1) * pageSize;
+  const end = activeSample ? count : Math.min(start + pageSize, count);
+  const items = displayed.slice(start, end);
 
-    const answerBlock = isHiddenInSelfTest
-      ? '<button type="button" class="reveal-mask" onclick="revealSingleCard(\'' + safeId + '\')">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>' +
-          '点击翻牌显示释义与真题搭配' +
-        '</button>'
-      : '<div class="word-def">' + escapeHtml(w.def) + '</div>' +
-        (w.syn ? '<div class="word-syn">' + escapeHtml(w.syn) + '</div>' : '') +
-        (w.colloc ? '<div class="word-colloc">' + escapeHtml(w.colloc) + '</div>' : '');
+  byId('results-summary').textContent = activeSample
+    ? '抽查 ' + count + ' 词 · 当前筛选匹配 ' + matches.length + ' 词'
+    : (pages > 1 ? '第 ' + (start + 1) + '–' + end + ' 词 · ' : '') + '共 ' + count + ' 词';
+  syncSampleUI(matches.length);
+  byId('word-grid-container').classList.toggle('is-hidden', !count);
+  byId('empty-state').classList.toggle('is-hidden', !!count);
+  byId('pagination-bar').classList.toggle('is-hidden', activeSample || pages === 1);
+  byId('pagination-info').textContent = '第 ' + prefs.currentPage + ' / ' + pages + ' 页';
+  byId('page-num-badge').textContent = prefs.currentPage + ' / ' + pages;
+  byId('prev-page-btn').disabled = prefs.currentPage <= 1;
+  byId('next-page-btn').disabled = prefs.currentPage >= pages;
+  updateGrid(byId('word-grid'), items, options);
+}
 
-    return (
-      '<article class="word-card ' + info.cardClass + '" data-word-id="' + safeId + '">' +
-        '<div class="card-top">' +
-          '<div class="card-tags">' +
-            '<span class="tag-sage">' + escapeHtml(catShort) + '</span>' +
-            (w.isSyn ? '<span class="tag-syn">同义替换高频</span>' : '') +
-          '</div>' +
-          '<span class="mastery-badge ' + info.badgeClass + '">' + escapeHtml(info.label) + '</span>' +
-        '</div>' +
-        '<div class="word-head">' +
-          '<div class="word-title-wrap">' +
-            '<h3 class="word-title">' + escapeHtml(w.word) + '</h3>' +
-            (w.ipa ? '<span class="word-ipa">' + escapeHtml(w.ipa) + '</span>' : '') +
-          '</div>' +
-          '<button type="button" class="speak-btn" aria-label="朗读 ' + escapeHtml(w.word) + '" onclick="speakWordById(\'' + safeId + '\')">' +
-            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>' +
-          '</button>' +
-        '</div>' +
-        '<div class="card-body">' + answerBlock + '</div>' +
-        '<div class="card-actions">' +
-          '<button type="button" class="btn-minus" aria-label="减少一次打卡" title="撤回一次打卡" ' + (count <= 0 ? 'disabled' : '') + ' onclick="adjustWordCount(\'' + safeId + '\', -1)">−1</button>' +
-          '<button type="button" class="btn-checkin ' + (count >= 3 ? 'is-mastered-btn' : '') + '" onclick="adjustWordCount(\'' + safeId + '\', 1)">' +
-            '<span>' + (count >= 3 ? '✓ 巩固 +1' : '✓ 打卡 +1') + '</span>' +
-            renderDotsHtml(count) +
-          '</button>' +
-        '</div>' +
-      '</article>'
-    );
-  }).join('');
+function syncUndoButtons() {
+  byId('undo-mastery-btn').disabled = APP_STATE.undoMastery === null;
+  byId('sprint-undo-mastery-btn').disabled = APP_STATE.undoMastery === null;
 }
 
 function syncFilterButtonsUI() {
-  const filterBtns = document.querySelectorAll('#mastery-filters .pill-btn');
-  filterBtns.forEach(function (btn) {
-    const f = btn.getAttribute('data-filter');
-    if (f === APP_STATE.masteryFilter) btn.classList.add('is-active');
-    else btn.classList.remove('is-active');
-  });
-
-  const customBar = document.getElementById('custom-filter-bar');
-  if (customBar) {
-    if (APP_STATE.masteryFilter === 'custom') customBar.classList.remove('is-hidden');
-    else customBar.classList.add('is-hidden');
+  for (const button of byId('category-tabs').children) {
+    const active = button.dataset.category === prefs.activeCategory;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-pressed', String(active));
   }
-
-  const opEl = document.getElementById('custom-op');
-  const thrEl = document.getElementById('custom-threshold');
-  const tagEl = document.getElementById('exam-tag-filter');
-  const sortEl = document.getElementById('sort-select');
-  const pageSizeEl = document.getElementById('page-size-select');
-  const scopeEl = document.getElementById('sprint-scope');
-
-  if (opEl) opEl.value = APP_STATE.customOp;
-  if (thrEl) thrEl.value = String(APP_STATE.customThreshold);
-  if (tagEl) tagEl.value = APP_STATE.examTagFilter;
-  if (sortEl) sortEl.value = APP_STATE.sortMode;
-  if (pageSizeEl) pageSizeEl.value = String(APP_STATE.pageSize);
-  if (scopeEl) scopeEl.value = APP_STATE.sprintScope;
-
-  const selfTestBtn = document.getElementById('self-test-toggle');
-  const selfTestLbl = document.getElementById('self-test-label');
-  const revealAllBtn = document.getElementById('reveal-all-btn');
-  const hideAllBtn = document.getElementById('hide-all-btn');
-
-  if (selfTestBtn) {
-    selfTestBtn.setAttribute('aria-pressed', APP_STATE.selfTestMode ? 'true' : 'false');
-    if (APP_STATE.selfTestMode) selfTestBtn.classList.add('is-active');
-    else selfTestBtn.classList.remove('is-active');
+  for (const button of byId('mastery-filters').children) {
+    const active = button.dataset.filter === prefs.masteryFilter;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-pressed', String(active));
   }
-  if (selfTestLbl) {
-    selfTestLbl.textContent = APP_STATE.selfTestMode
-      ? '自测模式：已隐去释义（点击卡片翻牌）'
-      : '自测模式：当前显示释义（点击隐去）';
+  byId('custom-filter-bar').classList.toggle('is-hidden', prefs.countFilter !== 'custom');
+  const toggle = byId('self-test-toggle');
+  toggle.setAttribute('aria-pressed', String(prefs.selfTestMode));
+  toggle.classList.toggle('btn-sage', prefs.selfTestMode);
+  syncUndoButtons();
+}
+
+function syncPreferenceInputs() {
+  byId('count-filter').value = prefs.countFilter;
+  byId('custom-op').value = prefs.customOp;
+  byId('custom-threshold').value = String(prefs.customThreshold);
+  byId('exam-tag-filter').value = prefs.examTagFilter;
+  byId('forgotten-filter').checked = prefs.forgottenOnly;
+  byId('search-input').value = prefs.searchQuery;
+  byId('sort-select').value = prefs.sortMode;
+  byId('page-size-select').value = String(prefs.pageSize);
+  byId('sprint-scope').value = prefs.sprintScope;
+  byId('sample-size').value = prefs.sampleSize;
+  byId('sample-custom-size').value = String(prefs.customSampleSize);
+  syncFilterButtonsUI();
+}
+
+function refreshLearningViews(wordId) {
+  updateDashboard();
+  syncUndoButtons();
+  renderCards({ wordId, keepScroll: true });
+  if (prefs.mode === 'sprint') {
+    if (!sprintQueue.length && sprintScopeIncludes(WORD_BY_ID[wordId])) rebuildSprintQueue(false);
+    else renderSprintCard();
   }
-  if (revealAllBtn && hideAllBtn) {
-    if (APP_STATE.selfTestMode) {
-      revealAllBtn.classList.remove('is-hidden');
-      hideAllBtn.classList.remove('is-hidden');
-    } else {
-      revealAllBtn.classList.add('is-hidden');
-      hideAllBtn.classList.add('is-hidden');
+  persistState();
+}
+
+function adjustWordCount(id, delta) {
+  const count = getWordCount(id);
+  if (count + delta < 0 || (delta > 0 && APP_STATE.totalTicks >= Number.MAX_SAFE_INTEGER)) return;
+  const record = editWordRecord(id);
+  record.count += delta;
+  APP_STATE.totalTicks += delta;
+  if (delta > 0) {
+    const today = getLocalDateKey();
+    record.reviewedAt = Date.now();
+    record.checkInDays[today] = (record.checkInDays[today] || 0) + 1;
+    APP_STATE.dailyTicks[today] = (APP_STATE.dailyTicks[today] || 0) + 1;
+  } else {
+    // Legacy check-ins have no per-word date. Preserve their daily totals.
+    const date = Object.keys(record.checkInDays).sort().at(-1);
+    if (date) {
+      record.checkInDays[date] -= 1;
+      if (record.checkInDays[date] === 0) delete record.checkInDays[date];
+      APP_STATE.dailyTicks[date] -= 1;
     }
   }
+  refreshLearningViews(id);
 }
 
-function adjustWordCount(wordId, delta) {
-  if (!WORD_BY_ID[wordId]) return;
-  const prev = getWordCount(wordId);
-  const next = Math.max(0, Math.min(99, prev + delta));
-  if (next === prev) return;
-
-  if (next === 0) delete APP_STATE.counts[wordId];
-  else APP_STATE.counts[wordId] = next;
-
-  const today = getLocalDateKey();
-  if (APP_STATE.todayDate !== today) {
-    APP_STATE.todayDate = today;
-    APP_STATE.todayTicks = 0;
-  }
-
-  if (delta > 0) {
-    APP_STATE.totalTicks += 1;
-    APP_STATE.todayTicks += 1;
-  } else if (delta < 0) {
-    APP_STATE.totalTicks = Math.max(0, APP_STATE.totalTicks - 1);
-    APP_STATE.todayTicks = Math.max(0, APP_STATE.todayTicks - 1);
-  }
-
-  updateDashboard();
-  renderCards();
-  if (APP_STATE.mode === 'sprint') {
-    renderSprintCard();
-  }
-  schedulePersistState();
+function toggleMastery(id) {
+  const record = editWordRecord(id);
+  if (record.mastered && record.forgotten === Number.MAX_SAFE_INTEGER) return;
+  APP_STATE.undoMastery = { id, mastered: record.mastered, forgotten: record.forgotten, changedAt: record.masteryChangedAt };
+  if (record.mastered) record.forgotten += 1;
+  record.mastered = !record.mastered;
+  record.masteryChangedAt = Date.now();
+  refreshLearningViews(id);
 }
 
-function setCategoryFilter(catKey) {
-  APP_STATE.activeCategory = catKey;
-  currentPage = 1;
-  updateDashboard();
-  renderCards();
-  schedulePersistState();
+function undoMastery() {
+  if (!APP_STATE.undoMastery) return;
+  const { id, mastered, forgotten, changedAt } = APP_STATE.undoMastery;
+  Object.assign(editWordRecord(id), { mastered, forgotten, masteryChangedAt: changedAt });
+  APP_STATE.undoMastery = null;
+  refreshLearningViews(id);
 }
 
-function selectCategoryFromDash(catKey) {
-  if (APP_STATE.mode !== 'list') {
-    switchMode('list');
-  }
-  setCategoryFilter(catKey);
-  const viewListEl = document.getElementById('view-list');
-  if (viewListEl) {
-    viewListEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-function setMasteryFilter(filterKey) {
-  APP_STATE.masteryFilter = filterKey;
-  currentPage = 1;
+function refreshFilters() {
+  prefs.currentPage = 1;
   syncFilterButtonsUI();
   renderCards();
-  schedulePersistState();
+  persistState();
+}
+
+function setCategoryFilter(category) {
+  prefs.activeCategory = category;
+  refreshFilters();
+}
+
+function selectCategoryFromDash(category) {
+  if (prefs.mode !== 'list') switchMode('list');
+  setCategoryFilter(category);
+  byId('view-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setMasteryFilter(filter) {
+  if (prefs.masteryFilter === filter) return;
+  prefs.masteryFilter = filter;
+  prefs.currentPage = 1;
+  syncFilterButtonsUI();
+  renderCards({ keepScroll: true });
+  persistState();
 }
 
 function applyFilters() {
-  const opEl = document.getElementById('custom-op');
-  const thrEl = document.getElementById('custom-threshold');
-  const tagEl = document.getElementById('exam-tag-filter');
-  const sortEl = document.getElementById('sort-select');
-
-  if (opEl) APP_STATE.customOp = opEl.value;
-  if (thrEl) {
-    const val = parseInt(thrEl.value, 10);
-    APP_STATE.customThreshold = Number.isFinite(val) ? Math.max(0, Math.min(20, val)) : 3;
-  }
-  if (tagEl) APP_STATE.examTagFilter = tagEl.value;
-  if (sortEl) APP_STATE.sortMode = sortEl.value;
-
-  currentPage = 1;
-  renderCards();
-  schedulePersistState();
+  prefs.countFilter = byId('count-filter').value;
+  prefs.examTagFilter = byId('exam-tag-filter').value;
+  prefs.forgottenOnly = byId('forgotten-filter').checked;
+  prefs.customOp = byId('custom-op').value;
+  const threshold = byId('custom-threshold').valueAsNumber;
+  if (isCount(threshold)) prefs.customThreshold = threshold;
+  refreshFilters();
 }
 
-function onSearchInput(val) {
-  searchQuery = val || '';
-  if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
-  searchDebounceTimer = setTimeout(function () {
-    currentPage = 1;
-    renderCards();
-  }, 150);
+function onSearchInput(value) {
+  prefs.searchQuery = value;
+  refreshFilters();
 }
 
-function changePageSize(val) {
-  const num = parseInt(val, 10);
-  APP_STATE.pageSize = Number.isFinite(num) ? num : 24;
-  currentPage = 1;
-  renderCards();
-  schedulePersistState();
+function setSortMode(mode) {
+  if (prefs.sampleIds !== null) return;
+  prefs.sortMode = mode;
+  if (mode === 'random') prefs.randomOrder = shuffleArray(WORDS).map(w => w.id);
+  byId('sort-select').value = mode;
+  refreshFilters();
+}
+
+function changePageSize(value) {
+  prefs.pageSize = Number(value);
+  refreshFilters();
 }
 
 function goPage(delta) {
-  currentPage += delta;
+  prefs.currentPage = Math.max(1, prefs.currentPage + delta);
   renderCards();
-  const gridEl = document.getElementById('view-list');
-  if (gridEl) {
-    gridEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  persistState();
+  byId('view-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetFilters() {
-  APP_STATE.activeCategory = 'all';
-  APP_STATE.masteryFilter = 'all';
-  APP_STATE.examTagFilter = 'all';
-  APP_STATE.sortMode = 'default';
-  searchQuery = '';
-  const searchEl = document.getElementById('search-input');
-  if (searchEl) searchEl.value = '';
-  currentPage = 1;
-  syncFilterButtonsUI();
-  updateDashboard();
-  renderCards();
-  schedulePersistState();
+  const defaults = createDefaultState().preferences;
+  for (const key of ['activeCategory', 'masteryFilter', 'countFilter', 'customOp', 'customThreshold',
+    'examTagFilter', 'forgottenOnly', 'searchQuery', 'sortMode', 'randomOrder', 'sampleIds']) {
+    prefs[key] = defaults[key];
+  }
+  syncPreferenceInputs();
+  refreshFilters();
 }
 
-function toggleSelfTestMode() {
-  APP_STATE.selfTestMode = !APP_STATE.selfTestMode;
+function setSelfTestMode(hidden) {
+  if (prefs.selfTestMode === hidden && revealedIds.size === 0) return;
+  prefs.selfTestMode = hidden;
   revealedIds.clear();
+  prefs.revealedIds = [];
   syncFilterButtonsUI();
-  renderCards();
-  schedulePersistState();
+  renderCards({ refreshAll: true, keepScroll: true });
+  persistState();
 }
 
-function revealSingleCard(wordId) {
-  revealedIds.add(wordId);
-  renderCards();
+function flipCard(id) {
+  if (!prefs.selfTestMode) return;
+  if (revealedIds.has(id)) revealedIds.delete(id);
+  else revealedIds.add(id);
+  prefs.revealedIds = [...revealedIds];
+  renderCards({ wordId: id, keepScroll: true });
+  persistState();
 }
 
-function revealAllCurrentPage() {
-  const filtered = getFilteredWords();
-  const pageSize = APP_STATE.pageSize >= 999 ? Math.max(1, filtered.length) : APP_STATE.pageSize;
-  const startIdx = (currentPage - 1) * pageSize;
-  const pageItems = filtered.slice(startIdx, startIdx + pageSize);
-  pageItems.forEach(function (w) {
-    revealedIds.add(w.id);
-  });
-  renderCards();
+function isValidSampleCount() {
+  const value = byId('sample-custom-size').valueAsNumber;
+  return isCount(value) && value > 0;
 }
 
-function hideAllCurrentPage() {
-  revealedIds.clear();
+function changeSampleSize() {
+  prefs.sampleSize = byId('sample-size').value;
+  if (isValidSampleCount()) prefs.customSampleSize = byId('sample-custom-size').valueAsNumber;
   renderCards();
+  persistState();
+}
+
+function drawSample() {
+  const matches = filterMastery(getFilterScope());
+  if (!matches.length || (prefs.sampleSize === 'custom' && !isValidSampleCount())) return;
+  const count = prefs.sampleSize === 'all' ? matches.length
+    : prefs.sampleSize === 'custom' ? prefs.customSampleSize : Number(prefs.sampleSize);
+  prefs.sampleIds = shuffleArray(matches).slice(0, count).map(w => w.id);
+  renderCards();
+  persistState();
+}
+
+function exitSample() {
+  prefs.sampleIds = null;
+  renderCards();
+  persistState();
 }
 
 function speakWordText(text) {
@@ -2737,29 +2919,28 @@ function speakSprintWord() {
   }
 }
 
-function switchMode(targetMode) {
-  APP_STATE.mode = targetMode === 'sprint' ? 'sprint' : 'list';
-  const tabList = document.getElementById('tab-list');
-  const tabSprint = document.getElementById('tab-sprint');
-  const viewList = document.getElementById('view-list');
-  const viewSprint = document.getElementById('view-sprint');
-  const helperEl = document.getElementById('mode-helper-text');
+function renderMode() {
+  const sprint = prefs.mode === 'sprint';
+  byId('tab-list').classList.toggle('is-active', !sprint);
+  byId('tab-list').setAttribute('aria-selected', String(!sprint));
+  byId('tab-sprint').classList.toggle('is-active', sprint);
+  byId('tab-sprint').setAttribute('aria-selected', String(sprint));
+  byId('view-list').classList.toggle('is-hidden', sprint);
+  byId('view-sprint').classList.toggle('is-hidden', !sprint);
+  byId('mode-helper-text').textContent = sprint
+    ? '翻牌核对释义，打卡后进入下一词。'
+    : '共收录 ' + WORDS.length + ' 个词条 · 可自由打卡与标记掌握';
+}
 
-  if (APP_STATE.mode === 'sprint') {
-    if (tabList) { tabList.classList.remove('is-active'); tabList.setAttribute('aria-selected', 'false'); }
-    if (tabSprint) { tabSprint.classList.add('is-active'); tabSprint.setAttribute('aria-selected', 'true'); }
-    if (viewList) viewList.classList.add('is-hidden');
-    if (viewSprint) viewSprint.classList.remove('is-hidden');
-    if (helperEl) helperEl.textContent = '随机抽词冲刺模式 · 先回忆词义再翻牌核对，记住了即刻打卡 +1';
-    rebuildSprintQueue();
-  } else {
-    if (tabList) { tabList.classList.add('is-active'); tabList.setAttribute('aria-selected', 'true'); }
-    if (tabSprint) { tabSprint.classList.remove('is-active'); tabSprint.setAttribute('aria-selected', 'false'); }
-    if (viewList) viewList.classList.remove('is-hidden');
-    if (viewSprint) viewSprint.classList.add('is-hidden');
-    if (helperEl) helperEl.textContent = '共收录 ' + WORDS.length + ' 个核心词条 · 支持点击卡片发音与打卡累加';
+function switchMode(mode) {
+  if (mode === prefs.mode) return;
+  prefs.mode = mode;
+  renderMode();
+  if (mode === 'sprint') {
+    rebuildSprintQueue(false);
+    byId('view-sprint').focus({ preventScroll: true });
   }
-  schedulePersistState();
+  persistState();
 }
 
 function shuffleArray(arr) {
@@ -2773,99 +2954,68 @@ function shuffleArray(arr) {
   return copy;
 }
 
-function rebuildSprintQueue() {
-  const scopeEl = document.getElementById('sprint-scope');
-  if (scopeEl) {
-    APP_STATE.sprintScope = scopeEl.value;
+function sprintScopeIncludes(w) {
+  const record = wordRecord(w.id);
+  switch (prefs.sprintScope) {
+    case 'unmastered': return !record.mastered;
+    case 'mastered': return record.mastered;
+    case 'unseen': return record.count === 0;
+    case 'forgotten': return record.forgotten > 0;
+    case 'category': return prefs.activeCategory === 'all' || w.category === prefs.activeCategory;
+    default: return true;
   }
-  const scope = APP_STATE.sprintScope;
-  let pool = [];
-  if (scope === 'weak') {
-    pool = WORDS.filter(function (w) { return getWordCount(w.id) < 3; });
-  } else if (scope === 'unseen') {
-    pool = WORDS.filter(function (w) { return getWordCount(w.id) === 0; });
-  } else if (scope === 'category') {
-    pool = APP_STATE.activeCategory === 'all'
-      ? WORDS.slice()
-      : WORDS.filter(function (w) { return w.category === APP_STATE.activeCategory; });
-  } else {
-    pool = WORDS.slice();
-  }
+}
 
-  sprintQueue = shuffleArray(pool);
+function seedSprintQueue() {
+  sprintQueue = shuffleArray(WORDS.filter(sprintScopeIncludes));
   sprintIndex = 0;
   sprintRevealed = false;
-  const fbEl = document.getElementById('sprint-feedback');
-  if (fbEl) fbEl.classList.add('is-hidden');
+}
+
+function rebuildSprintQueue(save = true) {
+  prefs.sprintScope = byId('sprint-scope').value;
+  seedSprintQueue();
+  byId('sprint-feedback').classList.add('is-hidden');
   renderSprintCard();
-  schedulePersistState();
+  if (save) persistState();
 }
 
 function renderSprintCard() {
-  const cardEl = document.getElementById('sprint-card');
-  const emptyEl = document.getElementById('sprint-empty');
-  const statusEl = document.getElementById('sprint-queue-status');
-
-  if (sprintQueue.length === 0) {
-    if (cardEl) cardEl.classList.add('is-hidden');
-    if (emptyEl) emptyEl.classList.remove('is-hidden');
-    if (statusEl) statusEl.textContent = '0 / 0';
-    return;
-  }
-
-  if (sprintIndex >= sprintQueue.length) sprintIndex = 0;
-  if (sprintIndex < 0) sprintIndex = 0;
-
-  if (cardEl) cardEl.classList.remove('is-hidden');
-  if (emptyEl) emptyEl.classList.add('is-hidden');
-  if (statusEl) statusEl.textContent = (sprintIndex + 1) + ' / ' + sprintQueue.length;
-
   const w = sprintQueue[sprintIndex];
-  const count = getWordCount(w.id);
-  const info = getMasteryInfo(count);
+  byId('sprint-card').classList.toggle('is-hidden', !w);
+  byId('sprint-empty').classList.toggle('is-hidden', !!w);
+  byId('sprint-queue-status').textContent = w ? (sprintIndex + 1) + ' / ' + sprintQueue.length : '0 / 0';
+  if (!w) return;
 
-  const catTagEl = document.getElementById('sprint-cat-tag');
-  const synTagEl = document.getElementById('sprint-syn-tag');
-  const badgeEl = document.getElementById('sprint-mastery-badge');
-  const wordEl = document.getElementById('sprint-word');
-  const ipaEl = document.getElementById('sprint-ipa');
-  const hiddenAreaEl = document.getElementById('sprint-hidden-area');
-  const answerAreaEl = document.getElementById('sprint-answer-area');
-  const defEl = document.getElementById('sprint-def');
-  const synEl = document.getElementById('sprint-syn');
-  const collocEl = document.getElementById('sprint-colloc');
-  const prevBtn = document.getElementById('sprint-prev-btn');
+  const record = wordRecord(w.id);
+  byId('sprint-cat-tag').textContent = w.categoryLabel;
+  byId('sprint-syn-tag').classList.toggle('is-hidden', !w.isSyn);
+  const badge = byId('sprint-mastery-badge');
+  badge.className = 'mastery-badge ' + masteryClass(record.mastered);
+  badge.textContent = masteryLabel(record.mastered);
+  badge.setAttribute('aria-pressed', String(record.mastered));
+  byId('sprint-word').textContent = w.word;
+  byId('sprint-ipa').textContent = w.ipa;
+  byId('sprint-tick-summary').innerHTML = '累计打卡 ' + record.count + ' 次 ' + renderDotsHtml(record.count);
+  byId('sprint-undo-tick-btn').disabled = record.count === 0;
+  byId('sprint-hidden-area').classList.toggle('is-hidden', sprintRevealed);
+  byId('sprint-answer-area').classList.toggle('is-hidden', !sprintRevealed);
+  byId('sprint-def').textContent = sprintRevealed ? w.def : '';
+  byId('sprint-syn').textContent = sprintRevealed ? w.syn : '';
+  byId('sprint-colloc').textContent = sprintRevealed ? w.colloc : '';
+  byId('sprint-syn').classList.toggle('is-hidden', !w.syn);
+  byId('sprint-colloc').classList.toggle('is-hidden', !w.colloc);
+  byId('sprint-prev-btn').disabled = !sprintQueue.slice(0, sprintIndex).some(sprintScopeIncludes);
+}
 
-  if (catTagEl) catTagEl.textContent = w.categoryLabel;
-  if (synTagEl) {
-    if (w.isSyn) synTagEl.classList.remove('is-hidden');
-    else synTagEl.classList.add('is-hidden');
-  }
-  if (badgeEl) {
-    badgeEl.className = 'mastery-badge ' + info.badgeClass;
-    badgeEl.textContent = info.label;
-  }
-  if (wordEl) wordEl.textContent = w.word;
-  if (ipaEl) ipaEl.textContent = w.ipa || '';
+function toggleSprintMastery() {
+  const w = sprintQueue[sprintIndex];
+  if (w) toggleMastery(w.id);
+}
 
-  if (sprintRevealed) {
-    if (hiddenAreaEl) hiddenAreaEl.classList.add('is-hidden');
-    if (answerAreaEl) answerAreaEl.classList.remove('is-hidden');
-    if (defEl) defEl.textContent = w.def;
-    if (synEl) {
-      synEl.textContent = w.syn || '';
-      synEl.style.display = w.syn ? 'block' : 'none';
-    }
-    if (collocEl) {
-      collocEl.textContent = w.colloc || '';
-      collocEl.style.display = w.colloc ? 'block' : 'none';
-    }
-  } else {
-    if (hiddenAreaEl) hiddenAreaEl.classList.remove('is-hidden');
-    if (answerAreaEl) answerAreaEl.classList.add('is-hidden');
-  }
-
-  if (prevBtn) prevBtn.disabled = sprintIndex <= 0;
+function undoSprintTick() {
+  const w = sprintQueue[sprintIndex];
+  if (w) adjustWordCount(w.id, -1);
 }
 
 function revealSprintCard() {
@@ -2874,162 +3024,188 @@ function revealSprintCard() {
 }
 
 function stepSprint(delta) {
-  if (sprintQueue.length === 0) return;
-  const nextIdx = sprintIndex + delta;
-  if (nextIdx >= sprintQueue.length) {
-    sprintQueue = shuffleArray(sprintQueue);
-    sprintIndex = 0;
-  } else if (nextIdx < 0) {
-    sprintIndex = 0;
-  } else {
-    sprintIndex = nextIdx;
+  if (!sprintQueue.length) return;
+  let next = sprintIndex + delta;
+  while (next >= 0 && next < sprintQueue.length && !sprintScopeIncludes(sprintQueue[next])) next += delta;
+  if (next < 0) return;
+  if (next >= sprintQueue.length) seedSprintQueue();
+  else {
+    sprintIndex = next;
+    sprintRevealed = false;
   }
-  sprintRevealed = false;
   renderSprintCard();
 }
 
 function checkInSprintWord() {
-  if (sprintQueue.length === 0) return;
   const w = sprintQueue[sprintIndex];
   if (!w) return;
-
+  const before = getWordCount(w.id);
   adjustWordCount(w.id, 1);
-  const newCount = getWordCount(w.id);
-
-  const fbEl = document.getElementById('sprint-feedback');
-  if (fbEl) {
-    fbEl.textContent = newCount >= 3
-      ? '「' + w.word + '」打卡成功（累计 ' + newCount + ' 次），已升级为“已熟练”！'
-      : '「' + w.word + '」打卡 +1（当前 ' + newCount + ' 次，再打卡 ' + (3 - newCount) + ' 次即达标）。';
-    fbEl.classList.remove('is-hidden');
-  }
-
-  // Advance queue cleanly; if filtering weak/unseen and word crossed threshold, remove it from queue
-  const scope = APP_STATE.sprintScope;
-  if ((scope === 'weak' && newCount >= 3) || (scope === 'unseen' && newCount >= 1)) {
-    sprintQueue.splice(sprintIndex, 1);
-    if (sprintIndex >= sprintQueue.length) sprintIndex = 0;
-    sprintRevealed = false;
-    renderSprintCard();
-  } else {
-    stepSprint(1);
-  }
+  const count = getWordCount(w.id);
+  if (count === before) return;
+  byId('sprint-feedback').textContent = '「' + w.word + '」打卡 +1（累计 ' + count + ' 次）。';
+  byId('sprint-feedback').classList.remove('is-hidden');
+  stepSprint(1);
 }
 
 function switchSprintToAll() {
-  const scopeEl = document.getElementById('sprint-scope');
-  if (scopeEl) scopeEl.value = 'all';
-  APP_STATE.sprintScope = 'all';
+  byId('sprint-scope').value = 'all';
   rebuildSprintQueue();
 }
 
-function handleResetProgress(btn) {
+function renderState() {
+  updateDashboard();
+  syncPreferenceInputs();
+  renderMode();
+  renderCards({ refreshAll: true });
+  if (prefs.mode === 'sprint') rebuildSprintQueue(false);
+}
+
+function handleResetProgress(button) {
   if (!resetArmed) {
     resetArmed = true;
-    if (btn) btn.textContent = '再次点击确认清零';
-    if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
-    resetConfirmTimer = setTimeout(function () {
-      resetArmed = false;
-      if (btn) btn.textContent = '重置全部进度';
-    }, 4000);
+    button.textContent = '再次点击确认清零';
+    button.classList.add('is-armed');
+    resetConfirmTimer = setTimeout(() => disarmReset(button), 4000);
     return;
   }
 
-  if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
-  resetArmed = false;
-  if (btn) btn.textContent = '重置全部进度';
-
-  APP_STATE.counts = {};
-  APP_STATE.todayTicks = 0;
-  APP_STATE.totalTicks = 0;
-  APP_STATE.todayDate = getLocalDateKey();
-  revealedIds.clear();
-
-  updateDashboard();
-  renderCards();
-  if (APP_STATE.mode === 'sprint') {
-    rebuildSprintQueue();
-  }
-  persistStateNow();
-}
-
-function csvEscape(val) {
-  const s = String(val || '');
-  if (s.indexOf(',') !== -1 || s.indexOf('"') !== -1 || s.indexOf('\n') !== -1) {
-    return '"' + s.replace(/"/g, '""') + '"';
-  }
-  return s;
-}
-
-function exportProgressCsv() {
-  const header = ['单词', '音标', '分类', '核心释义', '打卡次数', '熟练状态', '同义替换/搭配'];
-  const rows = [header.map(csvEscape).join(',')];
-  WORDS.forEach(function (w) {
-    const cnt = getWordCount(w.id);
-    const status = cnt >= 3 ? '已熟练' : (cnt >= 1 ? '巩固中' : '未打卡');
-    const note = [w.syn, w.colloc].filter(Boolean).join(' | ');
-    rows.push([
-      w.word,
-      w.ipa,
-      w.categoryLabel,
-      w.def,
-      String(cnt),
-      status,
-      note
-    ].map(csvEscape).join(','));
-  });
-  const csvContent = '\uFEFF' + rows.join('\n');
-  if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === 'function') {
-    window.notebookAppApi.triggerFileDownload({
-      content: csvContent,
-      contentType: 'text/csv',
-      encoding: 'UTF-8',
-      filename: 'cet6-700-vocab-progress.csv'
-    });
+  disarmReset(button);
+  const next = createDefaultState();
+  next.preferences = { ...prefs, revealedIds: [] };
+  if (persistState(next, true)) {
+    activateState(next);
+    renderState();
+    showDataFeedback('学习记录已重置');
   } else {
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'cet6-700-vocab-progress.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    showDataFeedback('重置未完成，当前学习记录已保留', true);
   }
 }
 
-document.addEventListener('keydown', function (e) {
-  if (APP_STATE.mode !== 'sprint') return;
-  const activeTag = document.activeElement ? document.activeElement.tagName : '';
-  if (activeTag === 'INPUT' || activeTag === 'SELECT' || activeTag === 'TEXTAREA') return;
+function disarmReset(button) {
+  clearTimeout(resetConfirmTimer);
+  resetArmed = false;
+  button.textContent = '重置全部进度';
+  button.classList.remove('is-armed');
+}
 
-  if (e.code === 'Space') {
-    e.preventDefault();
-    if (!sprintRevealed) revealSprintCard();
-  } else if (e.code === 'Enter') {
-    e.preventDefault();
-    checkInSprintWord();
-  } else if (e.code === 'ArrowRight') {
-    e.preventDefault();
-    stepSprint(1);
-  } else if (e.code === 'ArrowLeft') {
-    e.preventDefault();
-    stepSprint(-1);
+function showDataFeedback(message, failed = false) {
+  const status = byId('data-feedback');
+  status.textContent = message;
+  status.classList.remove('is-hidden');
+  status.classList.toggle('data-error', failed);
+}
+
+async function downloadFile(content, contentType, filename) {
+  if (typeof window.notebookAppApi?.triggerFileDownload === 'function') {
+    try {
+      await window.notebookAppApi.triggerFileDownload({ content, contentType, encoding: 'UTF-8', filename });
+      return;
+    } catch {
+      // Fall back to the browser's download if the host cannot save the file.
+    }
+  }
+  const blob = new Blob([content], { type: contentType + ';charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function csvEscape(value) {
+  const text = String(value ?? '');
+  return /[,"\r\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+}
+
+function exportProgressCsv(onlyUnmastered = false) {
+  const rows = [['单词', '音标', '分类', '核心释义', '打卡次数', '掌握状态', '遗忘次数', '最近复习时间', '最近修改掌握状态时间', '同义替换/搭配', '词汇标识']];
+  for (const w of WORDS) {
+    const record = wordRecord(w.id);
+    if (onlyUnmastered && record.mastered) continue;
+    rows.push([
+      w.word, w.ipa, w.categoryLabel, w.def, record.count, masteryLabel(record.mastered), record.forgotten,
+      record.reviewedAt === null ? '' : new Date(record.reviewedAt).toISOString(),
+      record.masteryChangedAt === null ? '' : new Date(record.masteryChangedAt).toISOString(),
+      [w.syn, w.colloc].filter(Boolean).join(' | '), w.id
+    ]);
+  }
+  const csv = '\uFEFF' + rows.map(row => row.map(csvEscape).join(',')).join('\r\n');
+  const filename = onlyUnmastered ? 'cet6-700-vocab-progress-unmastered.csv' : 'cet6-700-vocab-progress.csv';
+  return downloadFile(csv, 'text/csv', filename);
+}
+
+function exportProgressJson() {
+  return downloadFile(encodeState(APP_STATE), 'application/json', 'learning-progress.cet6.json');
+}
+
+async function importProgressJson(input) {
+  const file = input.files[0];
+  input.value = '';
+  if (!file) return;
+  let next;
+  try {
+    next = decodeState(JSON.parse(await file.text()));
+  } catch (error) {
+    showDataFeedback('导入失败：' + (error instanceof SyntaxError ? '文件不是有效的 JSON' : error.message), true);
+    return;
+  }
+  if (!window.confirm('用此备份替换当前学习记录和显示偏好？')) return;
+  if (!persistState(next, true)) {
+    showDataFeedback('导入未完成，当前学习记录已保留', true);
+    return;
+  }
+  disarmReset(byId('reset-progress-btn'));
+  activateState(next);
+  renderState();
+  showDataFeedback('学习记录和显示偏好已恢复');
+}
+
+byId('word-grid').addEventListener('click', function (event) {
+  const button = event.target.closest('button[data-action]');
+  if (!button) return;
+  const id = button.closest('.word-card').dataset.wordId;
+  switch (button.dataset.action) {
+    case 'mastery': toggleMastery(id); break;
+    case 'checkin': adjustWordCount(id, 1); break;
+    case 'decrement': adjustWordCount(id, -1); break;
+    case 'flip': flipCard(id); break;
+    case 'speak': speakWordById(id); break;
   }
 });
 
+document.addEventListener('keydown', function (event) {
+  if (prefs.mode !== 'sprint' || event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return;
+  const target = event.target;
+  if (target.closest('input, select, textarea, [contenteditable]')) return;
+  if (event.code === 'Space' || event.code === 'Enter') {
+    if (target.closest('button, a, [role="button"]')) return;
+    event.preventDefault();
+    if (event.repeat) return;
+    if (event.code === 'Space') revealSprintCard();
+    else checkInSprintWord();
+  } else if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
+    event.preventDefault();
+    stepSprint(event.code === 'ArrowRight' ? 1 : -1);
+  }
+});
+
+document.addEventListener('visibilitychange', updateTodayStats);
+window.addEventListener('focus', updateTodayStats);
+
 async function initApp() {
-  await loadPersistedState();
-  syncFilterButtonsUI();
-  updateDashboard();
-  renderCards();
-  if (APP_STATE.mode === 'sprint') {
-    switchMode('sprint');
+  const main = document.querySelector('main');
+  main.inert = true;
+  try {
+    await loadPersistedState();
+    renderState();
+  } finally {
+    main.inert = false;
   }
-  if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
-    window.notebookAppApi.notifyAppReady();
-  }
+  if (typeof window.notebookAppApi?.notifyAppReady === 'function') window.notebookAppApi.notifyAppReady();
 }
 
 initApp();
