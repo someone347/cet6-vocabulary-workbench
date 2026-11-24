@@ -1,0 +1,3038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="artifact-type" content="tool">
+<meta name="design-style" content="haven">
+<title>大学英语六级（CET-6）700核心词汇备考工作台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+
+  /* Haven: Page and surfaces */
+  --background: #f5f6f5;
+  --surface-container-low: #ffffff;
+  --surface-container: #e3ebe2;
+  --surface-container-high: #dbe2dd;
+
+  /* Ink */
+  --on-surface: #23272a;
+  --on-surface-variant: #5c6468;
+
+  /* Rules */
+  --outline: #c9d0cc;
+  --outline-variant: #dde2df;
+
+  /* Accents */
+  --primary: #3c5a6e;
+  --on-primary: #ffffff;
+  --primary-container: #e2e9ee;
+  --on-primary-container: #2a4152;
+  --secondary: #4f6b53;
+  --tertiary: #5f7c63;
+  --error: #a63d32;
+  --on-error: #ffffff;
+
+  /* Data series */
+  --data-1: #3c5a6e;
+  --data-2: #5f7c63;
+  --data-3: #a8694a;
+  --data-4: #8a7a68;
+  --data-context: #c3cac6;
+
+  /* Shared semantic tokens */
+  --positive: #3b6e4c;
+  --positive-container: #e3ebe2;
+  --warning: #8a5620;
+  --warning-container: #f3ece1;
+  --error-container: #f5e6e4;
+  --focus: #3c5a6e;
+
+  /* Fonts */
+  --font-headline: 'Outfit', 'Noto Sans SC', sans-serif;
+  --font-body: 'Hanken Grotesk', 'Noto Sans SC', sans-serif;
+  --font-label: 'Outfit', 'Noto Sans SC', sans-serif;
+  --font-word: 'Outfit', sans-serif;
+
+  /* Type scale (Focused Tool) */
+  --display-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.25rem);
+  --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+  --label-size: 0.75rem;
+
+  /* Shape */
+  --rounded: 0.375rem;
+  --rounded-lg: 0.5rem;
+  --rounded-full: 9999px;
+
+  /* Effects */
+  --hairline: 1px solid var(--outline-variant);
+  --hairline-control: 1px solid var(--outline);
+  --elevation: none;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+}
+
+/* Base reset */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+header { position: static !important; }
+button, input, select, textarea { font-family: inherit; }
+
+.page-grid {
+  display: grid;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.page-grid * { min-width: 0; }
+
+/* Haven typography treatments */
+.label {
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--on-surface-variant);
+  display: block;
+}
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  color: var(--on-surface);
+  margin: 0;
+}
+.headline b, .headline strong { font-weight: 600; }
+.title-display { font-size: var(--display-size); }
+.section-heading { font-size: var(--headline-size); }
+.caption-sage {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--secondary);
+  margin: var(--space-xs) 0 0 0;
+  font-size: var(--body-size);
+}
+
+/* Hairline panel */
+.panel {
+  background: var(--surface-container-low);
+  border: var(--hairline);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--elevation);
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Masthead */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: var(--hairline);
+}
+.masthead-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.sync-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--surface-container);
+  color: var(--secondary);
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--rounded-full);
+}
+.sync-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--rounded-full);
+  background: var(--tertiary);
+  flex-shrink: 0;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: var(--space-md);
+  align-items: stretch;
+}
+.stat-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.stat-figure-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+.stat-figure {
+  font-family: var(--font-headline);
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--on-surface);
+  font-variant-numeric: tabular-nums;
+}
+.stat-figure .sub-unit {
+  font-size: var(--body-size);
+  font-weight: 400;
+  color: var(--on-surface-variant);
+  margin-left: var(--space-xs);
+}
+.stat-pct {
+  font-family: var(--font-headline);
+  font-size: var(--subhead-size);
+  font-weight: 600;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Progress Track */
+.progress-track {
+  position: relative;
+  width: 100%;
+  height: 0.625rem;
+  background: var(--surface-container-high);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+  display: flex;
+}
+.progress-fill-mastered {
+  height: 100%;
+  background: var(--primary);
+  transition: width var(--dur-short) var(--ease-out);
+}
+.progress-fill-learning {
+  height: 100%;
+  background: var(--tertiary);
+  transition: width var(--dur-short) var(--ease-out);
+}
+.progress-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+.legend-swatch {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--rounded-full);
+  flex-shrink: 0;
+}
+.swatch-mastered { background: var(--primary); }
+.swatch-learning { background: var(--tertiary); }
+.swatch-unseen { background: var(--data-context); }
+
+/* Dashboard middle panel */
+.substats-row {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  padding: var(--space-xs) 0;
+  border-top: var(--hairline);
+  border-bottom: var(--hairline);
+}
+.substat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.substat-val {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  font-size: var(--subhead-size);
+  color: var(--on-surface);
+  font-variant-numeric: tabular-nums;
+}
+.dash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Category breakdown rows */
+.cat-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.cat-row-btn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 4.5rem;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--rounded);
+  padding: var(--space-xs) var(--space-sm);
+  min-height: 2.25rem;
+  cursor: pointer;
+  text-align: left;
+  color: var(--on-surface);
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.cat-row-btn:hover {
+  background: var(--surface-container-high);
+}
+.cat-row-btn.is-active {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+.cat-row-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cat-row-count {
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+  font-variant-numeric: tabular-nums;
+}
+.cat-mini-track {
+  width: 100%;
+  height: 0.375rem;
+  background: var(--surface-container-high);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+}
+.cat-mini-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width var(--dur-short) var(--ease-out);
+}
+
+/* Mode Nav */
+.mode-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  border-bottom: var(--hairline);
+}
+.nav-tabs {
+  display: flex;
+  gap: var(--space-lg);
+}
+.nav-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-sm) var(--space-xs);
+  min-height: 2.75rem;
+  font-family: var(--font-label);
+  font-size: var(--body-size);
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.nav-tab:hover { color: var(--on-surface); }
+.nav-tab.is-active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--rounded);
+  font-family: var(--font-label);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: var(--hairline-control);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) {
+  background: var(--surface-container-high);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--on-primary-container);
+  border-color: var(--on-primary-container);
+}
+.btn-sage {
+  background: var(--surface-container);
+  color: var(--secondary);
+  border-color: var(--outline-variant);
+}
+.btn-sage:hover:not(:disabled) {
+  background: var(--surface-container-high);
+}
+.btn-danger-ghost {
+  color: var(--error);
+  border-color: var(--outline);
+}
+.btn-danger-ghost.is-armed {
+  background: var(--error);
+  color: var(--on-error);
+  border-color: var(--error);
+}
+.btn-sm {
+  min-height: 2.25rem;
+  padding: 0 var(--space-sm);
+  font-size: 0.8125rem;
+}
+
+/* Control Workbench */
+.controls-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.filter-group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--rounded);
+  border: var(--hairline-control);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+}
+.pill-btn:hover {
+  background: var(--surface-container-high);
+}
+.pill-btn.is-active {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+.pill-count {
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+  font-variant-numeric: tabular-nums;
+}
+.pill-btn.is-active .pill-count {
+  color: var(--on-primary-container);
+}
+
+/* Inputs & Selects with always-visible labels */
+.fields-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: end;
+}
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1 1 12rem;
+}
+.field-block-compact {
+  flex: 0 1 11rem;
+}
+.field-label {
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  color: var(--on-surface-variant);
+}
+.text-input, .select-input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-xs) var(--space-md);
+  border: var(--hairline-control);
+  border-radius: var(--rounded);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-size: 0.9375rem;
+  transition: border-color var(--dur-micro) var(--ease-out);
+}
+.select-input {
+  padding-right: var(--space-xl);
+}
+.text-input:focus, .select-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-container);
+}
+
+.custom-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: end;
+  padding: var(--space-md);
+  background: var(--background);
+  border: var(--hairline);
+  border-radius: var(--rounded);
+}
+.is-hidden { display: none !important; }
+
+/* Self-test toggle bar */
+.toolbar-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: var(--hairline);
+}
+.toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 2.75rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--rounded);
+  border: var(--hairline-control);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.toggle-chip.is-on {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.results-summary {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Word Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
+  gap: var(--space-md);
+}
+.word-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  background: var(--surface-container-low);
+  border: var(--hairline);
+  border-radius: var(--rounded-lg);
+  padding: var(--space-md);
+  transition: border-color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+}
+.word-card:hover {
+  border-color: var(--outline);
+}
+.word-card.is-mastered {
+  border-left: 3px solid var(--secondary);
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.tag-sage {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-container);
+  color: var(--secondary);
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--rounded-full);
+}
+.tag-syn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--rounded-full);
+}
+.mastery-badge {
+  font-family: var(--font-label);
+  font-size: var(--label-size);
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--rounded-full);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.badge-unseen {
+  background: var(--background);
+  color: var(--on-surface-variant);
+}
+.badge-learning {
+  background: var(--warning-container);
+  color: var(--warning);
+}
+.badge-mastered {
+  background: var(--positive-container);
+  color: var(--positive);
+}
+
+/* Word Headword */
+.word-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.word-term-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+.word-term {
+  font-family: var(--font-word);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+.word-ipa {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+}
+.speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: var(--hairline);
+  border-radius: var(--rounded);
+  background: var(--surface-container-low);
+  color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.speak-btn:hover {
+  background: var(--primary-container);
+}
+
+/* Card Answer / Reveal Area */
+.card-body {
+  position: relative;
+  border-radius: var(--rounded);
+  min-height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.card-body.is-masked {
+  cursor: pointer;
+  background: var(--background);
+  border: 1px dashed var(--outline);
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+  text-align: center;
+}
+.card-body.is-masked:hover {
+  background: var(--surface-container-high);
+}
+.mask-prompt {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.word-def {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  line-height: 1.5;
+}
+.word-syn {
+  font-size: 0.8125rem;
+  color: var(--secondary);
+  background: var(--background);
+  border-left: 2px solid var(--tertiary);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 0 var(--rounded) var(--rounded) 0;
+  line-height: 1.45;
+}
+.word-colloc {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  line-height: 1.45;
+}
+.word-colloc strong {
+  color: var(--on-surface);
+  font-weight: 500;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: var(--hairline);
+}
+.dots-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+.meter-dot {
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: var(--rounded-full);
+  border: 1px solid var(--outline);
+  background: transparent;
+  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.meter-dot.is-filled {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.meter-dot.is-mastered {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.check-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--rounded);
+  border: 1px solid var(--primary);
+  background: var(--surface-container-low);
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+}
+.check-btn:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.check-btn.is-mastered {
+  background: var(--surface-container);
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.check-btn.is-mastered:hover {
+  background: var(--secondary);
+  color: var(--on-primary);
+}
+.undo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: var(--rounded);
+  border: var(--hairline);
+  background: transparent;
+  color: var(--on-surface-variant);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.undo-btn:hover:not(:disabled) {
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+}
+.undo-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Pagination */
+.pagination-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.page-indicator {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  font-variant-numeric: tabular-nums;
+  padding: 0 var(--space-sm);
+}
+
+/* Sprint Mode (Random Review) */
+.sprint-layout {
+  display: grid;
+  gap: var(--space-lg);
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+.sprint-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: end;
+  justify-content: space-between;
+}
+.sprint-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  min-height: 22rem;
+  justify-content: space-between;
+}
+.sprint-word-stage {
+  text-align: center;
+  padding: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.sprint-word {
+  font-family: var(--font-word);
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  font-weight: 600;
+  color: var(--on-surface);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.sprint-ipa-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.sprint-answer-box {
+  border-top: var(--hairline);
+  padding-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.sprint-reveal-btn {
+  width: 100%;
+  min-height: 6rem;
+  border: 1px dashed var(--outline);
+  border-radius: var(--rounded-lg);
+  background: var(--background);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.sprint-reveal-btn:hover {
+  background: var(--surface-container-high);
+}
+.sprint-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: var(--space-sm);
+}
+.sprint-feedback {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--rounded);
+  background: var(--surface-container);
+  color: var(--secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+.shortcut-hint {
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+  text-align: center;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+.empty-title {
+  font-family: var(--font-headline);
+  font-size: var(--headline-size);
+  font-weight: 500;
+  margin: 0;
+}
+.empty-desc {
+  color: var(--on-surface-variant);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* Footer */
+.page-footer {
+  border-top: var(--hairline);
+  padding-top: var(--space-lg);
+  margin-top: var(--space-lg);
+  color: var(--on-surface-variant);
+  font-size: 0.8125rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dashboard-grid > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .page-grid {
+    padding: var(--space-md) var(--space-sm);
+    gap: var(--space-md);
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .sprint-card {
+    padding: var(--space-md);
+  }
+  .sprint-actions {
+    grid-template-columns: 1fr;
+  }
+  .nav-tabs {
+    gap: var(--space-md);
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<main class="page-grid">
+  <!-- Header -->
+  <header class="masthead">
+    <div>
+      <span class="label">CET-6 备考词汇追踪 · 700 核心词全覆盖</span>
+      <h1 class="headline title-display">大学英语六级 <strong>700核心词汇</strong> 备考工作台</h1>
+      <p class="caption-sage">科学分块突破 · 打卡累加熟练度 · 一键筛除已熟练词 · 卡片翻牌自测与随机冲刺</p>
+    </div>
+    <div class="masthead-meta">
+      <span class="sync-pill" id="sync-status">
+        <span class="sync-dot" aria-hidden="true"></span>
+        <span id="sync-status-text">自动存档已就绪</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Progress Dashboard -->
+  <section class="dashboard-grid" aria-label="学习进度看板">
+    <!-- Overall Mastery -->
+    <div class="panel stat-panel">
+      <div>
+        <span class="label">总掌握进度（打卡 ≥ 3 次计为已熟练）</span>
+        <div class="stat-figure-row">
+          <div class="stat-figure" id="stat-mastered">0<span class="sub-unit">/ 700 词</span></div>
+          <div class="stat-pct" id="stat-mastered-pct">0.0%</div>
+        </div>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="词汇掌握总进度" aria-valuemin="0" aria-valuemax="700" aria-valuenow="0" id="total-progressbar">
+        <div class="progress-fill-mastered" id="bar-mastered" style="width: 0%;"></div>
+        <div class="progress-fill-learning" id="bar-learning" style="width: 0%;"></div>
+      </div>
+      <div class="progress-legend">
+        <span class="legend-item"><span class="legend-swatch swatch-mastered" aria-hidden="true"></span>已熟练 (≥3次): <strong id="count-mastered">0</strong></span>
+        <span class="legend-item"><span class="legend-swatch swatch-learning" aria-hidden="true"></span>巩固中 (1–2次): <strong id="count-learning">0</strong></span>
+        <span class="legend-item"><span class="legend-swatch swatch-unseen" aria-hidden="true"></span>未打卡 (0次): <strong id="count-unseen">700</strong></span>
+      </div>
+    </div>
+
+    <!-- Total Check-ins & Actions -->
+    <div class="panel stat-panel">
+      <div>
+        <span class="label">累计打卡记录</span>
+        <div class="stat-figure-row">
+          <div class="stat-figure" id="stat-total-ticks">0<span class="sub-unit">次</span></div>
+        </div>
+      </div>
+      <div class="substats-row">
+        <div class="substat-item">
+          <span class="label">今日打卡</span>
+          <span class="substat-val" id="stat-today-ticks">0 次</span>
+        </div>
+        <div class="substat-item">
+          <span class="label">已触达词数</span>
+          <span class="substat-val" id="stat-touched">0 / 700</span>
+        </div>
+      </div>
+      <div class="dash-actions">
+        <button type="button" class="btn btn-sm btn-sage" onclick="exportProgressCsv()">导出打卡记录 CSV</button>
+        <button type="button" class="btn btn-sm btn-danger-ghost" id="reset-progress-btn" onclick="handleResetProgress(this)">重置全部进度</button>
+      </div>
+    </div>
+
+    <!-- Category Mastery Breakdown -->
+    <div class="panel stat-panel">
+      <span class="label">五大模块熟练分布（点击模块快速切换）</span>
+      <div class="cat-breakdown" id="cat-breakdown"></div>
+    </div>
+  </section>
+
+  <!-- Mode Navigation -->
+  <nav class="mode-nav" aria-label="复习模式切换">
+    <div class="nav-tabs" role="tablist">
+      <button type="button" role="tab" class="nav-tab is-active" id="tab-list" aria-selected="true" onclick="switchMode('list')">词库列表与自测</button>
+      <button type="button" role="tab" class="nav-tab" id="tab-sprint" aria-selected="false" onclick="switchMode('sprint')">随机抽词冲刺</button>
+    </div>
+    <div class="results-summary" id="mode-helper-text">共收录 700 个核心词条 · 支持点击卡片发音与打卡累加</div>
+  </nav>
+
+  <!-- VIEW 1: List & Self-Test Workbench -->
+  <section id="view-list" aria-label="词汇分类浏览与筛选">
+    <div class="panel controls-panel">
+      <!-- Category Pills -->
+      <div>
+        <span class="label" style="margin-bottom: var(--space-xs);">一、词汇分类分组</span>
+        <div class="filter-group-row" id="category-tabs"></div>
+      </div>
+
+      <!-- Mastery Quick Filters -->
+      <div>
+        <span class="label" style="margin-bottom: var(--space-xs);">二、熟练度筛选（靶向攻克薄弱词）</span>
+        <div class="filter-group-row" id="mastery-filters">
+          <button type="button" class="pill-btn is-active" data-filter="all" onclick="setMasteryFilter('all')">全部词汇 <span class="pill-count" id="fc-all">700</span></button>
+          <button type="button" class="pill-btn" data-filter="weak" onclick="setMasteryFilter('weak')">待强化（&lt;3次） <span class="pill-count" id="fc-weak">700</span></button>
+          <button type="button" class="pill-btn" data-filter="unseen" onclick="setMasteryFilter('unseen')">未打卡（0次） <span class="pill-count" id="fc-unseen">700</span></button>
+          <button type="button" class="pill-btn" data-filter="reinforce" onclick="setMasteryFilter('reinforce')">巩固中（1–2次） <span class="pill-count" id="fc-reinforce">0</span></button>
+          <button type="button" class="pill-btn" data-filter="mastered" onclick="setMasteryFilter('mastered')">已熟练（≥3次） <span class="pill-count" id="fc-mastered">0</span></button>
+          <button type="button" class="pill-btn" data-filter="custom" onclick="setMasteryFilter('custom')">自定义筛选</button>
+        </div>
+      </div>
+
+      <!-- Custom Filter Bar -->
+      <div class="custom-filter-bar is-hidden" id="custom-filter-bar">
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="custom-op">打卡次数条件</label>
+          <select class="select-input" id="custom-op" onchange="applyFilters()">
+            <option value="lt">少于（&lt;）</option>
+            <option value="lte">不超过（≤）</option>
+            <option value="eq">精确等于（=）</option>
+            <option value="gte">不少于（≥）</option>
+          </select>
+        </div>
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="custom-threshold">目标次数（0–20）</label>
+          <input type="number" class="text-input" id="custom-threshold" min="0" max="20" value="3" oninput="applyFilters()">
+        </div>
+        <div class="field-block">
+          <label class="field-label" for="exam-tag-filter">真题考点聚焦</label>
+          <select class="select-input" id="exam-tag-filter" onchange="applyFilters()">
+            <option value="all">显示全部考点词</option>
+            <option value="synonym">仅看阅读同义替换高频词（71词）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Search, Sort, Self-Test -->
+      <div class="fields-row">
+        <div class="field-block">
+          <label class="field-label" for="search-input">搜索单词、释义或搭配</label>
+          <input type="search" class="text-input" id="search-input" placeholder="如：erode / 侵蚀 / weaken..." oninput="onSearchInput(this.value)">
+        </div>
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="sort-select">排序方式</label>
+          <select class="select-input" id="sort-select" onchange="applyFilters()">
+            <option value="default">默认词表顺序</option>
+            <option value="count-asc">打卡从少到多</option>
+            <option value="count-desc">打卡从多到少</option>
+            <option value="alpha">字母 A–Z</option>
+          </select>
+        </div>
+        <div class="field-block field-block-compact">
+          <label class="field-label" for="page-size-select">每页显示</label>
+          <select class="select-input" id="page-size-select" onchange="changePageSize(this.value)">
+            <option value="24" selected>24 词 / 页</option>
+            <option value="48">48 词 / 页</option>
+            <option value="96">96 词 / 页</option>
+            <option value="999">显示全部</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Self-test bar -->
+      <div class="toolbar-meta-row">
+        <div class="filter-group-row">
+          <button type="button" class="toggle-chip" id="self-test-toggle" aria-pressed="false" onclick="toggleSelfTestMode()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span id="self-test-label">自测模式：当前显示释义（点击隐去）</span>
+          </button>
+          <button type="button" class="btn btn-sm is-hidden" id="reveal-all-btn" onclick="revealAllCurrentPage()">本页全部显示</button>
+          <button type="button" class="btn btn-sm is-hidden" id="hide-all-btn" onclick="hideAllCurrentPage()">本页全部隐去</button>
+        </div>
+        <div class="results-summary" id="results-summary">显示第 1–24 词，共 700 词</div>
+      </div>
+    </div>
+
+    <!-- Card Grid -->
+    <div id="word-grid-container" style="margin-top: var(--space-md);">
+      <div class="card-grid" id="word-grid"></div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="panel empty-state is-hidden" id="empty-state" style="margin-top: var(--space-md);">
+      <h2 class="empty-title">当前筛选条件下暂无词汇</h2>
+      <p class="empty-desc">可能是已将该分类词汇全部刷至熟练，或搜索关键词过窄。点击下方按钮查看全部词库。</p>
+      <button type="button" class="btn btn-primary" onclick="resetFilters()">恢复全部词汇视图</button>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar" id="pagination-bar">
+      <div class="results-summary" id="pagination-info">第 1 / 30 页</div>
+      <div class="pagination-controls">
+        <button type="button" class="btn btn-sm" id="prev-page-btn" onclick="goPage(-1)">上一页</button>
+        <span class="page-indicator" id="page-num-badge">1 / 30</span>
+        <button type="button" class="btn btn-sm" id="next-page-btn" onclick="goPage(1)">下一页</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 2: Random Flashcard Sprint -->
+  <section id="view-sprint" class="is-hidden" aria-label="随机抽词冲刺模式">
+    <div class="sprint-layout">
+      <div class="panel sprint-controls">
+        <div class="field-block" style="flex: 1 1 14rem;">
+          <label class="field-label" for="sprint-scope">抽词范围</label>
+          <select class="select-input" id="sprint-scope" onchange="rebuildSprintQueue()">
+            <option value="weak">仅抽待强化词（打勾 &lt; 3 次）</option>
+            <option value="unseen">仅抽未打卡词（0 次）</option>
+            <option value="category">当前所选分类随机抽词</option>
+            <option value="all">全库 700 词随机抽词</option>
+          </select>
+        </div>
+        <div class="substat-item">
+          <span class="label">本轮队列进度</span>
+          <span class="substat-val" id="sprint-queue-status">0 / 0</span>
+        </div>
+        <button type="button" class="btn" onclick="rebuildSprintQueue()">重新随机洗牌</button>
+      </div>
+
+      <div id="sprint-feedback" class="sprint-feedback is-hidden" role="status" aria-live="polite"></div>
+
+      <div class="panel sprint-card" id="sprint-card">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag-sage" id="sprint-cat-tag">高频核心动词</span>
+            <span class="tag-syn is-hidden" id="sprint-syn-tag">阅读同义替换高频</span>
+          </div>
+          <span class="mastery-badge badge-unseen" id="sprint-mastery-badge">未打卡 0次</span>
+        </div>
+
+        <div class="sprint-word-stage">
+          <div class="sprint-word" id="sprint-word">erode</div>
+          <div class="sprint-ipa-row">
+            <span class="word-ipa" id="sprint-ipa">/ɪˈrəʊd/</span>
+            <button type="button" class="speak-btn" id="sprint-speak-btn" aria-label="朗读单词发音" onclick="speakSprintWord()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="sprint-hidden-area">
+          <button type="button" class="sprint-reveal-btn" onclick="revealSprintCard()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            点击翻牌显示核心释义、同义替换与真题搭配（快捷键 Space）
+          </button>
+        </div>
+
+        <div class="sprint-answer-box is-hidden" id="sprint-answer-area">
+          <div class="word-def" id="sprint-def"></div>
+          <div class="word-syn" id="sprint-syn"></div>
+          <div class="word-colloc" id="sprint-colloc"></div>
+        </div>
+
+        <div class="sprint-actions">
+          <button type="button" class="btn" id="sprint-prev-btn" onclick="stepSprint(-1)">← 上一词</button>
+          <button type="button" class="btn" id="sprint-skip-btn" onclick="stepSprint(1)">还需巩固（下一词）</button>
+          <button type="button" class="btn btn-primary" id="sprint-check-btn" onclick="checkInSprintWord()">✓ 记住了，打卡 +1</button>
+        </div>
+      </div>
+
+      <div class="panel empty-state is-hidden" id="sprint-empty">
+        <h2 class="empty-title">该抽词范围内词汇已全部达标</h2>
+        <p class="empty-desc">恭喜！当前范围内已没有符合条件的待强化词。你可以切换抽词范围至“全库 700 词”进行巩固复习。</p>
+        <button type="button" class="btn btn-primary" onclick="switchSprintToAll()">切换至全库 700 词复习</button>
+      </div>
+
+      <p class="shortcut-hint">桌面端快捷键：Space 翻牌显示释义 · Enter 打卡 +1 并跳下一词 · → 下一词</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <span>词汇来源：全国大学英语四、六级考试大纲及历年 CET-6 真题高频阅读、写作与翻译词库（共 700 核心词条）。</span>
+    <span>提示：每个单词累计打卡 ≥ 3 次自动标记为“已熟练”，可随时一键筛除后专注薄弱词。</span>
+  </footer>
+</main>
+
+<api-shim></api-shim>
+<script>
+// 700 CET-6 Core Vocabulary Bank
+// Format: word|ipa|pos_zh|synonyms_or_grammar|collocation_or_exam_example|is_reading_synonym(1/0)
+const RAW_DATA = {
+  verbs: `erode|/ɪˈrəʊd/|v. 侵蚀；削弱|同义：weaken, wear away, diminish|erode public trust（削弱公众信任）|1
+stifle|/ˈstaɪfl/|v. 扼杀；压制；使窒息|同义：suppress, curb, restrain|stifle creativity and innovation（扼杀创造与创新）|1
+foster|/ˈfɒstə(r)/|v. 促进；培养|同义：promote, cultivate, encourage|foster mutual respect（促进相互尊重）|1
+deter|/dɪˈtɜː(r)/|v. 威慑；阻止|同义：prevent, discourage, hinder|deter potential offenders（威慑潜在违法者）|1
+impose|/ɪmˈpəʊz/|v. 强加；强制实施|同义：enforce, inflict, levy|impose strict regulations（实施严格监管）|1
+reinforce|/ˌriːɪnˈfɔːs/|v. 强化；巩固|同义：strengthen, fortify, bolster|reinforce existing beliefs（强化既有观念）|1
+assert|/əˈsɜːt/|v. 坚称；断言；维护|同义：claim, declare, contend, insist|assert one's rights（维护自身权益）|1
+constrain|/kənˈstreɪn/|v. 限制；约束；迫使|同义：restrict, limit, compel|be constrained by budget（受预算限制）|1
+thrive|/θraɪv/|v. 兴旺；蓬勃发展|同义：flourish, prosper, boom|thrive in a competitive market（在竞争市场中蓬勃发展）|1
+perceive|/pəˈsiːv/|v. 感知；看待；认为|同义：detect, discern, regard|be perceived as a threat（被视为一种威胁）|1
+permeate|/ˈpɜːmieɪt/|v. 渗透；弥漫；遍布|同义：pervade, penetrate, saturate|permeate every aspect of life（渗透到生活的方方面面）|1
+ponder|/ˈpɒndə(r)/|v. 沉思；仔细考虑|同义：reflect, contemplate, deliberate|ponder the implications（深思其影响）|1
+remedy|/ˈremədi/|v. 补救；纠正 n. 疗法|同义：correct, cure, rectify|remedy the underlying problem（纠正根本问题）|1
+arouse|/əˈraʊz/|v. 激起；引起|同义：evoke, trigger, stimulate|arouse pity rather than respect（引起怜悯而非尊重）|1
+deem|/diːm/|v. 认为；视为|同义：consider, regard, judge|deem it necessary to act（认为有必要采取行动）|1
+imply|/ɪmˈplaɪ/|v. 暗示；意味着|同义：suggest, indicate, signify|imply a causal link（暗示存在因果联系）|1
+adhere|/ədˈhɪə(r)/|v. 坚持；遵守（常接 to）|同义：comply with, abide by, stick to|adhere strictly to ethical rules（严格遵守伦理规范）|1
+curtail|/kɜːˈteɪl/|v. 削减；限制|同义：reduce, slash, trim, restrict|curtail government spending（削减政府开支）|1
+eradicate|/ɪˈrædɪkeɪt/|v. 根除；彻底消灭|同义：eliminate, wipe out, abolish|eradicate extreme poverty（彻底消除极端贫困）|1
+escalate|/ˈeskəleɪt/|v. 加剧；逐步升级|同义：intensify, expand, heighten|escalate into a full-blown crisis（升级为全面危机）|1
+monopolize|/məˈnɒpəlaɪz/|v. 垄断；独占|同义：dominate, control, corner|monopolize the digital ad market（垄断数字广告市场）|1
+substitute|/ˈsʌbstɪtjuːt/|v. 替代 n. 替代品|同义：replace, displace, alternative|substitute A for B（用A替代B）|1
+accumulate|/əˈkjuːmjəleɪt/|v. 积累；积聚|同义：amass, gather, pile up|accumulate vast amounts of data（积累海量数据）|0
+acknowledge|/əkˈnɒlɪdʒ/|v. 承认；致谢|同义：admit, recognize, concede|acknowledge the complexity（承认其复杂性）|0
+acquire|/əˈkwaɪə(r)/|v. 获得；习得|同义：obtain, gain, attain|acquire transferable skills（习得可迁移技能）|0
+activate|/ˈæktɪveɪt/|v. 激活；使活动|同义：trigger, initiate, stimulate|activate latent demand（激活潜在需求）|0
+advocate|/ˈædvəkeɪt/|v. 提倡；拥护 n. 倡导者|同义：champion, endorse, back|advocate sustainable living（倡导可持续生活）|0
+aggravate|/ˈæɡrəveɪt/|v. 加重；恶化|同义：worsen, exacerbate, intensify|aggravate income inequality（加剧收入不平等）|0
+alleviate|/əˈliːvieɪt/|v. 减轻；缓和|同义：ease, relieve, mitigate|alleviate traffic congestion（缓解交通拥堵）|0
+allocate|/ˈæləkeɪt/|v. 分配；拨出|同义：allot, assign, distribute|allocate resources efficiently（高效配置资源）|0
+amplify|/ˈæmplɪfaɪ/|v. 放大；增强|同义：magnify, boost, heighten|amplify public anxiety（放大公众焦虑）|0
+anticipate|/ænˈtɪsɪpeɪt/|v. 预期；预料|同义：expect, foresee, predict|anticipate future challenges（预判未来挑战）|0
+appraise|/əˈpreɪz/|v. 评估；鉴定|同义：evaluate, assess, gauge|appraise employee performance（评估员工绩效）|0
+ascribe|/əˈskraɪb/|v. 把……归因于|同义：attribute, credit, impute|ascribe success to diligence（将成功归因于勤奋）|0
+aspire|/əˈspaɪə(r)/|v. 渴望；追求（接 to）|同义：yearn, strive, aim|aspire to gain fame and fortune（渴望名利双收）|0
+assimilate|/əˈsɪmɪleɪt/|v. 吸收；同化|同义：absorb, integrate, digest|assimilate new immigrants（同化新移民）|0
+attain|/əˈteɪn/|v. 达到；获得|同义：achieve, accomplish, reach|attain a balanced lifestyle（实现平衡的生活方式）|0
+attribute|/əˈtrɪbjuːt/|v. 归因于 n. 属性|同义：ascribe, credit, trait|attribute the decline to inflation（将下滑归因于通胀）|0
+augment|/ɔːɡˈment/|v. 增加；扩大|同义：increase, expand, enlarge|augment human capabilities（增强人类能力）|0
+avert|/əˈvɜːt/|v. 避免；转移（目光）|同义：prevent, avoid, ward off|avert an ecological catastrophe（避免生态灾难）|0
+bolster|/ˈbəʊlstə(r)/|v. 支持；鼓舞；巩固|同义：support, reinforce, boost|bolster consumer confidence（提振消费者信心）|0
+breed|/briːd/|v. 滋生；孕育；繁殖|同义：spawn, generate, foster|familiarity breeds contempt（过分熟悉生轻慢）|0
+cater|/ˈkeɪtə(r)/|v. 迎合；满足需要（接 to）|同义：satisfy, serve, accommodate|cater to diverse tastes（迎合多样化口味）|0
+cease|/siːs/|v. 停止；终止|同义：halt, stop, terminate|cease to be competitive（不再具备竞争力）|0
+certify|/ˈsɜːtɪfaɪ/|v. 证明；颁发证书|同义：verify, attest, validate|certify product safety（认证产品安全性）|0
+cherish|/ˈtʃerɪʃ/|v. 珍视；怀抱（希望）|同义：treasure, value, embrace|cherish traditional values（珍视传统价值观）|0
+cite|/saɪt/|v. 引用；举例说明|同义：quote, reference, invoke|cite empirical evidence（援引实证依据）|0
+clarify|/ˈklærəfaɪ/|v. 澄清；阐明|同义：elucidate, explain, clear up|clarify misunderstandings（澄清误解）|0
+cling|/klɪŋ/|v. 紧抓；墨守（接 to）|同义：stick, adhere, hold fast|cling to outdated conventions（墨守陈规）|0
+coexist|/ˌkəʊɪɡˈzɪst/|v. 共存；并存|同义：cohabit, live together|coexist peacefully with nature（与自然和谐共存）|0
+coincide|/ˌkəʊɪnˈsaɪd/|v. 同时发生；相符|同义：correspond, overlap, concur|coincide with economic recovery（恰逢经济复苏）|0
+collaborate|/kəˈlæbəreɪt/|v. 合作；协作|同义：cooperate, team up, partner|collaborate across disciplines（跨学科协作）|0
+collapse|/kəˈlæps/|v./n. 倒塌；崩溃；暴跌|同义：crumble, fail, slump|collapse under heavy pressure（在重压下崩溃）|0
+collide|/kəˈlaɪd/|v. 碰撞；冲突|同义：crash, clash, conflict|interests collide（利益发生冲突）|0
+combat|/ˈkɒmbæt/|v. 抗击；打击 n. 战斗|同义：fight, tackle, counter|policies to combat inequality（消除不平等的政策）|0
+commend|/kəˈmend/|v. 称赞；推荐|同义：praise, applaud, endorse|be commended for bravery（因勇敢而受表彰）|0
+compel|/kəmˈpel/|v. 强迫；迫使|同义：force, oblige, coerce|feel compelled to intervene（感到不得不介入）|0
+compensate|/ˈkɒmpenseɪt/|v. 补偿；弥补|同义：reimburse, offset, make up for|compensate for lost time（弥补失去的时间）|0
+compile|/kəmˈpaɪl/|v. 汇编；编制|同义：collect, assemble, edit|compile a list of suggestions（整理一份建议清单）|0
+complement|/ˈkɒmplɪment/|v. 补充；相辅相成|同义：supplement, complete, match|practice complements theory（实践与理论相辅相成）|0
+comply|/kəmˈplaɪ/|v. 遵从；服从（接 with）|同义：obey, adhere to, abide by|comply with safety standards（遵守安全标准）|0
+comprehend|/ˌkɒmprɪˈhend/|v. 理解；领悟|同义：grasp, understand, fathom|comprehend complex theories（理解复杂理论）|0
+compromise|/ˈkɒmprəmaɪz/|v./n. 妥协；折中；危及|同义：concede, jeopardize, settle|compromise personal privacy（危及个人隐私）|0
+conceal|/kənˈsiːl/|v. 隐藏；隐瞒|同义：hide, disguise, cover up|conceal the true motive（隐瞒真实动机）|0
+concede|/kənˈsiːd/|v. 承认；让步|同义：admit, yield, grant|concede defeat gracefully（体面地认输）|0
+conceive|/kənˈsiːv/|v. 构想；怀孕；认为|同义：envision, imagine, devise|conceive a bold strategy（构想大胆战略）|0
+condemn|/kənˈdem/|v. 谴责；判刑|同义：denounce, censure, criticize|condemn unethical behavior（谴责不道德行为）|0
+confine|/kənˈfaɪn/|v. 限制；禁闭|同义：restrict, limit, enclose|be confined to academic circles（局限于学术圈内）|0
+conform|/kənˈfɔːm/|v. 遵守；符合；顺从|同义：comply, match, adapt|conform to social expectations（顺应社会期望）|0
+confront|/kənˈfrʌnt/|v. 面对；对抗|同义：face, tackle, encounter|confront a severe crisis（直面严峻危机）|0
+conserve|/kənˈsɜːv/|v. 保护；节约|同义：preserve, save, safeguard|conserve natural habitats（保护自然栖息地）|0
+consolidate|/kənˈsɒlɪdeɪt/|v. 巩固；合并|同义：strengthen, unify, merge|consolidate market dominance（巩固市场主导地位）|0
+constitute|/ˈkɒnstɪtjuːt/|v. 构成；组成；被视为|同义：compose, comprise, form|constitute a major obstacle（构成重大障碍）|0
+contaminate|/kənˈtæmɪneɪt/|v. 污染；毒害|同义：pollute, taint, poison|contaminate drinking water（污染饮用水）|0
+contemplate|/ˈkɒntəmpleɪt/|v. 深思；盘算；注视|同义：ponder, reflect, consider|contemplate a career shift（考虑职业转型）|0
+contend|/kənˈtend/|v. 声称；主张；竞争|同义：assert, argue, compete|contend that wages lag behind（主张薪酬滞后）|0
+contradict|/ˌkɒntrəˈdɪkt/|v. 反驳；与……矛盾|同义：dispute, counter, conflict|contradict earlier findings（与早期研究结果相矛盾）|0
+convene|/kənˈviːn/|v. 召集；开会|同义：assemble, gather, summon|convene an emergency summit（召开紧急峰会）|0
+converge|/kənˈvɜːdʒ/|v. 汇聚；趋同|同义：merge, unite, intersect|diverse trends converge（不同趋势趋同汇合）|0
+convert|/kənˈvɜːt/|v. 转换；改造；皈依|同义：transform, switch, adapt|convert waste into energy（将废物转化为能源）|0
+convey|/kənˈveɪ/|v. 传达；表达；运送|同义：communicate, transmit, express|convey a clear message（传达明确信息）|0
+coordinate|/kəʊˈɔːdɪneɪt/|v. 协调；配合|同义：synchronize, organize, align|coordinate relief efforts（协调救援行动）|0
+correlate|/ˈkɒrəleɪt/|v. 使相互关联；相关|同义：link, connect, associate|correlate closely with income（与收入密切相关）|0
+corrode|/kəˈrəʊd/|v. 腐蚀；侵蚀|同义：erode, eat away, rust|corrode moral standards（侵蚀道德标准）|0
+corrupt|/kəˈrʌpt/|v. 腐化 adj. 腐败的|同义：taint, spoil, dishonest|corrupt the judicial process（破坏司法公正）|0
+counteract|/ˌkaʊntərˈækt/|v. 抵消；中和；对抗|同义：offset, neutralize, counter|counteract negative effects（抵消负面影响）|0
+crave|/kreɪv/|v. 渴望；热求|同义：yearn for, desire, long for|crave social recognition（渴望社会认可）|0
+cripple|/ˈkrɪpl/|v. 严重削弱；使瘫痪|同义：paralyze, disable, impair|cripple the local economy（重创地方经济）|0
+crumble|/ˈkrʌmbl/|v. 碎裂；崩溃；瓦解|同义：collapse, disintegrate, decay|crumble under scrutiny（在审查下土崩瓦解）|0
+culminate|/ˈkʌlmɪneɪt/|v. 达到顶点；以……告终|同义：climax, peak, conclude|culminate in a landmark treaty（最终达成里程碑条约）|0
+cultivate|/ˈkʌltɪveɪt/|v. 培养；耕作|同义：foster, nurture, develop|cultivate critical thinking（培养批判性思维）|0
+curb|/kɜːb/|v. 抑制；控制 n. 路边|同义：restrain, check, curtail|curb carbon emissions（遏制碳排放）|0
+deceive|/dɪˈsiːv/|v. 欺骗；蒙蔽|同义：mislead, trick, defraud|deceive consumers with ads（用广告误导消费者）|0
+dedicate|/ˈdedɪkeɪt/|v. 致力于；奉献（接 to）|同义：devote, commit, pledge|dedicate oneself to research（献身于科研）|0
+deduce|/dɪˈdjuːs/|v. 推论；演绎|同义：infer, conclude, derive|deduce the cause from clues（从线索推断原因）|0
+defy|/dɪˈfaɪ/|v. 违抗；藐视；使不可能|同义：resist, challenge, flout|defy conventional wisdom（挑战传统观念）|0
+degrade|/dɪˈɡreɪd/|v. 降级；使恶化；贬低|同义：deteriorate, demean, lower|degrade the marine ecosystem（破坏海洋生态系统）|0
+delegate|/ˈdelɪɡeɪt/|v. 委派；授权 n. 代表|同义：assign, entrust, deputy|delegate authority to managers（向管理者授权）|0
+deliberate|/dɪˈlɪbəreɪt/|v. 仔细考虑 adj. 故意的|同义：ponder, weigh, intentional|deliberate over the proposal（慎重审议该提案）|0
+denounce|/dɪˈnaʊns/|v. 公开谴责；揭发|同义：condemn, criticize, censure|denounce discriminatory practices（谴责歧视行为）|0
+depict|/dɪˈpɪkt/|v. 描绘；刻画|同义：portray, illustrate, represent|depict rural life vividly（生动描绘乡村生活）|0
+deplete|/dɪˈpliːt/|v. 耗尽；使枯竭|同义：exhaust, drain, consume|deplete finite resources（耗尽有限资源）|0
+deploy|/dɪˈplɔɪ/|v. 部署；有效利用|同义：utilize, station, arrange|deploy AI tools responsibly（负责任地部署AI工具）|0
+deprive|/dɪˈpraɪv/|v. 剥夺；使丧失（接 of）|同义：strip, deny, dispossess|deprive children of sleep（剥夺儿童睡眠时间）|0
+derive|/dɪˈraɪv/|v. 源自；获得（接 from）|同义：originate, stem, obtain|derive satisfaction from work（从工作中获得满足感）|0
+designate|/ˈdezɪɡneɪt/|v. 指定；指派；命名|同义：appoint, assign, label|designate a protected zone（划定保护区）|0
+despise|/dɪˈspaɪz/|v. 鄙视；看不起|同义：scorn, disdain, look down on|despise superficiality（鄙视肤浅）|0
+detach|/dɪˈtætʃ/|v. 分离；拆下；使超然|同义：separate, disconnect, unfasten|detach emotion from judgment（将情绪与判断剥离）|0
+detect|/dɪˈtekt/|v. 察觉；侦测；发现|同义：perceive, spot, discern|detect subtle changes（察觉细微变化）|0
+deteriorate|/dɪˈtɪəriəreɪt/|v. 恶化；退化|同义：worsen, decline, decay|health begins to deteriorate（健康状况开始恶化）|0
+devastate|/ˈdevəsteɪt/|v. 摧毁；使震惊绝望|同义：destroy, ruin, shatter|devastated when he fails（失败时崩溃绝望）|0
+deviate|/ˈdiːvieɪt/|v. 偏离；违背（接 from）|同义：diverge, stray, depart|deviate from the norm（偏离常态）|0
+devise|/dɪˈvaɪz/|v. 设计；发明；想出|同义：invent, formulate, design|devise an effective remedy（想出有效的补救办法）|0
+differentiate|/ˌdɪfəˈrenʃieɪt/|v. 区分；辨别|同义：distinguish, tell apart|differentiate fact from opinion（区分事实与观点）|0
+diffuse|/dɪˈfjuːz/|v. 扩散；缓和 adj. 弥漫的|同义：spread, disperse, scatter|diffuse workplace responsibility（分散职场责任）|0
+diminish|/dɪˈmɪnɪʃ/|v. 减少；削弱；贬低|同义：reduce, shrink, erode|diminish the impact of stress（减轻压力的影响）|0
+disclose|/dɪsˈkləʊz/|v. 揭露；公开|同义：reveal, expose, divulge|disclose financial records（披露财务记录）|0
+discriminate|/dɪˈskrɪmɪneɪt/|v. 歧视；辨别|同义：distinguish, bias against|discriminate against older workers（歧视年长员工）|0
+disguise|/dɪsˈɡaɪz/|v./n. 伪装；掩饰|同义：mask, conceal, camouflage|hostility disguised as humor（伪装成幽默的敌意）|0
+dismiss|/dɪsˈmɪs/|v. 解雇；驳回；不予理会|同义：reject, disregard, fire|dismiss the concern lightly（轻率地忽视这一担忧）|0
+disperse|/dɪˈspɜːs/|v. 分散；驱散|同义：scatter, spread, diffuse|disperse the crowd（驱散人群）|0
+displace|/dɪsˈpleɪs/|v. 取代；迫使……背井离乡|同义：replace, supplant, uproot|automation displaces routine jobs（自动化取代常规岗位）|0
+disrupt|/dɪsˈrʌpt/|v. 打乱；扰乱；颠覆|同义：interrupt, disturb, upset|disrupt traditional supply chains（颠覆传统供应链）|0
+dissipate|/ˈdɪsɪpeɪt/|v. 消散；挥霍|同义：vanish, disperse, squander|tension gradually dissipates（紧张气氛逐渐消散）|0
+distort|/dɪˈstɔːt/|v. 曲解；扭曲|同义：twist, misrepresent, warp|distort the original meaning（曲解原意）|0
+divert|/daɪˈvɜːt/|v. 转移；使转向；娱乐|同义：redirect, distract, deflect|divert funds to education（将资金转投教育）|0
+dominate|/ˈdɒmɪneɪt/|v. 支配；主导；俯视|同义：monopolize, control, prevail|dominate global trade（主导全球贸易）|0
+drain|/dreɪn/|v. 排空；消耗 n. 排水沟|同义：exhaust, deplete, sap|drain mental energy（消耗脑力）|0
+eclipse|/ɪˈklɪps/|v. 使相形见绌 n. 日/月食|同义：overshadow, outshine, surpass|eclipse earlier achievements（使早先成就黯然失色）|0
+elaborate|/ɪˈlæbəreɪt/|v. 详述 adj. 精心制作的|同义：expound, detail, intricate|elaborate on the mechanism（详细阐述这一机制）|0
+elevate|/ˈelɪveɪt/|v. 提升；举起；抬高|同义：raise, lift, promote|elevate living standards（提高生活水平）|0
+elicit|/ɪˈlɪsɪt/|v. 引出；探出（反应）|同义：evoke, draw out, provoke|elicit a positive response（引出积极回应）|0
+embrace|/ɪmˈbreɪs/|v. 拥抱；欣然接受；涵盖|同义：adopt, welcome, include|embrace technological change（拥抱技术变革）|0
+emerge|/ɪˈmɜːdʒ/|v. 出现；浮现；显露|同义：appear, arise, surface|new challenges emerge（新的挑战不断涌现）|0
+emit|/iˈmɪt/|v. 发出；排放|同义：release, discharge, radiate|emit greenhouse gases（排放温室气体）|0
+emulate|/ˈemjuleɪt/|v. 效仿；努力赶上|同义：imitate, mirror, rival|emulate successful models（效仿成功范例）|0
+enact|/ɪˈnækt/|v. 制定（法律）；颁布；上演|同义：pass, legislate, enforce|enact stricter privacy laws（颁布更严格的隐私法）|0
+endorse|/ɪnˈdɔːs/|v. 支持；背书；赞同|同义：approve, support, back|endorse policies to fight inequality（支持消除不平等政策）|0
+endow|/ɪnˈdaʊ/|v. 赋予；资助（接 with）|同义：grant, bestow, equip|be endowed with rich talents（天生具备出众才华）|0
+enforce|/ɪnˈfɔːs/|v. 实施；强制执行|同义：impose, execute, apply|enforce traffic regulations（执行交通法规）|0
+enhance|/ɪnˈhɑːns/|v. 提高；增强；增进|同义：boost, improve, heighten|enhance cognitive function（改善认知功能）|0
+enlighten|/ɪnˈlaɪtn/|v. 启发；开导|同义：educate, inform, illuminate|enlighten the public（启迪大众）|0
+enrich|/ɪnˈrɪtʃ/|v. 丰富；充实；使富裕|同义：enhance, broaden, refine|enrich learning experiences（丰富学习体验）|0
+entail|/ɪnˈteɪl/|v. 牵涉；需要；导致|同义：involve, require, necessitate|success entails persistent effort（成功需要持之以恒的努力）|0
+envision|/ɪnˈvɪʒn/|v. 展望；设想|同义：imagine, visualize, foresee|envision a greener future（展望更绿色的未来）|0
+evade|/ɪˈveɪd/|v. 逃避；规避；躲开|同义：dodge, avoid, elude|evade tax obligations（逃避纳税义务）|0
+evaporate|/ɪˈvæpəreɪt/|v. 蒸发；消失|同义：vaporize, vanish, fade|optimism quickly evaporated（乐观情绪迅速消散）|0
+evoke|/ɪˈvəʊk/|v. 唤起；引起|同义：arouse, elicit, recall|evoke strong nostalgia（唤起强烈怀旧情绪）|0
+exaggerate|/ɪɡˈzædʒəreɪt/|v. 夸大；夸张|同义：overstate, amplify, inflate|exaggerate the potential risks（夸大潜在风险）|0
+excel|/ɪkˈsel/|v. 擅长；胜过（接 at/in）|同义：surpass, shine, outdo|excel at cognitive tasks（在认知任务中表现出色）|0
+exemplify|/ɪɡˈzemplɪfaɪ/|v. 举例说明；成为典范|同义：illustrate, embody, typify|exemplify the spirit of resilience（体现坚韧不拔的精神）|0
+exert|/ɪɡˈzɜːt/|v. 施加；运用；尽（力）|同义：apply, exercise, wield|exert immense influence（施加巨大影响）|0
+exploit|/ɪkˈsplɔɪt/|v. 剥削；开发；利用|同义：utilize, harness, abuse|exploit vulnerable workers（剥削弱势劳工）|0
+fabricate|/ˈfæbrɪkeɪt/|v. 捏造；制造|同义：invent, falsify, manufacture|fabricate false news（捏造虚假新闻）|0
+facilitate|/fəˈsɪlɪteɪt/|v. 促进；使便利|同义：ease, promote, assist|facilitate cross-border trade（促进跨境贸易）|0
+flourish|/ˈflʌrɪʃ/|v. 繁荣；茂盛；兴旺|同义：thrive, prosper, boom|arts flourish in peaceful times（和平时期艺术繁荣）|0
+fluctuate|/ˈflʌktʃueɪt/|v. 波动；起伏|同义：vary, swing, oscillate|prices fluctuate wildly（价格剧烈波动）|0
+forfeit|/ˈfɔːfɪt/|v. 丧失；被没收 n. 罚金|同义：lose, sacrifice, surrender|forfeit privacy for convenience（为便利而牺牲隐私）|0
+formulate|/ˈfɔːmjuleɪt/|v. 制定；确切阐述|同义：devise, draft, frame|formulate long-term strategies（制定长期战略）|0
+fortify|/ˈfɔːtɪfaɪ/|v. 加强；筑防御工事|同义：strengthen, reinforce, bolster|fortify immune defenses（增强免疫防御）|0
+frustrate|/frʌˈstreɪt/|v. 使沮丧；挫败|同义：thwart, discourage, baffle|frustrate local residents（使当地居民感到沮丧）|0
+fulfill|/fʊlˈfɪl/|v. 履行；实现；满足|同义：achieve, satisfy, accomplish|fulfill social obligations（履行社会责任）|0
+hamper|/ˈhæmpə(r)/|v. 妨碍；束缚|同义：hinder, impede, obstruct|hamper economic growth（阻碍经济增长）|0
+harness|/ˈhɑːnɪs/|v. 驾驭；利用（能源等）|同义：utilize, tap, control|harness solar energy（利用太阳能）|0
+heighten|/ˈhaɪtn/|v. 提高；加剧；增强|同义：intensify, escalate, amplify|heighten underlying hostility（加剧潜在敌意）|0
+hinder|/ˈhɪndə(r)/|v. 阻碍；妨碍|同义：hamper, deter, obstruct|hinder cognitive development（阻碍认知发展）|0
+hinge|/hɪndʒ/|v. 取决于（接 on）n. 铰链|同义：depend on, rely on, rest on|success hinges on execution（成败取决于执行力）|0
+illuminate|/ɪˈluːmɪneɪt/|v. 照亮；阐明；启发|同义：clarify, shed light on|illuminate a complex issue（阐明复杂问题）|0
+immerse|/ɪˈmɜːs/|v. 沉浸；使专心（接 in）|同义：absorb, submerge, engross|immerse oneself in reading（沉浸于阅读）|0
+impair|/ɪmˈpeə(r)/|v. 损害；削弱|同义：damage, weaken, harm|impair memory and focus（损害记忆力与专注力）|0
+implement|/ˈɪmplɪment/|v. 实施；贯彻 n. 工具|同义：execute, carry out, enforce|implement educational reforms（推进教育改革）|0
+induce|/ɪnˈdjuːs/|v. 诱导；引起；促使|同义：cause, prompt, trigger|induce behavioral change（促使行为改变）|0
+inflict|/ɪnˈflɪkt/|v. 把……强加于；使遭受（接 on）|同义：impose, deal, wreak|inflict severe damage（造成严重破坏）|0
+inherit|/ɪnˈherɪt/|v. 继承；遗传获得|同义：receive, succeed to|inherit cultural traditions（继承文化传统）|0
+inhibit|/ɪnˈhɪbɪt/|v. 抑制；阻止；妨碍|同义：suppress, restrain, hinder|inhibit creative thinking（抑制创造性思维）|0
+initiate|/ɪˈnɪʃieɪt/|v. 开始；发起；启蒙|同义：launch, start, pioneer|initiate policy reforms（发起政策改革）|0
+innovate|/ˈɪnəveɪt/|v. 创新；革新|同义：pioneer, modernize, invent|fail to innovate（未能持续创新）|0
+inspire|/ɪnˈspaɪə(r)/|v. 鼓舞；激发；赋予灵感|同义：motivate, encourage, spark|inspire young learners（激励年轻学习者）|0
+integrate|/ˈɪntɪɡreɪt/|v. 整合；使融入|同义：combine, merge, unify|integrate technology into teaching（将技术融入教学）|0
+intensify|/ɪnˈtensɪfaɪ/|v. 加剧；强化；增强|同义：escalate, heighten, deepen|intensify market competition（加剧市场竞争）|0`,
+
+  adjectives: `monotonous|/məˈnɒtənəs/|adj. 单调的；枯燥的|同义：dull, tedious, repetitive|avoid sounding monotonous（避免听起来单调乏味）|1
+overwhelming|/ˌəʊvəˈwelmɪŋ/|adj. 压倒性的；势不可挡的|同义：irresistible, overpowering, massive|overwhelming evidence（压倒性的证据）|1
+deteriorating|/dɪˈtɪəriəreɪtɪŋ/|adj. 恶化的；日益变坏的|同义：worsening, declining, degrading|deteriorating air quality（日益恶化的空气质量）|1
+urgent|/ˈɜːdʒənt/|adj. 紧急的；迫切的|同义：pressing, acute, imperative|urgent need for reform（改革的迫切需要）|1
+subjective|/səbˈdʒektɪv/|adj. 主观的；个人的|同义：personal, biased, individual|trapped in subjective viewpoints（困在主观视角中）|1
+beneficial|/ˌbenɪˈfɪʃl/|adj. 有益的；有利的|同义：advantageous, favorable, helpful|beneficial to cognitive health（有益于认知健康）|1
+disproportionate|/ˌdɪsprəˈpɔːʃənət/|adj. 不成比例的；过分的|同义：unbalanced, unequal, uneven|disproportionate to female researchers（与女性研究者比例失衡）|1
+conventional|/kənˈvenʃənl/|adj. 传统的；常规的|同义：traditional, customary, standard|according to conventional wisdom（按照传统普遍看法）|1
+imperative|/ɪmˈperətɪv/|adj. 至关重要的；迫切的|同义：vital, crucial, essential, urgent|it is imperative to act now（当务之急是立刻行动）|1
+irrespective|/ˌɪrɪˈspektɪv/|adj. 不考虑的；无关的（接 of）|同义：regardless of, discount|irrespective of social status（不论社会地位如何）|1
+cognitive|/ˈkɒɡnətɪv/|adj. 认知的；认识的|同义：mental, intellectual, perceptive|boost cognitive abilities（提升认知能力）|1
+inherent|/ɪnˈhɪərənt/|adj. 内在的；固有的|同义：intrinsic, innate, inborn|risks inherent in the system（制度固有的风险）|1
+indispensable|/ˌɪndɪˈspensəbl/|adj. 不可或缺的|同义：essential, vital, crucial|indispensable part of growth（成长中不可或缺的部分）|1
+hostile|/ˈhɒstaɪl/|adj. 敌对的；充满敌意的|同义：aggressive, antagonistic, unfriendly|hostile toward strangers（对陌生人抱有敌意）|1
+superior|/suːˈpɪəriə(r)/|adj. 更优越的；上级的|同义：better, outstanding, senior|superior in quality and design（在质量与设计上更胜一筹）|1
+ultimate|/ˈʌltɪmət/|adj. 最终的；根本的|同义：final, fundamental, supreme|the ultimate goal of education（教育的终极目标）|1
+rational|/ˈræʃnəl/|adj. 理性的；合理的|同义：reasonable, logical, sensible|make rational decisions（做出理性决策）|1
+unprecedented|/ʌnˈpresɪdəntɪd/|adj. 史无前例的；空前的|同义：unparalleled, unmatched, exceptional|on an unprecedented scale（以前所未有的规模）|1
+cynical|/ˈsɪnɪkl/|adj. 愤世嫉俗的；怀疑动机的|同义：skeptical, distrustful, pessimistic|grow cynical about promises（对承诺产生怀疑）|1
+tentative|/ˈtentətɪv/|adj. 试探性的；暂定的|同义：provisional, hesitant, uncertain|draw a tentative conclusion（得出初步试探性结论）|1
+abrupt|/əˈbrʌpt/|adj. 突然的；唐突的|同义：sudden, unexpected, blunt|an abrupt shift in policy（政策的突然转向）|0
+abundant|/əˈbʌndənt/|adj. 丰富的；充裕的|同义：plentiful, ample, rich|abundant bamboo resources（丰富的竹资源）|0
+accessible|/əkˈsesəbl/|adj. 易接近的；可获得的|同义：reachable, available, approachable|render the seabed accessible（使海底更易触及）|0
+accurate|/ˈækjərət/|adj. 精确的；准确的|同义：precise, exact, reliable|provide accurate forecasts（提供精准预测）|0
+acute|/əˈkjuːt/|adj. 敏锐的；严重的；急性的|同义：sharp, severe, intense|an acute shortage of talent（人才严重短缺）|0
+adequate|/ˈædɪkwət/|adj. 充足的；胜任的|同义：sufficient, enough, competent|adequate financial support（充足的资金支持）|0
+adjacent|/əˈdʒeɪsnt/|adj. 邻近的；毗连的（接 to）|同义：neighboring, bordering, next to|areas adjacent to the coast（毗邻海岸的地区）|0
+adverse|/ˈædvɜːs/|adj. 不利的；有害的|同义：unfavorable, harmful, hostile|adverse effects on crops（对农作物的负面影响）|0
+aesthetic|/iːsˈθetɪk/|adj. 审美的；美学的|同义：artistic, tasteful, visual|aesthetic appeal of architecture（建筑的审美魅力）|0
+affluent|/ˈæfluənt/|adj. 富裕的；丰富的|同义：wealthy, prosperous, well-off|affluent urban neighborhoods（富裕的城市社区）|0
+aggressive|/əˈɡresɪv/|adj. 侵略性的；积极进取的|同义：hostile, assertive, ambitious|adopt an aggressive strategy（采取激进战略）|0
+ambiguous|/æmˈbɪɡjuəs/|adj. 模棱两可的；含糊的|同义：vague, unclear, equivocal|leave room for ambiguous terms（留有含糊措辞的余地）|0
+ambitious|/æmˈbɪʃəs/|adj. 有抱负的；宏大的|同义：aspiring, bold, grand|set ambitious climate targets（设定宏伟的气候目标）|0
+ample|/ˈæmpl/|adj. 充足的；宽敞的|同义：abundant, plentiful, spacious|ample evidence suggests（充足证据表明）|0
+apparent|/əˈpærənt/|adj. 显而易见的；表面上的|同义：obvious, evident, outward|apparent decline in attendance（出勤率明显下降）|0
+arbitrary|/ˈɑːbɪtrəri/|adj. 任意的；武断的；专横的|同义：random, capricious, dictatorial|avoid arbitrary judgments（避免武断评判）|0
+arduous|/ˈɑːdʒuəs/|adj. 艰巨的；费力的|同义：strenuous, tough, demanding|an arduous journey ahead（前方艰巨的征程）|0
+arrogant|/ˈærəɡənt/|adj. 傲慢的；自大的|同义：haughty, conceited, proud|an arrogant dismissal（傲慢的轻视）|0
+artificial|/ˌɑːtɪˈfɪʃl/|adj. 人工的；人造的；虚伪的|同义：synthetic, man-made, fake|artificial intelligence ethics（人工智能伦理）|0
+authentic|/ɔːˈθentɪk/|adj. 真实的；正宗的|同义：genuine, real, credible|offer authentic cultural experiences（提供原汁原味的文化体验）|0
+autonomous|/ɔːˈtɒnəməs/|adj. 自治的；自主的|同义：independent, self-governing|autonomous vehicles（自动驾驶汽车）|0
+bleak|/bliːk/|adj. 暗淡的；荒凉的；冷酷的|同义：gloomy, grim, dismal|a bleak economic outlook（暗淡的经济前景）|0
+candid|/ˈkændɪd/|adj. 坦率的；公正的|同义：frank, honest, straightforward|a candid assessment（坦率的评估）|0
+capable|/ˈkeɪpəbl/|adj. 有能力的；能干的（接 of）|同义：competent, able, proficient|capable of handling stress（能够应对压力）|0
+cautious|/ˈkɔːʃəs/|adj. 谨慎的；小心的|同义：prudent, wary, careful|take a cautious approach（采取谨慎态度）|0
+chaotic|/keɪˈɒtɪk/|adj. 混乱的；无序的|同义：disorderly, messy, turbulent|a chaotic transition period（混乱的转型期）|0
+chronic|/ˈkrɒnɪk/|adj. 慢性的；长期的|同义：persistent, long-standing, habitual|chronic sleep deprivation（长期睡眠不足）|0
+coherent|/kəʊˈhɪərənt/|adj. 连贯的；条理清晰的|同义：logical, consistent, lucid|present a coherent argument（提出条理清晰的论点）|0
+collective|/kəˈlektɪv/|adj. 集体的；共同的|同义：joint, shared, communal|collective willpower（集体意志力）|0
+comparable|/ˈkɒmpərəbl/|adj. 可比较的；类似的|同义：similar, equivalent, alike|at comparable income levels（在相当的收入水平上）|0
+compatible|/kəmˈpætəbl/|adj. 兼容的；协调的|同义：consistent, harmonious, suited|compatible with green goals（与绿色目标相兼容）|0
+compelling|/kəmˈpelɪŋ/|adj. 引人注目的；令人信服的|同义：convincing, persuasive, irresistible|a compelling argument（令人信服的论据）|0
+competent|/ˈkɒmpɪtənt/|adj. 胜任的；有能力的|同义：capable, qualified, proficient|competent supervisors（称职的主管）|0
+comprehensive|/ˌkɒmprɪˈhensɪv/|adj. 全面的；综合的|同义：thorough, extensive, inclusive|comprehensive policy reform（全面政策改革）|0
+compulsory|/kəmˈpʌlsəri/|adj. 强制的；必修的|同义：mandatory, obligatory, required|compulsory safety training（强制性安全培训）|0
+concrete|/ˈkɒŋkriːt/|adj. 具体的；实在的 n. 混凝土|同义：tangible, specific, solid|take concrete measures（采取切实措施）|0
+considerable|/kənˈsɪdərəbl/|adj. 相当大的；值得考虑的|同义：substantial, significant, sizable|a considerable gap（相当大的差距）|0
+consistent|/kənˈsɪstənt/|adj. 一致的；始终如一的|同义：steady, coherent, uniform|consistent with past data（与过往数据一致）|0
+contemporary|/kənˈtemprəri/|adj. 当代的；同时代的|同义：modern, current, present-day|contemporary social media（当代社交媒体）|0
+controversial|/ˌkɒntrəˈvɜːʃl/|adj. 有争议的|同义：debatable, disputed, contentious|a highly controversial law（极具争议的法律）|0
+credible|/ˈkredəbl/|adj. 可信的；可靠的|同义：believable, trustworthy, reliable|a credible source of news（可靠的新闻来源）|0
+crucial|/ˈkruːʃl/|adj. 至关重要的；决定性的|同义：vital, critical, imperative|play a crucial role（发挥关键作用）|0
+decisive|/dɪˈsaɪsɪv/|adj. 决定性的；果断的|同义：crucial, conclusive, resolute|take decisive action（采取果断行动）|0
+delicate|/ˈdelɪkət/|adj. 脆弱的；精致的；微妙的|同义：fragile, subtle, sensitive|a delicate balance（微妙的平衡）|0
+desperate|/ˈdespərət/|adj. 绝望的；孤注一掷的；极度渴望的|同义：hopeless, urgent, frantic|in desperate need of aid（急需援助）|0
+detrimental|/ˌdetrɪˈmentl/|adj. 有害的；不利的（接 to）|同义：harmful, damaging, adverse|detrimental to mental health（有害心理健康）|0
+diligent|/ˈdɪlɪdʒənt/|adj. 勤奋的；用功的|同义：hardworking, industrious, attentive|diligent preparation pays off（勤奋备考终有回报）|0
+dispensable|/dɪˈspensəbl/|adj. 可有可无的；非必需的|同义：unnecessary, nonessential|the most dispensable part of work（工作中最可有可无的部分）|0
+distinct|/dɪˈstɪŋkt/|adj. 明显的；截然不同的|同义：clear, separate, unique|two distinct cultures（两种截然不同的文化）|0
+distinctive|/dɪˈstɪŋktɪv/|adj. 独特的；有特色的|同义：characteristic, unique, special|distinctive character traits（独特的性格特征）|0
+diverse|/daɪˈvɜːs/|adj. 多样的；不同的|同义：varied, manifold, assorted|diverse perspectives（多元视角）|0
+dominant|/ˈdɒmɪnənt/|adj. 占主导地位的；显性的|同义：prevailing, leading, supreme|the dominant market player（占主导地位的市场主体）|0
+drastic|/ˈdræstɪk/|adj. 剧烈的；彻底的；极端的|同义：radical, severe, extreme|drastic policy changes（剧烈的政策变动）|0
+dynamic|/daɪˈnæmɪk/|adj. 动态的；充满活力的|同义：energetic, active, evolving|a dynamic workforce（充满活力的劳动力）|0
+eligible|/ˈelɪdʒəbl/|adj. 合格的；有资格的（接 for）|同义：qualified, entitled, suitable|eligible for subsidies（有资格获得补贴）|0
+empirical|/ɪmˈpɪrɪkl/|adj. 实证的；经验主义的|同义：experimental, observed, practical|empirical evidence（实证依据）|0
+erroneous|/ɪˈrəʊniəs/|adj. 错误的；不正确的|同义：wrong, false, inaccurate|an erroneous assumption（错误假设）|0
+ethical|/ˈeθɪkl/|adj. 道德的；伦理的|同义：moral, principled, upright|ethical implications of AI（人工智能的伦理影响）|0
+excessive|/ɪkˈsesɪv/|adj. 过度的；过分的|同义：extreme, undue, disproportionate|excessive screen time（过度屏幕使用时间）|0
+exclusive|/ɪkˈskluːsɪv/|adj. 独有的；排他的；高档的|同义：sole, restricted, selective|exclusive access to data（独家数据访问权）|0
+explicit|/ɪkˈsplɪsɪt/|adj. 明确的；直率的|同义：clear, unambiguous, direct|give explicit instructions（给出明确指示）|0
+extensive|/ɪkˈstensɪv/|adj. 广泛的；大量的|同义：broad, wide, thorough|extensive media coverage（广泛的媒体报道）|0
+extraordinary|/ɪkˈstrɔːdnri/|adj. 非凡的；格外的|同义：remarkable, exceptional, unusual|extraordinary resilience（非凡的韧性）|0
+favorable|/ˈfeɪvərəbl/|adj. 有利的；赞成的|同义：beneficial, supportive, positive|favorable working conditions（有利的工作条件）|0
+feasible|/ˈfiːzəbl/|adj. 可行的；行得通的|同义：viable, workable, practical|an economically feasible plan（经济上可行的方案）|0
+finite|/ˈfaɪnaɪt/|adj. 有限的；限定的|同义：limited, bounded, restricted|finite natural resources（有限的自然资源）|0
+flawed|/flɔːd/|adj. 有缺陷的；不完善的|同义：defective, imperfect, faulty|a fundamentally flawed model（存在根本缺陷的模型）|0
+flexible|/ˈfleksəbl/|adj. 灵活的；柔韧的|同义：adaptable, agile, pliable|flexible working hours（弹性工作时间）|0
+fragile|/ˈfrædʒaɪl/|adj. 易碎的；脆弱的|同义：brittle, delicate, vulnerable|a fragile ecosystem（脆弱的生态系统）|0
+fundamental|/ˌfʌndəˈmentl/|adj. 基本的；根本的|同义：basic, essential, underlying|fundamental human needs（基本人类需求）|0
+futile|/ˈfjuːtaɪl/|adj. 徒劳的；无效的|同义：vain, fruitless, pointless|a futile attempt（徒劳的尝试）|0
+genuine|/ˈdʒenjuɪn/|adj. 真正的；真诚的|同义：authentic, real, sincere|genuine concern for others（对他人的真诚关切）|0
+harsh|/hɑːʃ/|adj. 严厉的；恶劣的；刺耳的|同义：severe, brutal, rough|survive harsh environments（在恶劣环境中生存）|0
+impartial|/ɪmˈpɑːʃl/|adj. 公正的；不偏不倚的|同义：fair, unbiased, neutral|an impartial observer（公正的观察者）|0
+implicit|/ɪmˈplɪsɪt/|adj. 含蓄的；隐含的；绝对的|同义：implied, unspoken, tacit|implicit messages in media（媒体中隐含的信息）|0
+inadequate|/ɪnˈædɪkwət/|adj. 不充分的；不胜任的|同义：insufficient, deficient, lacking|inadequate infrastructure（基础设施不足）|0
+inevitable|/ɪnˈevɪtəbl/|adj. 不可避免的；必然的|同义：unavoidable, certain, inescapable|an inevitable consequence（必然结果）|0
+intense|/ɪnˈtens/|adj. 强烈的；紧张的；专注的|同义：fierce, acute, severe|under intense scrutiny（处于严密审视之下）|0
+intricate|/ˈɪntrɪkət/|adj. 错综复杂的；精细的|同义：complex, complicated, elaborate|intricate social networks（错综复杂的社交网络）|0
+intrinsic|/ɪnˈtrɪnzɪk/|adj. 固有的；内在的；本质的|同义：inherent, built-in, essential|intrinsic value of art（艺术的内在价值）|0
+invaluable|/ɪnˈvæljuəbl/|adj. 极宝贵的；无价的|同义：priceless, precious, vital|invaluable practical experience（极其宝贵的实践经验）|0
+legitimate|/lɪˈdʒɪtɪmət/|adj. 合法的；正当合理的|同义：lawful, valid, rightful|a legitimate concern（合情合理的担忧）|0
+lucrative|/ˈluːkrətɪv/|adj. 有利可图的；赚钱的|同义：profitable, rewarding, paying|a lucrative business model（利润丰厚的商业模式）|0
+mandatory|/ˈmændətəri/|adj. 强制的；法定的|同义：compulsory, obligatory, required|mandatory reporting rules（强制报告制度）|0
+marginal|/ˈmɑːdʒɪnl/|adj. 微小的；边缘的|同义：slight, minor, peripheral|marginal improvement（微弱改善）|0
+massive|/ˈmæsɪv/|adj. 巨大的；大量的；厚重的|同义：enormous, huge, overwhelming|massive accumulation of data（海量数据积累）|0
+meticulous|/məˈtɪkjələs/|adj. 一丝不苟的；极仔细的|同义：thorough, scrupulous, precise|meticulous attention to detail（对细节的一丝不苟）|0
+mutual|/ˈmjuːtʃuəl/|adj. 相互的；共同的|同义：reciprocal, shared, joint|mutual understanding（相互理解）|0
+negligible|/ˈneɡlɪdʒəbl/|adj. 微不足道的；可忽略的|同义：trivial, insignificant, minor|a negligible difference（微不足道的差异）|0
+notorious|/nəʊˈtɔːriəs/|adj. 臭名昭著的；声名狼藉的|同义：infamous, disreputable|notorious for traffic jams（因交通拥堵而臭名昭著）|0
+novel|/ˈnɒvl/|adj. 新颖的；新奇的 n. 小说|同义：new, original, innovative|a novel approach to teaching（新颖的教学方法）|0
+obsolete|/ˌɒbsəˈliːt/|adj. 过时的；淘汰的|同义：outdated, archaic, outmoded|skills rendered obsolete by AI（被人工智能淘汰的技能）|0
+optimistic|/ˌɒptɪˈmɪstɪk/|adj. 乐观的|同义：hopeful, positive, upbeat|cautiously optimistic（持谨慎乐观态度）|0
+paradoxical|/ˌpærəˈdɒksɪkl/|adj. 似非而是的；自相矛盾的|同义：contradictory, ironic|a paradoxical phenomenon（看似矛盾的现象）|0
+paramount|/ˈpærəmaʊnt/|adj. 至高无上的；首要的|同义：supreme, foremost, vital|of paramount importance（至关重要）|0
+persistent|/pəˈsɪstənt/|adj. 坚持不懈的；持续的|同义：relentless, enduring, steady|persistent efforts（坚持不懈的努力）|0
+plausible|/ˈplɔːzəbl/|adj. 貌似有理的；可信的|同义：credible, believable, reasonable|a plausible explanation（看似合理的解释）|0
+pragmatic|/præɡˈmætɪk/|adj. 务实的；实用主义的|同义：practical, realistic, sensible|take a pragmatic stance（采取务实立场）|0
+precarious|/prɪˈkeəriəs/|adj. 不稳固的；危险的|同义：unstable, risky, uncertain|in a precarious financial state（处于不稳定的财务状况）|0
+precise|/prɪˈsaɪs/|adj. 精确的；准确的|同义：exact, accurate, rigorous|precise measurement（精确测量）|0
+preliminary|/prɪˈlɪmɪnəri/|adj. 初步的；预备的|同义：initial, tentative, preparatory|preliminary research findings（初步研究发现）|0
+prevalent|/ˈprevələnt/|adj. 普遍的；流行的|同义：widespread, common, ubiquitous|prevalent among young adults（在年轻人中普遍存在）|0
+profound|/prəˈfaʊnd/|adj. 深刻的；深远的|同义：deep, far-reaching, intense|profound social impact（深远的社会影响）|0
+prominent|/ˈprɒmɪnənt/|adj. 显著的；杰出的；突出的|同义：notable, eminent, leading|play a prominent role（发挥突出作用）|0
+prone|/prəʊn/|adj. 易于……的；有……倾向的|同义：liable, susceptible, inclined|prone to making errors（容易出错）|0
+prosperous|/ˈprɒspərəs/|adj. 繁荣的；富裕的|同义：thriving, affluent, booming|a prosperous economy（繁荣的经济）|0
+prudent|/ˈpruːdnt/|adj. 审慎的；精明的|同义：cautious, wise, sensible|prudent financial planning（审慎的财务规划）|0
+radical|/ˈrædɪkl/|adj. 彻底的；激进的；根本的|同义：drastic, fundamental, extreme|radical transformation（彻底变革）|0
+redundant|/rɪˈdʌndənt/|adj. 多余的；被裁员的|同义：superfluous, excessive, laid off|eliminate redundant steps（消除冗余步骤）|0
+relevant|/ˈreləvənt/|adj. 相关的；切题的|同义：pertinent, applicable, connected|relevant aspects of the task（任务的相关方面）|0
+relentless|/rɪˈlentləs/|adj. 无情的；坚持不懈的|同义：unyielding, persistent, harsh|relentless pressure（无休止的压力）|0
+reluctant|/rɪˈlʌktənt/|adj. 不情愿的；勉强的|同义：unwilling, hesitant, averse|be reluctant to change（不愿做出改变）|0
+remarkable|/rɪˈmɑːkəbl/|adj. 非凡的；显著的|同义：extraordinary, notable, striking|increase farm produce remarkably（显著提高农产品产量）|0
+resilient|/rɪˈzɪliənt/|adj. 有弹性的；能迅速恢复的|同义：tough, adaptable, buoyant|build resilient communities（建设有韧性的社区）|0
+rigorous|/ˈrɪɡərəs/|adj. 严谨的；严厉的；严密的|同义：strict, thorough, demanding|rigorous academic standards（严谨的学术标准）|0
+robust|/rəʊˈbʌst/|adj. 强健的；有力的；稳健的|同义：strong, sturdy, vigorous|a robust job market（稳健的就业市场）|0
+scarce|/skeəs/|adj. 缺乏的；罕见的|同义：rare, deficient, scant|resources are becoming scarce（资源日渐稀缺）|0
+scrupulous|/ˈskruːpjələs/|adj. 一丝不苟的；恪守原则的|同义：meticulous, conscientious, honest|scrupulous integrity（恪守诚信）|0
+severe|/sɪˈvɪə(r)/|adj. 严重的；严峻的；严厉的|同义：acute, harsh, drastic|severe consequences（严重后果）|0
+skeptical|/ˈskeptɪkl/|adj. 怀疑的；持保留态度的|同义：cynical, doubtful, dubious|grow increasingly skeptical（日益产生怀疑）|0
+sluggish|/ˈslʌɡɪʃ/|adj. 行动迟缓的；萧条的|同义：stagnant, slow, inactive|sluggish economic recovery（经济复苏乏力）|0
+sophisticated|/səˈfɪstɪkeɪtɪd/|adj. 精密的；老练的；复杂的|同义：advanced, complex, refined|sophisticated technology（尖端技术）|0
+stark|/stɑːk/|adj. 明显的；截然的；荒凉的|同义：sharp, striking, bleak|a stark decrease in meetings（会议数量急剧减少）|0
+steep|/stiːp/|adj. 陡峭的；急剧的；过高的|同义：sharp, drastic, excessive|a steep decline（急剧下降）|0
+strenuous|/ˈstrenjuəs/|adj. 费力的；紧张的；坚决的|同义：arduous, exhausting, vigorous|strenuous physical exercise（剧烈体育锻炼）|0
+stringent|/ˈstrɪndʒənt/|adj. 严格的；严厉的；紧缩的|同义：strict, rigorous, tight|stringent environmental rules（严格的环保法规）|0
+subtle|/ˈsʌtl/|adj. 微妙的；细微的；精妙的|同义：delicate, understated, faint|a subtle distinction（细微差别）|0
+superficial|/ˌsuːpəˈfɪʃl/|adj. 表面的；肤浅的|同义：shallow, outward, surface|superficial understanding（肤浅的理解）|0
+susceptible|/səˈseptəbl/|adj. 易受影响的；敏感的（接 to）|同义：vulnerable, prone, sensitive|susceptible to misinformation（易受虚假信息影响）|0
+tangible|/ˈtændʒəbl/|adj. 有形的；切实的|同义：concrete, real, palpable|tangible economic benefits（切实的经济效益）|0
+tedious|/ˈtiːdiəs/|adj. 乏味的；冗长沉闷的|同义：monotonous, dull, boring|tedious repetitive tasks（枯燥重复的任务）|0
+trivial|/ˈtrɪviəl/|adj. 琐碎的；微不足道的|同义：minor, negligible, petty|trivial daily matters（日常琐事）|0
+ubiquitous|/juːˈbɪkwɪtəs/|adj. 无所不在的；普遍存在的|同义：omnipresent, pervasive, prevalent|ubiquitous smartphones（无处不在的智能手机）|0
+unanimous|/juːˈnænɪməs/|adj. 全体一致的；无异议的|同义：united, agreed, harmonious|reach a unanimous verdict（达成一致裁决）|0
+unwarranted|/ʌnˈwɒrəntɪd/|adj. 无正当理由的；过分的|同义：unjustified, groundless, undue|unwarranted pessimism（毫无根据的悲观）|0
+versatile|/ˈvɜːsətaɪl/|adj. 多才多艺的；多用途的|同义：adaptable, multi-purpose, flexible|a versatile raw material（多用途原材料）|0
+viable|/ˈvaɪəbl/|adj. 可行的；能存活的|同义：feasible, workable, sustainable|a viable alternative（切实可行的替代方案）|0
+vigorous|/ˈvɪɡərəs/|adj. 精力充沛的；有力的|同义：energetic, robust, forceful|vigorous enforcement（有力执行）|0
+vulnerable|/ˈvʌlnərəbl/|adj. 脆弱的；易受伤害的|同义：susceptible, fragile, exposed|vulnerable senior citizens（弱势老年群体）|0`,
+
+  nouns: `capacity|/kəˈpæsəti/|n. 能力；容量|同义：ability, capability, volume|intellectual capacity（智力水平）|1
+stagnation|/stæɡˈneɪʃn/|n. 停滞；萧条|同义：standstill, sluggishness, recession|economic stagnation（经济停滞）|1
+stake|/steɪk/|n. 利害关系；股份；赌注|同义：interest, share, risk|high-stakes fights（高利害冲突）|1
+consensus|/kənˈsensəs/|n. 共识；一致意见|同义：agreement, accord, unanimity|general consensus among experts（专家普遍共识）|1
+competence|/ˈkɒmpɪtəns/|n. 能力；胜任力|同义：ability, capability, proficiency|language competence（语言能力）|1
+disruption|/dɪsˈrʌpʃn/|n. 中断；颠覆性变化|同义：disturbance, interruption, turmoil|social and environmental disruption（社会与环境破坏）|1
+productivity|/ˌprɒdʌkˈtɪvəti/|n. 生产力；效率|同义：yield, output, efficiency|agricultural productivity（农业生产力）|1
+equity|/ˈekwəti/|n. 公平；公正；股本|同义：fairness, justice, impartiality|social equity and inclusion（社会公平与包容）|1
+longevity|/lɒnˈdʒevəti/|n. 长寿；持久性|同义：durability, permanence|promote human longevity（促进人类长寿）|1
+sprawl|/sprɔːl/|n. （城市）无序扩张；蔓延|同义：expansion, extension, stretch|uncontrolled urban sprawl（城市无序蔓延）|1
+inflation|/ɪnˈfleɪʃn/|n. 通货膨胀|同义：price surge, devaluation|combat rising inflation（遏制通胀攀升）|1
+literacy|/ˈlɪtərəsi/|n. 读写能力；专业素养|同义：competence, proficiency, knowledge|digital literacy（数字素养）|1
+scarcity|/ˈskeəsəti/|n. 匮乏；稀缺；短缺|同义：shortage, deficiency, lack, dearth|water scarcity（水资源短缺）|1
+impetus|/ˈɪmpɪtəs/|n. 推动力；促进因素|同义：momentum, drive, spur|provide impetus for reform（为改革提供动力）|1
+incentive|/ɪnˈsentɪv/|n. 激励；动力；刺激|同义：motivation, stimulus, encouragement|financial incentives（经济激励）|1
+transition|/trænˈzɪʃn/|n. 过渡；转型|同义：shift, change, transformation|green energy transition（绿色能源转型）|1
+supervision|/ˌsuːpəˈvɪʒn/|n. 监督；管理|同义：oversight, management, control|strengthen supervision（加强监管）|1
+recognition|/ˌrekəɡˈnɪʃn/|n. 认可；识别；表彰|同义：acknowledgement, approval, identification|seek public recognition（寻求公众认可）|1
+frugality|/fruːˈɡæləti/|n. 节俭；勤俭节约|同义：thrift, economy, parsimony|virtue of frugality（勤俭节约的美德）|1
+perspective|/pəˈspektɪv/|n. 视角；观点；前景|同义：viewpoint, angle, outlook|broaden international perspective（拓宽国际视野）|1
+context|/ˈkɒntekst/|n. 背景；语境；环境|同义：background, setting, environment|place people in a social context（把人置于社会语境中）|1
+distinction|/dɪˈstɪŋkʃn/|n. 区别；卓越；荣誉|同义：difference, contrast, excellence|make a clear distinction（做出明确区分）|1
+accord|/əˈkɔːd/|n. 协议；一致 v. 给予|同义：agreement, treaty, harmony|reach an international accord（达成国际协议）|1
+clarity|/ˈklærəti/|n. 清晰；条理；明晰|同义：clearness, lucidity, precision|clarity of thought（思维清晰）|1
+priority|/praɪˈɒrəti/|n. 优先事项；当务之急|同义：precedence, top concern, preference|give priority to workers' time（优先考虑员工时间）|1
+prevalence|/ˈprevələns/|n. 流行；普遍存在|同义：commonness, ubiquity, pervasion|prevalence of competitiveness（竞争意识的盛行）|1
+controversy|/ˈkɒntrəvɜːsi/|n. 争论；争议|同义：dispute, debate, disagreement|spark widespread controversy（引发广泛争议）|1
+catastrophe|/kəˈtæstrəfi/|n. 大灾难；彻底失败|同义：disaster, calamity, tragedy|avert a climate catastrophe（避免气候灾难）|1
+scrutiny|/ˈskruːtəni/|n. 仔细审查；严密监督|同义：inspection, examination, analysis|come under close scrutiny（受到严密审查）|1
+abundance|/əˈbʌndəns/|n. 丰富；充裕|同义：plenty, wealth, profusion|an abundance of natural resources（丰富的自然资源）|0
+access|/ˈækses/|n. 通道；使用权 v. 获取|同义：entry, admission, availability|access to the internet（互联网接入权限）|0
+accomplishment|/əˈkʌmplɪʃmənt/|n. 成就；才艺；完成|同义：achievement, feat, attainment|academic accomplishments（学术成就）|0
+accountability|/əˌkaʊntəˈbɪləti/|n. 问责制；责任感|同义：responsibility, liability|demand corporate accountability（要求企业担责）|0
+accusation|/ˌækjuˈzeɪʃn/|n. 指控；指责|同义：charge, allegation, blame|face serious accusations（面临严重指控）|0
+acquisition|/ˌækwɪˈzɪʃn/|n. 获得；收购；习得|同义：attainment, purchase, mastery|language acquisition（语言习得）|0
+adaptation|/ˌædæpˈteɪʃn/|n. 适应；改编本|同义：adjustment, modification|climate change adaptation（气候变化适应）|0
+addiction|/əˈdɪkʃn/|n. 上瘾；沉溺|同义：dependence, obsession, habit|digital addiction（数字成瘾）|0
+adolescent|/ˌædəˈlesnt/|n. 青少年 adj. 青春期的|同义：teenager, youth, juvenile|adolescent mental health（青少年心理健康）|0
+adversity|/ədˈvɜːsəti/|n. 逆境；不幸|同义：hardship, misfortune, difficulty|thrive in adversity（在逆境中成长）|0
+affection|/əˈfekʃn/|n. 喜爱；感情|同义：fondness, attachment, warmth|genuine affection（真挚的感情）|0
+agenda|/əˈdʒendə/|n. 议程；日程表|同义：schedule, program, plan|set the policy agenda（制定政策议程）|0
+aggregate|/ˈæɡrɪɡət/|n. 总计；集合 adj. 总的|同义：total, sum, combined|in the aggregate（总体而言）|0
+allegation|/ˌæləˈɡeɪʃn/|n. 断言；未经证实的指控|同义：claim, accusation, assertion|investigate allegations（调查指控）|0
+alliance|/əˈlaɪəns/|n. 联盟；联合|同义：coalition, partnership, union|form a strategic alliance（建立战略联盟）|0
+allowance|/əˈlaʊəns/|n. 津贴；补助；允许|同义：grant, subsidy, quota|housing allowance（住房补贴）|0
+alternative|/ɔːlˈtɜːnətɪv/|n. 替代品 adj. 可替代的|同义：substitute, option, choice|renewable energy alternatives（可再生能源替代方案）|0
+ambiguity|/ˌæmbɪˈɡjuːəti/|n. 模棱两可；歧义|同义：vagueness, uncertainty|moral ambiguity（道德模糊性）|0
+ambition|/æmˈbɪʃn/|n. 雄心；野心；抱负|同义：aspiration, drive, goal|fulfill personal ambitions（实现个人抱负）|0
+analogy|/əˈnælədʒi/|n. 类比；比拟|同义：comparison, parallel, metaphor|draw an analogy（打比方）|0
+anxiety|/æŋˈzaɪəti/|n. 焦虑；渴望|同义：worry, concern, apprehension|persistent source of anxiety（持续焦虑的根源）|0
+appraisal|/əˈpreɪzl/|n. 评价；估价|同义：assessment, evaluation, review|performance appraisal（绩效评估）|0
+aspect|/ˈæspekt/|n. 方面；面貌|同义：facet, dimension, feature|every aspect of daily life（日常生活的方方面面）|0
+aspiration|/ˌæspəˈreɪʃn/|n. 渴望；志向；抱负|同义：ambition, goal, yearning|career aspirations（职业抱负）|0
+assault|/əˈsɔːlt/|n./v. 袭击；猛烈抨击|同义：attack, onslaught, strike|an assault on privacy（对隐私的侵害）|0
+asset|/ˈæset/|n. 资产；有价值的人/物|同义：resource, advantage, property|a valuable company asset（公司宝贵资产）|0
+assumption|/əˈsʌmpʃn/|n. 假定；假设；承担|同义：presumption, premise, hypothesis|challenge hidden assumptions（质疑隐含假设）|0
+assurance|/əˈʃʊərəns/|n. 保证；确信；自信|同义：guarantee, certainty, pledge|seek firm assurances（寻求明确保证）|0
+atmosphere|/ˈætməsfɪə(r)/|n. 大气层；气氛|同义：environment, mood, air|an emotional atmosphere（情感氛围）|0
+attainment|/əˈteɪnmənt/|n. 达到；成就；造诣|同义：achievement, mastery, skill|educational attainment（受教育程度）|0
+attitude|/ˈætɪtjuːd/|n. 态度；看法|同义：stance, outlook, posture|cynical attitude toward work（对工作的怀疑态度）|0
+authenticity|/ˌɔːθenˈtɪsəti/|n. 真实性；可靠性|同义：genuineness, credibility|question the authenticity（质疑真实性）|0
+authority|/ɔːˈθɒrəti/|n. 权威；权力；当局|同义：power, jurisdiction, expert|regulatory authorities（监管部门）|0
+autonomy|/ɔːˈtɒnəmi/|n. 自治权；自主权|同义：independence, self-rule|workplace autonomy（职场自主权）|0
+availability|/əˌveɪləˈbɪləti/|n. 可用性；可获得性|同义：accessibility, supply|availability of affordable care（平价护理的可及性）|0
+awareness|/əˈweənəs/|n. 意识；认识|同义：consciousness, recognition|raise environmental awareness（提高环保意识）|0
+barrier|/ˈbæriə(r)/|n. 障碍；壁垒；屏障|同义：obstacle, hurdle, blockade|overcome language barriers（克服语言障碍）|0
+baseline|/ˈbeɪslaɪn/|n. 基线；基准|同义：benchmark, standard, reference|establish a baseline（确立基准线）|0
+benchmark|/ˈbentʃmɑːk/|n. 基准；标准 v. 衡量|同义：standard, criterion, yardstick|serve as an industry benchmark（作为行业标杆）|0
+bias|/ˈbaɪəs/|n. 偏见；倾向 v. 使有偏见|同义：prejudice, partiality, slant|unconscious gender bias（无意识性别偏见）|0
+boom|/buːm/|n./v. 繁荣；激增；隆隆声|同义：surge, expansion, prosperity|a boom in online learning（在线学习的兴起）|0
+bottleneck|/ˈbɒtlnek/|n. 瓶颈；阻碍|同义：obstacle, constriction, jam|resolve supply bottlenecks（解决供应瓶颈）|0
+boundary|/ˈbaʊndri/|n. 边界；界限|同义：border, limit, frontier|blur work-life boundaries（模糊工作与生活边界）|0
+breach|/briːtʃ/|n. 违背；缺口 v. 违反|同义：violation, break, infringement|a major data breach（重大数据泄露）|0
+breakthrough|/ˈbreɪkθruː/|n. 突破；重大进展|同义：advance, leap, discovery|a medical breakthrough（医学突破）|0
+budget|/ˈbʌdʒɪt/|n. 预算 v. 编预算|同义：allocation, allowance, funds|operate on a tight budget（在紧张预算下运作）|0
+burden|/ˈbɜːdn/|n. 负担；重担 v. 加重担|同义：load, strain, obligation|ease the financial burden（减轻经济负担）|0
+bureaucracy|/bjʊəˈrɒkrəsi/|n. 官僚主义；官僚机构|同义：red tape, administration|cut excessive bureaucracy（削减繁文缛节）|0
+campaign|/kæmˈpeɪn/|n. 运动；战役 v. 发起运动|同义：drive, crusade, movement|a public awareness campaign（公众宣传运动）|0
+candidate|/ˈkændɪdət/|n. 候选人；应试者|同义：applicant, contender, nominee|CET-6 candidates（大学英语六级考生）|0
+capability|/ˌkeɪpəˈbɪləti/|n. 能力；潜力；性能|同义：capacity, competence, power|bring capabilities into play（充分发挥能力）|0
+chaos|/ˈkeɪɒs/|n. 混乱；无秩序|同义：turmoil, disorder, confusion|descend into chaos（陷入混乱）|0
+characteristic|/ˌkærəktəˈrɪstɪk/|n. 特征 adj. 特有的|同义：trait, feature, distinctive|defining characteristic（显著特征）|0
+climate|/ˈklaɪmət/|n. 气候；风气；氛围|同义：weather, atmosphere, environment|current economic climate（当前经济气候）|0
+coalition|/ˌkəʊəˈlɪʃn/|n. 联合；联盟；联合政府|同义：alliance, bloc, partnership|build a broad coalition（建立广泛联盟）|0
+cohesion|/kəʊˈhiːʒn/|n. 凝聚力；结合|同义：unity, solidarity, bond|social cohesion（社会凝聚力）|0
+collaboration|/kəˌlæbəˈreɪʃn/|n. 合作；协作|同义：cooperation, teamwork|interdisciplinary collaboration（跨学科合作）|0
+colleague|/ˈkɒliːɡ/|n. 同事；同僚|同义：coworker, peer, associate|consult senior colleagues（咨询资深同事）|0
+commission|/kəˈmɪʃn/|n. 委员会；佣金；委托|同义：committee, fee, mandate|European Commission（欧盟委员会）|0
+commitment|/kəˈmɪtmənt/|n. 承诺；投入；奉献|同义：dedication, pledge, obligation|long-term commitment（长期投入）|0
+commodity|/kəˈmɒdəti/|n. 商品；日用品|同义：goods, product, merchandise|scarce commodities（紧缺商品）|0
+compassion|/kəmˈpæʃn/|n. 同情；怜悯|同义：empathy, pity, sympathy|act with compassion（怀着同理心行事）|0
+compensation|/ˌkɒmpenˈseɪʃn/|n. 补偿；赔偿金；薪酬|同义：pay, reimbursement, reward|fair compensation（合理薪酬）|0
+competitor|/kəmˈpetɪtə(r)/|n. 竞争者；对手|同义：rival, contender, opponent|outperform competitors（胜过竞争对手）|0
+complexity|/kəmˈpleksəti/|n. 复杂性；复杂的事物|同义：intricacy, complication|grasp the complexity（理解复杂性）|0
+component|/kəmˈpəʊnənt/|n. 组成部分；元件|同义：element, part, ingredient|a key genetic component（关键遗传因素）|0
+compromise|/ˈkɒmprəmaɪz/|n. 妥协；折中方案|同义：concession, settlement|reach a fair compromise（达成公平妥协）|0
+concept|/ˈkɒnsept/|n. 概念；观念|同义：notion, idea, principle|the concept of natural selection（自然选择概念）|0
+concession|/kənˈseʃn/|n. 让步；特许权|同义：compromise, grant, yield|make mutual concessions（做出相互让步）|0
+condition|/kənˈdɪʃn/|n. 条件；状况；疾病|同义：state, status, requirement|a chronic health condition（慢性健康状况）|0
+conduct|/ˈkɒndʌkt/|n. 行为；管理 v. 进行|同义：behavior, demeanor, carry out|ethical code of conduct（道德行为准则）|0
+conference|/ˈkɒnfərəns/|n. 会议；讨论会|同义：symposium, summit, meeting|share findings at conferences（在学术会议上分享成果）|0
+confidence|/ˈkɒnfɪdəns/|n. 信心；信任；机密|同义：trust, certainty, assurance|erode consumer confidence（削弱消费者信心）|0
+conflict|/ˈkɒnflɪkt/|n. 冲突；矛盾 v. 冲突|同义：clash, dispute, friction|conflict of interest（利益冲突）|0
+conformity|/kənˈfɔːməti/|n. 一致；遵守；从众|同义：compliance, agreement|pressure for social conformity（社会从众压力）|0
+confusion|/kənˈfjuːʒn/|n. 困惑；混乱|同义：bewilderment, chaos, muddle|trigger identity confusion（引发身份困惑）|0
+conscience|/ˈkɒnʃəns/|n. 良心；道德心|同义：morality, scruples, ethics|a clear conscience（问心无愧）|0
+consequence|/ˈkɒnsɪkwəns/|n. 后果；结果；重要性|同义：outcome, result, impact|unintended consequences（意想不到的后果）|0
+conservation|/ˌkɒnsəˈveɪʃn/|n. 保护；保存；节约|同义：preservation, protection|wildlife conservation（野生动物保护）|0
+constraint|/kənˈstreɪnt/|n. 限制；约束|同义：limitation, restriction, curb|budget constraints（预算限制）|0
+consumption|/kənˈsʌmpʃn/|n. 消费；消耗量|同义：spending, intake, usage|stimulate domestic consumption（刺激国内消费）|0
+contamination|/kənˌtæmɪˈneɪʃn/|n. 污染；玷污|同义：pollution, tainting|prevent soil contamination（防止土壤污染）|0
+contention|/kənˈtenʃn/|n. 争论；论点；争夺|同义：dispute, argument, claim|a point of contention（争议焦点）|0
+continuity|/ˌkɒntɪˈnjuːəti/|n. 连续性；连贯性|同义：persistence, flow, stability|ensure business continuity（确保业务连续性）|0
+contribution|/ˌkɒntrɪˈbjuːʃn/|n. 贡献；捐款；投稿|同义：input, share, donation|make a significant contribution（做出重要贡献）|0
+convention|/kənˈvenʃn/|n. 惯例；公约；大会|同义：custom, norm, treaty|break with social convention（打破社会惯例）|0
+conviction|/kənˈvɪkʃn/|n. 坚信；信念；定罪|同义：belief, certainty, verdict|hold firm convictions（秉持坚定信念）|0
+cooperation|/kəʊˌɒpəˈreɪʃn/|n. 合作；协作|同义：collaboration, teamwork|value cooperation over competition（重合作胜于竞争）|0
+coordination|/kəʊˌɔːdɪˈneɪʃn/|n. 协调；配合|同义：alignment, organization|policy coordination（政策协调）|0
+cornerstone|/ˈkɔːnəstəʊn/|n. 基石；基础|同义：foundation, pillar, bedrock|the cornerstone of democracy（民主的基石）|0
+corporation|/ˌkɔːpəˈreɪʃn/|n. 大公司；企业法人|同义：firm, enterprise, company|multinational corporations（跨国公司）|0
+correlation|/ˌkɒrəˈleɪʃn/|n. 相互关系；相关性|同义：link, connection, association|correlation is not causation（相关不等于因果）|0
+corruption|/kəˈrʌpʃn/|n. 腐败；贪污；堕落|同义：bribery, decay, dishonesty|root out corruption（根除腐败）|0
+counterpart|/ˈkaʊntəpɑːt/|n. 对应的人或物；同行|同义：equivalent, peer, opposite|their European counterparts（他们的欧洲同行）|0
+coverage|/ˈkʌvərɪdʒ/|n. 覆盖范围；新闻报道|同义：reporting, scope, reach|broadband coverage（宽带覆盖率）|0
+crackdown|/ˈkrækdaʊn/|n. 严厉打击；镇压|同义：clampdown, suppression|a crackdown on monopolies（打击垄断行为）|0
+credential|/krəˈdenʃl/|n. 资历；证书；凭据|同义：qualification, diploma, certificate|academic credentials（学历资历）|0
+credibility|/ˌkredəˈbɪləti/|n. 可信度；公信力|同义：trustworthiness, reliability|lose public credibility（丧失公众公信力）|0
+crisis|/ˈkraɪsɪs/|n. 危机；紧要关头|同义：emergency, predicament, crunch|trigger an identity crisis（引发身份危机）|0
+criterion|/kraɪˈtɪəriən/|n. 标准；准则（复数 criteria）|同义：standard, benchmark, gauge|evaluation criteria（评估标准）|0
+criticism|/ˈkrɪtɪsɪzəm/|n. 批评；评论|同义：censure, review, critique|draw sharp criticism（招致尖锐批评）|0
+curiosity|/ˌkjʊəriˈɒsəti/|n. 好奇心；求知欲|同义：inquisitiveness, wonder|spark intellectual curiosity（激发求知欲）|0
+currency|/ˈkʌrənsi/|n. 货币；通货；流行|同义：money, tender, prevalence|gain wider currency（获得更广泛流行）|0
+curriculum|/kəˈrɪkjələm/|n. 课程（复数 curricula）|同义：syllabus, coursework|add coding to school curriculums（将编程纳入学校课程）|0
+cynicism|/ˈsɪnɪsɪzəm/|n. 愤世嫉俗；玩世不恭|同义：skepticism, distrust|widespread public cynicism（普遍的公众怀疑情绪）|0
+deadlock|/ˈdedlɒk/|n. 僵局；死胡同|同义：stalemate, impasse, standstill|break the diplomatic deadlock（打破外交僵局）|0
+dearth|/dɜːθ/|n. 缺乏；饥荒；不足|同义：scarcity, shortage, lack|a dearth of qualified teachers（合格教师匮乏）|0
+decade|/ˈdekeɪd/|n. 十年；十年期|同义：ten years|until a few decades ago（直到几十年前）|0
+decay|/dɪˈkeɪ/|n./v. 腐烂；衰退；衰败|同义：deterioration, rot, decline|urban decay（城市衰败）|0
+deception|/dɪˈsepʃn/|n. 欺骗；诡计|同义：fraud, trickery, deceit|consumer deception（消费欺诈）|0
+decline|/dɪˈklaɪn/|n./v. 下降；衰退；婉拒|同义：drop, decrease, refuse|a sharp decline in insect numbers（昆虫数量急剧下降）|0
+dedication|/ˌdedɪˈkeɪʃn/|n. 奉献；献身精神|同义：commitment, devotion|admire her dedication（敬佩她的奉献精神）|0
+defect|/ˈdiːfekt/|n. 缺点；缺陷 v. 叛变|同义：flaw, fault, shortcoming|a structural defect（结构缺陷）|0
+deficiency|/dɪˈfɪʃnsi/|n. 缺乏；不足；缺陷|同义：shortage, scarcity, flaw|vitamin deficiency（维生素缺乏）|0
+deficit|/ˈdefɪsɪt/|n. 赤字；逆差；亏损|同义：shortfall, shortage, loss|fiscal deficit（财政赤字）|0
+delegate|/ˈdelɪɡət/|n. 代表 v. 委派|同义：representative, envoy|conference delegates（会议代表）|0
+dementia|/dɪˈmenʃə/|n. 痴呆症；认知障碍|同义：cognitive decline|people free from dementia（未患痴呆症的人群）|0
+democracy|/dɪˈmɒkrəsi/|n. 民主；民主制度|同义：self-government, republic|participatory democracy（参与式民主）|0
+demographics|/ˌdeməˈɡræfɪks/|n. 人口统计数据|同义：population statistics|shifting demographics（变化的人口结构）|0
+dependence|/dɪˈpendəns/|n. 依赖；依靠|同义：reliance, addiction|reduce dependence on fossil fuels（减少对化石燃料依赖）|0
+depression|/dɪˈpreʃn/|n. 沮丧；抑郁症；萧条|同义：melancholy, slump, recession|the Great Depression（大萧条）|0
+deprivation|/ˌdeprɪˈveɪʃn/|n. 剥夺；匮乏；贫困|同义：loss, poverty, hardship|sleep deprivation（睡眠剥夺）|0
+descent|/dɪˈsent/|n. 下降；血统；斜坡|同义：decline, ancestry, drop|of Asian descent（亚裔血统）|0
+destiny|/ˈdestəni/|n. 命运；定数|同义：fate, fortune, lot|shape one's own destiny（掌控自己的命运）|0
+deterioration|/dɪˌtɪəriəˈreɪʃn/|n. 恶化；退化|同义：worsening, decline, decay|deterioration of public services（公共服务恶化）|0
+detriment|/ˈdetrɪmənt/|n. 损害；伤害（常接 to）|同义：harm, damage, loss|to the detriment of health（以损害健康为代价）|0
+devotion|/dɪˈvəʊʃn/|n. 奉献；忠诚；热爱|同义：dedication, loyalty, commitment|devotion to public service（投身公共服务）|0
+diagnosis|/ˌdaɪəɡˈnəʊsɪs/|n. 诊断；判断|同义：assessment, analysis|early diagnosis（早期诊断）|0
+dialect|/ˈdaɪəlekt/|n. 方言；地方话|同义：vernacular, regional speech|preserve local dialects（保护地方方言）|0
+dignity|/ˈdɪɡnəti/|n. 尊严；庄严；高贵|同义：self-respect, honor, pride|maintain human dignity（维护人的尊严）|0
+dilemma|/dɪˈlemə/|n. 进退两难的窘境|同义：predicament, quandary|face a moral dilemma（面临道德困境）|0
+dimension|/daɪˈmenʃn/|n. 维度；尺寸；方面|同义：aspect, facet, size|an ethical dimension（伦理维度）|0
+disability|/ˌdɪsəˈbɪləti/|n. 残疾；无能|同义：impairment, handicap|support people with disabilities（支持残障人士）|0
+disadvantage|/ˌdɪsədˈvɑːntɪdʒ/|n. 不利条件；劣势|同义：drawback, handicap, downside|put applicants at a disadvantage（使申请者处于劣势）|0
+disaster|/dɪˈzɑːstə(r)/|n. 灾难；彻底失败|同义：catastrophe, calamity|natural disasters（自然灾害）|0
+discipline|/ˈdɪsəplɪn/|n. 纪律；学科；自制力|同义：field, restraint, order|academic disciplines（学科门类）|0
+discourse|/ˈdɪskɔːs/|n. 话语；论述；演讲|同义：dialogue, discussion, debate|public political discourse（公共政治话语）|0
+discrepancy|/dɪsˈkrepənsi/|n. 差异；不一致|同义：mismatch, gap, contradiction|a discrepancy between theory and reality（理论与现实的差距）|0
+discretion|/dɪˈskreʃn/|n. 审慎；自行决定权|同义：prudence, judgment, choice|at your own discretion（由你自行斟酌）|0
+discrimination|/dɪˌskrɪmɪˈneɪʃn/|n. 歧视；辨别力|同义：bias, prejudice, distinction|combat age discrimination（反对年龄歧视）|0
+disorder|/dɪsˈɔːdə(r)/|n. 混乱；失调；疾病|同义：chaos, ailment, disruption|sleep disorders（睡眠障碍）|0
+disparity|/dɪˈspærəti/|n. 悬殊；巨大差距|同义：gap, inequality, imbalance|regional income disparity（地区收入差距）|0
+disposal|/dɪˈspəʊzl/|n. 处理；处置；支配|同义：discarding, management|waste disposal（废物处理）|0
+dispute|/dɪˈspjuːt/|n./v. 争端；争议|同义：controversy, conflict, debate|resolve trade disputes（解决贸易争端）|0
+diversity|/daɪˈvɜːsəti/|n. 多样性；差异|同义：variety, range, multiplicity|cultural diversity（文化多样性）|0
+doctrine|/ˈdɒktrɪn/|n. 教义；学说；原则|同义：creed, principle, dogma|economic doctrine（经济信条）|0
+domain|/dəˈmeɪn/|n. 领域；领土；域名|同义：realm, sphere, field|in the public domain（在公共领域）|0
+dominance|/ˈdɒmɪnəns/|n. 优势；支配地位|同义：supremacy, control, monopoly|market dominance（市场支配地位）|0
+donation|/dəʊˈneɪʃn/|n. 捐赠；捐款|同义：contribution, gift, grant|charitable donations（慈善捐款）|0
+downturn|/ˈdaʊntɜːn/|n. （经济等）衰退；下滑|同义：recession, slump, decline|weather an economic downturn（度过经济低迷期）|0
+drift|/drɪft/|n./v. 漂流；趋势；大意|同义：trend, shift, wander|demographic drift（人口迁移趋势）|0`,
+
+  writing: `take immediate action|/teɪk ɪˈmiːdiət ˈækʃn/|写作高分：立即采取行动|替代：act without delay / put plans into practice|Taking immediate action enables us to achieve goals step by step.|0
+at the expense of|/ət ði ɪkˈspens əv/|写作/阅读：以……为代价|同义：at the cost of / sacrificing|Coding should not be taught at the expense of foreign languages.|1
+give rise to|/ɡɪv raɪz tuː/|写作/阅读：引起；导致|同义：lead to / trigger / bring about|What gives rise to our worry about careers apart from money?|0
+have nothing to do with|/hæv ˈnʌθɪŋ tə duː wɪð/|写作/阅读：与……毫无关系|反义：be closely tied to / stem from|Interest in fancy goods has nothing to do with materialism.|0
+stand to gain|/stænd tə ɡeɪn/|阅读/写作：有希望获得|同义：be likely to benefit / profit from|It is the love we stand to gain through our possession of them.|0
+indulge in wishful thinking|/ɪnˈdʌldʒ ɪn ˈwɪʃfl ˈθɪŋkɪŋ/|写作亮点：沉溺于一厢情愿的幻想|搭配：cherish unrealistic illusions|Indulge in wishful thinking of passing CET-6 without effort.|0
+put into practice|/pʊt ˈɪntə ˈpræktɪs/|写作亮点：付诸实践|同义：implement / carry out / execute|Put splendid plans into practice immediately.|0
+well-rounded development|/ˌwel ˈraʊndɪd dɪˈveləpmənt/|写作/阅读：全面发展|同义：all-round growth / holistic existence|Every subject contributes to a well-rounded development.|1
+hand in hand|/hænd ɪn hænd/|写作亮点：齐头并进；密切相关|同义：go together / complement each other|Knowledge and practice should go hand in hand.|0
+broaden one's horizons|/ˈbrɔːdn wʌnz həˈraɪznz/|写作亮点：拓宽视野|同义：expand one's perspective / outlook|Learning languages broadens students' international perspective.|0
+upward social mobility|/ˈʌpwəd ˈsəʊʃl məʊˈbɪləti/|阅读/写作：社会向上流动|搭配：climb the social ladder|Entertainment media promotes the belief in upward mobility.|0
+digital exclusion|/ˈdɪdʒɪtl ɪkˈskluːʒn/|阅读/写作：数字排斥；数字鸿沟|同义：digital divide|Those living in digital exclusion lack stable broadband access.|0
+sustainable development|/səˈsteɪnəbl dɪˈveləpmənt/|写作高频：可持续发展|搭配：green transition / low-carbon economy|Promote sustainable development through green innovation.|0
+elderly care system|/ˈeldəli keə ˈsɪstəm/|翻译高频：养老服务体系|搭配：home- and community-based care|Promote the construction of the elderly care service system.|0
+live a healthy and happy life|/lɪv ə ˈhelθi ənd ˈhæpi laɪf/|翻译高频：安享健康幸福的晚年|同义：lead a fulfilling later life|Ensure that the elderly live a healthy and happy life.|0
+door-to-door delivery|/ˌdɔː tə ˈdɔː dɪˈlɪvəri/|翻译高频：上门配送服务|搭配：community canteens for seniors|Enjoy convenient door-to-door meal delivery services.|0
+strong vitality and adaptability|/strɒŋ vaɪˈtæləti ənd əˌdæptəˈbɪləti/|翻译高频：强大的生命力与适应力|搭配：survive harsh environments|Bamboo possesses strong vitality and adaptability.|0
+symbol of integrity|/ˈsɪmbl əv ɪnˈteɡrəti/|翻译高频：正直品格的象征|搭配：unyielding spirit（坚韧精神）|Bamboo's straight stem is a symbol of integrity.|0
+indomitable spirit|/ɪnˈdɒmɪtəbl ˈspɪrɪt/|翻译亮点：坚韧不拔的精神|同义：perseverance / unyielding resilience|It embodies the indomitable spirit of the Chinese nation.|0
+social practice|/ˈsəʊʃl ˈpræktɪs/|写作高频：社会实践|搭配：academic study / teamwork|Social practice exposes students to real-world challenges.|0
+critical and creative thinking|/ˈkrɪtɪkl ənd kriˈeɪtɪv ˈθɪŋkɪŋ/|写作亮点：批判性与创造性思维|搭配：find innovative solutions|Encourage students to engage in critical and creative thinking.|0
+bridge the gap|/brɪdʒ ðə ɡæp/|写作亮点：弥合差距；消除隔阂|同义：narrow the divide / reconcile|Bridge the gap between academic theory and public understanding.|0
+raise public awareness|/reɪz ˈpʌblɪk əˈweənəs/|写作高频：提高公众意识|搭配：arouse widespread concern|Measures to raise public awareness of mental health.|0
+strike a balance between|/straɪk ə ˈbæləns bɪˈtwiːn/|写作高频：在……之间取得平衡|同义：balance A against B|Strike a balance between economic growth and ecology.|0
+lay a solid foundation|/leɪ ə ˈsɒlɪd faʊnˈdeɪʃn/|写作高频：打下坚实基础|搭配：pave the way for|Lay a solid foundation for one's future career.|0
+gain momentum|/ɡeɪn məʊˈmentəm/|写作亮点：势头增强；蓬勃发展|同义：pick up speed / thrive|Renewable energy has gained global momentum.|0
+spare no effort|/speə nəʊ ˈefət/|写作亮点：不遗余力|同义：go to great lengths / strive|Spare no effort to safeguard ecological balance.|0
+pose a serious threat to|/pəʊz ə ˈsɪəriəs θret tuː/|写作高频：对……构成严重威胁|同义：jeopardize / endanger|Overuse of pesticides poses a threat to biodiversity.|0
+exert a profound impact|/ɪɡˈzɜːt ə prəˈfaʊnd ˈɪmpækt/|写作亮点：产生深远影响|同义：shape / transform|Digital platforms exert a profound impact on youth.|0
+attached great importance to|/əˈtætʃ ɡreɪt ɪmˈpɔːtns tuː/|写作高频：高度重视|同义：place top priority on / value|Employers attach great importance to competence.|0
+fall short of expectations|/fɔːl ʃɔːt əv ˌekspekˈteɪʃnz/|写作亮点：未达预期；令人失望|同义：fail to live up to|Policies often fall short of public expectations.|0
+stem from|/stem frɒm/|写作/阅读：源自；起因于|同义：originate from / derive from / result from|Anxiety often stems from fear of being judged.|0
+cope with|/kəʊp wɪð/|写作/阅读：应对；处理|同义：tackle / handle / address|Learn to cope with workplace fatigue effectively.|0
+keep pace with|/kiːp peɪs wɪð/|写作亮点：跟上……的步伐|同义：keep up with / adapt to|Educators must keep pace with technological change.|0
+play an indispensable role|/pleɪ ən ˌɪndɪˈspensəbl rəʊl/|写作亮点：发挥不可或缺的作用|同义：be vital to / serve as a pillar|Cooperation plays an indispensable role in team success.|0
+be confronted with|/bi kənˈfrʌntɪd wɪð/|写作亮点：面临；面对|同义：face / encounter|Modern cities are confronted with housing scarcity.|0
+bring about|/brɪŋ əˈbaʊt/|写作高频：带来；引发|同义：generate / trigger / induce|Technological advances bring about profound shifts.|0
+pave the way for|/peɪv ðə weɪ fɔː(r)/|写作亮点：为……铺平道路|同义：facilitate / lay the groundwork for|Improved broadband paves the way for remote education.|0
+be attributed to|/bi əˈtrɪbjuːtɪd tuː/|写作/阅读：归因于|同义：be ascribed to / result from|Success can largely be attributed to persistent effort.|0
+live up to|/lɪv ʌp tuː/|写作/阅读：不辜负；符合（期望）|同义：fulfill / meet / satisfy|Strive to live up to one's own potential.|0
+take into account|/teɪk ˈɪntuː əˈkaʊnt/|写作高频：将……纳入考虑|同义：consider / factor in|Policymakers should take privacy concerns into account.|0
+lose sight of|/luːz saɪt əv/|写作亮点：忽视；忘记|同义：overlook / neglect / ignore|Never lose sight of our original aspiration.|0
+turn a blind eye to|/tɜːn ə blaɪnd aɪ tuː/|写作亮点：对……视而不见|同义：ignore / disregard / overlook|Authorities cannot turn a blind eye to data abuse.|0
+draw a distinction between|/drɔː ə dɪˈstɪŋkʃn bɪˈtwiːn/|写作亮点：区分……与……|同义：differentiate / distinguish|Draw a clear distinction between correlation and causation.|0
+reach a consensus|/riːtʃ ə kənˈsensəs/|写作高频：达成共识|同义：arrive at an agreement|Scholars have reached a consensus on early education.|0
+do away with|/duː əˈweɪ wɪð/|阅读/写作：废除；摆脱|同义：abolish / eliminate / eradicate|Debate whether fossil fuels can be done away with.|0
+make full use of|/meɪk fʊl juːz əv/|写作基础升级：充分利用|升级：capitalize on / leverage / harness|Make full use of every available learning resource.|0
+be trapped in|/bi træpt ɪn/|阅读/写作：陷入；被困在|同义：be caught in / be confined to|Trapped in a vicious cycle of excessive work.|0
+give priority to|/ɡɪv praɪˈɒrəti tuː/|写作高频：优先考虑|同义：prioritize / put first|Companies should give priority to employees' well-being.|0
+be bound to|/bi baʊnd tuː/|写作亮点：必定；注定|同义：be certain to / inevitably|Neglecting effort is bound to end in failure.|0
+in the long run|/ɪn ðə lɒŋ rʌn/|写作高频：从长远来看|同义：over the long term / ultimately|Overcoming behavioral inertia benefits us in the long run.|0
+from a broader perspective|/frəm ə ˈbrɔːdə pəˈspektɪv/|写作亮点：从更广阔的视角看|同义：in a wider context|Examine the issue from a broader historical perspective.|0
+on the basis of|/ɒn ðə ˈbeɪsɪs əv/|写作/阅读：基于；根据|同义：based on / grounded in|Judge people on the basis of their character traits.|0
+under intense scrutiny|/ˈʌndə ɪnˈtens ˈskruːtəni/|阅读/写作：受到严密审查|搭配：under close oversight|Tech giants are under intense regulatory scrutiny.|0
+a double-edged sword|/ə ˌdʌbl edʒd ˈsɔːd/|写作经典：一把双刃剑|同义：bring both benefits and risks|Artificial intelligence is often viewed as a double-edged sword.|0
+vicious cycle|/ˈvɪʃəs ˈsaɪkl/|阅读/写作：恶性循环|反义：virtuous circle（良性循环）|Break the vicious cycle of litigation and mistrust.|0
+virtuous circle|/ˈvɜːtʃuəs ˈsɜːkl/|写作亮点：良性循环|反义：vicious cycle|Foster a virtuous circle of innovation and growth.|0
+diffusion of responsibility|/dɪˈfjuːʒn əv rɪˌspɒnsəˈbɪləti/|阅读考点：责任分散效应|心理学术语：bystander effect|Diffusion of responsibility prevents timely intervention.|0
+behavioral inertia|/bɪˈheɪvjərəl ɪˈnɜːʃə/|阅读考点：行为惰性|搭配：break old habits|Overcoming behavioral inertia improves physical health.|0
+sense of fulfillment|/sens əv fʊlˈfɪlmənt/|写作亮点：成就感；满足感|同义：sense of accomplishment|Gain a lasting sense of fulfillment from meaningful work.|0
+sense of belonging|/sens əv bɪˈlɒŋɪŋ/|写作亮点：归属感|搭配：community cohesion|Foster a strong sense of belonging among seniors.|0
+cultural heritage|/ˈkʌltʃrəl ˈherɪtɪdʒ/|翻译高频：文化遗产|搭配：preserve / pass down|Protect both tangible and intangible cultural heritage.|0
+mutual benefit|/ˈmjuːtʃuəl ˈbenɪfɪt/|翻译/写作：互利共赢|同义：win-win cooperation|Pursue international trade for mutual benefit.|0
+economic vitality|/ˌiːkəˈnɒmɪk vaɪˈtæləti/|翻译高频：经济活力|搭配：stimulate / unleash|Unleash regional economic vitality through reform.|0
+demographic shift|/ˌdeməˈɡræfɪk ʃɪft/|写作/阅读：人口结构变化|搭配：aging population|Adapt social services to the demographic shift.|0
+technological breakthrough|/ˌteknəˈlɒdʒɪkl ˈbreɪkθruː/|翻译高频：技术突破|搭配：indigenous innovation|Achieve major technological breakthroughs in clean energy.|0
+academic jargon|/ˌækəˈdemɪk ˈdʒɑːɡən/|阅读考点：学术行话；专业术语|同义：technical terminology|Ordinary readers are intimidated by academic jargon.|0
+conventional wisdom|/kənˈvenʃənl ˈwɪzdəm/|阅读考点：传统普遍观点|同义：prevailing belief / common assumption|Real-world data often challenges conventional wisdom.|0
+blind pursuit of|/blaɪnd pəˈsjuːt əv/|写作批判：盲目追求|搭配：fame and fortune / short-term gains|Beware of the blind pursuit of material wealth.|0
+short-sighted approach|/ˌʃɔːt ˈsaɪtɪd əˈprəʊtʃ/|写作批判：短视的做法|反义：far-sighted vision|Sacrificing ecology for profit is a short-sighted approach.|0
+pressing issue|/ˈpresɪŋ ˈɪʃuː/|写作高频：紧迫问题|同义：urgent problem / acute challenge|Climate change remains a pressing global issue.|0
+silver lining|/ˈsɪlvə ˈlaɪnɪŋ/|写作地道：一线希望；因祸得福|出处：every cloud has a silver lining|Every crisis carries a silver lining for reform.|0
+tip of the iceberg|/tɪp əv ði ˈaɪsbɜːɡ/|写作/阅读：冰山一角|含义：small visible part of a huge issue|Reported cases are merely the tip of the iceberg.|0
+food for thought|/fuːd fə θɔːt/|写作收尾：发人深省的事|同义：worthy of reflection|These findings offer valuable food for thought.|0
+step out of one's comfort zone|/step aʊt əv wʌnz ˈkʌmfət zəʊn/|写作励志：走出舒适区|搭配：embrace challenges|Step out of your comfort zone to unlock growth.|0
+stand the test of time|/stænd ðə test əv taɪm/|翻译/写作：经受住时间考验|同义：endure over centuries|Classic literature can always stand the test of time.|0
+time-honored tradition|/ˌtaɪm ˈɒnəd trəˈdɪʃn/|翻译亮点：历史悠久的传统|同义：age-old custom|Respect time-honored cultural traditions.|0
+root cause|/ruːt kɔːz/|阅读/写作：根本原因|同义：underlying factor|Address the root cause of workplace burnout.|0
+spillover effect|/ˈspɪləʊvə ɪˈfekt/|阅读/写作：溢出效应；波及效应|搭配：ripple impact|Technological innovation creates positive spillover effects.|0
+wealth disparity|/welθ dɪˈspærəti/|写作/阅读：贫富差距|同义：income inequality / gap|Narrow the wealth disparity across regions.|0
+cost-effective solution|/ˌkɒst ɪˈfektɪv səˈluːʃn/|写作亮点：高性价比方案|同义：economical and efficient|Adopt cost-effective solutions for clean water.|0
+hands-on experience|/ˌhændz ˈɒn ɪkˈspɪəriəns/|写作高频：实践经验|同义：practical exposure|Gain hands-on experience through internships.|0
+work-life balance|/ˌwɜːk laɪf ˈbæləns/|写作高频：工作与生活平衡|搭配：prevent burnout|Protect work-life balance to boost productivity.|0
+public welfare|/ˈpʌblɪk ˈwelfeə(r)/|翻译高频：公共福祉；公益事业|同义：common good / social well-being|Prioritize public welfare over private profit.|0
+low-carbon lifestyle|/ˌləʊ ˈkɑːbən ˈlaɪfstaɪl/|翻译高频：低碳生活方式|搭配：green commuting|Adopt a low-carbon lifestyle in daily commuting.|0
+information overload|/ˌɪnfəˈmeɪʃn ˈəʊvələʊd/|写作高频：信息过载|搭配：digital detox|Combat information overload with selective reading.|0
+digital detox|/ˈdɪdʒɪtl ˈdiːtɒks/|阅读热点：数字排毒（远离电子屏幕）|搭配：unplug from devices|Schedule regular weekends for a digital detox.|0
+moral compass|/ˈmɒrəl ˈkʌmpəs/|写作亮点：道德准则；是非观|同义：ethical standard|Education shapes a young person's moral compass.|0
+catalyst for change|/ˈkætəlɪst fə tʃeɪndʒ/|写作亮点：变革的催化剂|同义：impetus / driving force|Adversity often acts as a catalyst for change.|0
+collective effort|/kəˈlektɪv ˈefət/|写作收尾：共同努力|同义：joint endeavor / concerted action|Solving global warming requires collective effort.|0
+social cohesion|/ˈsəʊʃl kəʊˈhiːʒn/|写作高频：社会凝聚力|同义：community solidarity|Volunteer programs strengthen social cohesion.|0
+green infrastructure|/ɡriːn ˈɪnfrəstrʌktʃə(r)/|翻译/写作：绿色基础设施|搭配：urban parks / solar grids|Invest heavily in urban green infrastructure.|0
+mental resilience|/ˈmentl rɪˈzɪliəns/|写作亮点：心理韧性|同义：emotional toughness|Build mental resilience against setbacks.|0
+lifelong learning|/ˌlaɪflɒŋ ˈlɜːnɪŋ/|写作高频：终身学习|搭配：adaptability / skill renewal|Embrace lifelong learning in an AI era.|0
+consumer confidence|/kənˈsjuːmə ˈkɒnfɪdəns/|经济阅读：消费者信心|搭配：retail spending|Rising inflation tends to dampen consumer confidence.|0
+fair competition|/feə ˌkɒmpɪˈtɪʃn/|阅读高频：公平竞争|搭配：antitrust regulation|Regulate digital markets to encourage fair competition.|0
+ecological restoration|/ˌiːkəˈlɒdʒɪkl ˌrestəˈreɪʃn/|翻译高频：生态修复|搭配：protect biodiversity|Accelerate ecological restoration of wetlands.|0
+harmonious coexistence|/hɑːˈməʊniəs ˌkəʊɪɡˈzɪstəns/|翻译高频：和谐共生|搭配：human and nature|Strive for harmonious coexistence between man and nature.|0
+win-win cooperation|/ˌwɪn ˈwɪn kəʊˌɒpəˈreɪʃn/|翻译高频：合作共赢|同义：mutual benefit|Promote win-win cooperation across borders.|0
+pillar of society|/ˈpɪlə əv səˈsaɪəti/|写作亮点：社会支柱|同义：backbone / cornerstone|Teachers serve as an essential pillar of society.|0`,
+
+  connectors: `nevertheless|/ˌnevəðəˈles/|adv. 然而；尽管如此|转折逻辑：nonetheless / however|The task is tough; nevertheless, we must persist.|0
+nonetheless|/ˌnʌnðəˈles/|adv. 尽管如此；依然|转折逻辑：nevertheless / even so|Risks remain; nonetheless, progress is encouraging.|0
+conversely|/ˈkɒnvɜːsli/|adv. 相反地|对比逻辑：on the contrary / in contrast|Conversely, excessive meetings drain focus.|0
+notwithstanding|/ˌnɒtwɪθˈstændɪŋ/|prep./adv. 尽管；虽然|让步逻辑：despite / in spite of|Notwithstanding the delay, quality remained high.|0
+whereas|/ˌweərˈæz/|conj. 然而；鉴于；尽管|对比逻辑：while / in contrast to|Employees spend hours in meetings, whereas tasks pile up.|0
+albeit|/ˌɔːlˈbiːɪt/|conj. 尽管；虽然（接短语）|让步逻辑：although / though|Progress was steady, albeit slower than expected.|0
+hence|/hens/|adv. 因此；由此|因果逻辑：therefore / thus / consequently|Costs soared; hence the need for austerity.|0
+thus|/ðʌs/|adv. 因此；从而；如此|因果逻辑：therefore / thereby|Habits are learned; thus they can be unlearned.|0
+thereby|/ˌðeəˈbaɪ/|adv. 从而；借此|结果逻辑：thus / as a result|Streamline workflows, thereby cutting burnout.|0
+consequently|/ˈkɒnsɪkwəntli/|adv. 因此；结果|因果逻辑：as a result / accordingly|Insects declined; consequently, spiders lost food.|0
+accordingly|/əˈkɔːdɪŋli/|adv. 相应地；因此|顺承因果：therefore / correspondingly|Demand shifted, and output was adjusted accordingly.|0
+meanwhile|/ˈmiːnwaɪl/|adv. 与此同时；另一方面|并列/对比：at the same time / simultaneously|Meanwhile, China is exploring home-based care models.|0
+simultaneously|/ˌsɪmlˈteɪniəsli/|adv. 同时地|并列逻辑：at the same time / concurrently|Two forces operate simultaneously.|0
+moreover|/mɔːrˈəʊvə(r)/|adv. 而且；此外|递进逻辑：furthermore / in addition|Moreover, public skepticism is growing.|0
+furthermore|/ˌfɜːðəˈmɔː(r)/|adv. 此外；而且|递进逻辑：moreover / besides|Furthermore, early exposure builds empathy.|0
+additionally|/əˈdɪʃənəli/|adv. 此外；另外|补充递进：in addition / what is more|Additionally, seniors receive door-to-door meals.|0
+specifically|/spəˈsɪfɪkli/|adv. 具体而言；明确地|举例/细化：namely / in particular|Specifically, three factors drive this trend.|0
+namely|/ˈneɪmli/|adv. 即；也就是|解释说明：specifically / that is to say|Two causes stand out, namely pesticides and sprawl.|0
+essentially|/ɪˈsenʃəli/|adv. 本质上；基本上|总结归纳：fundamentally / in essence|The fear is essentially about social judgment.|0
+fundamentally|/ˌfʌndəˈmentəli/|adv. 从根本上说|核心归纳：essentially / at root|The model is fundamentally flawed.|0
+ironically|/aɪˈrɒnɪkli/|adv. 具有讽刺意味的是|态度转折：paradoxically|Ironically, multitasking lowers overall efficiency.|0
+paradoxically|/ˌpærəˈdɒksɪkli/|adv. 似非而是地；反常地|反差转折：ironically|Paradoxically, abundance can trigger anxiety.|0
+presumably|/prɪˈzjuːməbli/|adv. 据推测；大概|推断语气：supposedly / likely|Presumably, the story was invented by a reporter.|0
+seemingly|/ˈsiːmɪŋli/|adv. 表面上；看似|表里对比：apparently / ostensibly|Seemingly harmless habits erode focus.|0
+ostensibly|/ɒˈstensəbli/|adv. 表面上；佯称|表里对比：seemingly / superficially|Ostensibly designed to save time, the tool adds steps.|0
+virtually|/ˈvɜːtʃuəli/|adv. 实际上；几乎|程度限定：practically / almost|Virtually every participant agreed.|0
+literally|/ˈlɪtərəli/|adv. 照字面地；简直|强调程度：word for word / actually|Take the metaphor literally.|0
+hitherto|/ˌhɪðəˈtuː/|adv. 迄今为止|时间衔接：so far / until now|Hitherto unexplored ocean depths.|0
+subsequently|/ˈsʌbsɪkwəntli/|adv. 随后；接着|时间顺承：afterward / later|The law was subsequently revised.|0
+ultimately|/ˈʌltɪmətli/|adv. 最终；归根结底|总结收尾：eventually / in the end|Ultimately, action matters more than plans.|0
+eventually|/ɪˈventʃuəli/|adv. 终于；最终|结果衔接：ultimately / finally|The truth eventually came to light.|0
+predominantly|/prɪˈdɒmɪnəntli/|adv. 主要地；占主导地|范围限定：mainly / largely|Predominantly urban populations.|0
+exclusively|/ɪkˈskluːsɪvli/|adv. 排外地；专有地|唯一限定：solely / only|Rely exclusively on willpower.|0
+merely|/ˈmɪəli/|adv. 仅仅；只不过|轻量限定：simply / only|Not merely a personal preference.|0
+barely|/ˈbeəli/|adv. 勉强；几乎不|否定倾向：hardly / scarcely|Barely enough time to recover.|0
+scarcely|/ˈskeəsli/|adv. 几乎不；简直不|否定倒装：hardly / rarely|Scarcely had the meeting ended when another began.|0
+seldom|/ˈseldəm/|adv. 很少；难得|否定频度：rarely|Seldom do policies succeed without oversight.|0
+regardless of|/rɪˈɡɑːdləs əv/|prep. 不顾；不管|让步介短：irrespective of|Regardless of age or background.|0
+in spite of|/ɪn spaɪt əv/|prep. 尽管；不顾|让步介短：despite / notwithstanding|In spite of harsh weather, bamboo thrives.|0
+contrary to|/ˈkɒntrəri tuː/|prep. 与……相反|对比介短：in contrast to / against|Contrary to popular belief, kids read others' minds.|0
+in contrast to|/ɪn ˈkɒntrɑːst tuː/|prep. 与……形成对比|对比介短：unlike / as opposed to|In contrast to traditional lectures, labs spark curiosity.|0
+as opposed to|/əz əˈpəʊzd tuː/|prep. 而不是；与……相对|对比介短：rather than / instead of|Focus on long-term value as opposed to quick gains.|0
+rather than|/ˈrɑːðə ðæn/|conj./prep. 而不是；宁愿……也不|选择对比：instead of|Arouses pity rather than respect.|0
+apart from|/əˈpɑːt frɒm/|prep. 除了……之外（还/没有）|排除/补充：aside from / besides|Apart from money, what drives career worry?|0
+aside from|/əˈsaɪd frɒm/|prep. 除……以外|排除/补充：apart from / except for|Aside from cost, reliability matters.|0
+owing to|/ˈəʊɪŋ tuː/|prep. 由于；因为|因果介短：due to / because of|Owing to rising demand, prices climbed.|0
+due to|/djuː tuː/|prep. 由于；归因于|因果介短：owing to / attributed to|Delays due to poor coordination.|0
+on account of|/ɒn əˈkaʊnt əv/|prep. 因为；由于|因果介短：because of / owing to|Canceled on account of severe weather.|0
+by virtue of|/baɪ ˈvɜːtʃuː əv/|prep. 凭借；由于|手段/因果：through / thanks to|Succeed by virtue of persistent discipline.|0
+by means of|/baɪ miːnz əv/|prep. 通过；借助于|手段介短：via / through|Transfer ownership by means of a legal deed.|0
+with respect to|/wɪð rɪˈspekt tuː/|prep. 关于；至于|话题引入：regarding / concerning|With respect to renewable energy, Germany leads.|0
+in terms of|/ɪn tɜːmz əv/|prep. 就……而言；在……方面|视角限定：regarding / measured by|Evaluate cities in terms of livability.|0
+in light of|/ɪn laɪt əv/|prep. 鉴于；考虑到|依据推理：given / considering|In light of new evidence, revise the model.|0
+in accordance with|/ɪn əˈkɔːdns wɪð/|prep. 依照；与……一致|合规依据：in line with / complying with|Act in accordance with safety guidelines.|0
+in favor of|/ɪn ˈfeɪvər əv/|prep. 支持；赞成；有利于|立场表达：supporting / for|Vote in favor of stricter oversight.|0
+in pursuit of|/ɪn pəˈsjuːt əv/|prep. 追求；寻求|目标动机：seeking / chasing|In pursuit of fame and fortune.|0
+in response to|/ɪn rɪˈspɒns tuː/|prep. 作为对……的回应|因果衔接：reacting to|Adapt quickly in response to market shifts.|0
+in proportion to|/ɪn prəˈpɔːʃn tuː/|prep. 与……成比例|数量比较：relative to|Rewards should grow in proportion to productivity.|0
+on behalf of|/ɒn bɪˈhɑːf əv/|prep. 代表；为了|代表立场：representing|Speak on behalf of frontline workers.|0
+on the contrary|/ɒn ðə ˈkɒntrəri/|adv. 恰恰相反|强力反驳：conversely|On the contrary, variability aids memory.|0
+on the other hand|/ɒn ði ˈʌðə hænd/|adv. 另一方面|双面论证：conversely|On the other hand, overuse causes burnout.|0
+by contrast|/baɪ ˈkɒntrɑːst/|adv. 相比之下|鲜明对比：conversely / in contrast|By contrast, rural broadband lags behind.|0
+in essence|/ɪn ˈesns/|adv. 本质上；实质上|精炼总结：essentially / basically|In essence, habits are learned behaviors.|0
+in retrospect|/ɪn ˈretrəspekt/|adv. 回顾往事；事后看来|时间反思：looking back|In retrospect, early intervention saved costs.|0
+by and large|/baɪ ənd lɑːdʒ/|adv. 总的来说；大体上|总体概括：generally speaking / on the whole|By and large, the reform proved effective.|0
+all in all|/ɔːl ɪn ɔːl/|adv. 总而言之；从各方面看|结尾总结：overall / in summary|All in all, knowledge and action must unite.|0
+to some extent|/tuː sʌm ɪkˈstent/|adv. 在一定程度上|客观留余地：partially / up to a point|Technology alleviates workload to some extent.|0
+above all|/əˈbʌv ɔːl/|adv. 最重要的是；首先|强调递进：most importantly|Above all, cultivate genuine curiosity.|0
+for the sake of|/fə ðə seɪk əv/|prep. 为了……的缘故|目的表达：for the benefit of|Pause for the sake of mental clarity.|0
+at all costs|/ət ɔːl kɒsts/|adv. 不惜一切代价|决心强调：regardless of price|Protect biodiversity at all costs.|0
+provided that|/prəˈvaɪdɪd ðæt/|conj. 假如；只要|条件限定：on condition that / as long as|Goals are reachable provided that you act daily.|0
+unless|/ənˈles/|conj. 除非；如果不|否定条件：if not|Change fails unless pleasure sustains it.|0
+lest|/lest/|conj. 唯恐；以免|防患虚拟：for fear that|Act today lest opportunities slip away.|0
+in case|/ɪn keɪs/|conj. 万一；以防|预防条件：in the event that|Prepare a backup plan in case delays occur.|0
+whereas in fact|/ˌweərˈæz ɪn fækt/|conj. 而事实上|真相揭露：when actually|Assumed effortless, whereas in fact it takes grit.|0
+even so|/ˈiːvn səʊ/|adv. 即使如此；即便那样|让步转折：nevertheless / nonetheless|Data is sparse; even so, patterns emerge.|0
+as a result|/əz ə rɪˈzʌlt/|adv. 结果；因此|因果衔接：consequently / therefore|As a result, local residents grew frustrated.|0
+for instance|/fɔːr ˈɪnstəns/|adv. 例如；比如|举例展开：for example|Take renewable transitions, for instance.|0
+in particular|/ɪn pəˈtɪkjələ(r)/|adv. 尤其；特别|聚焦强调：especially / specifically|Focus on reading speed in particular.|0
+as far as ... concerned|/əz fɑːr æz kənˈsɜːnd/|短语：就……而言|视角界定：regarding / from the viewpoint of|As far as privacy is concerned, vigilance is key.|0`
+};
+
+const CATEGORY_META = [
+  { key: 'verbs', label: '高频核心动词', shortLabel: '核心动词', desc: '阅读态度、因果推演与写作替换' },
+  { key: 'adjectives', label: '重点形容词/副词', shortLabel: '形容/副词', desc: '作者态度评价与选项精准修饰' },
+  { key: 'nouns', label: '必考名词', shortLabel: '必考名词', desc: '社会、科技、经济与文化议题' },
+  { key: 'writing', label: '写作/翻译高分表达', shortLabel: '写作翻译', desc: '高分句式搭配与汉译英地道表达' },
+  { key: 'connectors', label: '逻辑衔接与介词短语', shortLabel: '逻辑衔接', desc: '长难句转折、因果、递进枢纽词' }
+];
+
+const CATEGORY_MAP = {};
+CATEGORY_META.forEach(function (c) {
+  CATEGORY_MAP[c.key] = c;
+});
+
+function buildVocabularyBank() {
+  const list = [];
+  const seenIds = new Set();
+  CATEGORY_META.forEach(function (catMeta) {
+    const block = RAW_DATA[catMeta.key] || '';
+    const lines = block.split('\n');
+    lines.forEach(function (rawLine, idx) {
+      const line = rawLine.trim();
+      if (!line) return;
+      const parts = line.split('|');
+      const word = (parts[0] || '').trim();
+      if (!word) return;
+      let id = catMeta.key + ':' + word.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+      if (seenIds.has(id)) {
+        id = id + '_' + idx;
+      }
+      seenIds.add(id);
+      list.push({
+        id: id,
+        order: list.length,
+        category: catMeta.key,
+        categoryLabel: catMeta.label,
+        word: word,
+        ipa: (parts[1] || '').trim(),
+        def: (parts[2] || '').trim(),
+        syn: (parts[3] || '').trim(),
+        colloc: (parts[4] || '').trim(),
+        isSyn: (parts[5] || '').trim() === '1'
+      });
+    });
+  });
+  return list;
+}
+
+const WORDS = buildVocabularyBank();
+const WORD_BY_ID = {};
+WORDS.forEach(function (w) {
+  WORD_BY_ID[w.id] = w;
+});
+
+function getLocalDateKey() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + d;
+}
+
+const APP_STATE = {
+  counts: {},
+  todayDate: getLocalDateKey(),
+  todayTicks: 0,
+  totalTicks: 0,
+  activeCategory: 'all',
+  masteryFilter: 'all',
+  customOp: 'lt',
+  customThreshold: 3,
+  examTagFilter: 'all',
+  sortMode: 'default',
+  pageSize: 24,
+  selfTestMode: false,
+  mode: 'list',
+  sprintScope: 'weak'
+};
+
+let currentPage = 1;
+let searchQuery = '';
+let searchDebounceTimer = null;
+let revealedIds = new Set();
+let sprintQueue = [];
+let sprintIndex = 0;
+let sprintRevealed = false;
+let resetConfirmTimer = null;
+let resetArmed = false;
+let saveDebounceTimer = null;
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function getWordCount(wordId) {
+  const val = APP_STATE.counts[wordId];
+  return typeof val === 'number' && val > 0 ? val : 0;
+}
+
+function setSyncStatus(text, isSaving) {
+  const statusTextEl = document.getElementById('sync-status-text');
+  const dotEl = document.querySelector('#sync-status .sync-dot');
+  if (statusTextEl) {
+    statusTextEl.textContent = text;
+  }
+  if (dotEl) {
+    dotEl.style.background = isSaving ? 'var(--warning)' : 'var(--positive)';
+  }
+}
+
+function schedulePersistState() {
+  setSyncStatus('正在同步记录…', true);
+  if (saveDebounceTimer) {
+    clearTimeout(saveDebounceTimer);
+  }
+  saveDebounceTimer = setTimeout(function () {
+    persistStateNow();
+  }, 150);
+}
+
+async function persistStateNow() {
+  const compactCounts = {};
+  Object.keys(APP_STATE.counts).forEach(function (k) {
+    const v = APP_STATE.counts[k];
+    if (typeof v === 'number' && v > 0 && WORD_BY_ID[k]) {
+      compactCounts[k] = Math.min(99, Math.floor(v));
+    }
+  });
+  const payload = {
+    counts: compactCounts,
+    todayDate: APP_STATE.todayDate,
+    todayTicks: APP_STATE.todayTicks,
+    totalTicks: APP_STATE.totalTicks,
+    activeCategory: APP_STATE.activeCategory,
+    masteryFilter: APP_STATE.masteryFilter,
+    customOp: APP_STATE.customOp,
+    customThreshold: APP_STATE.customThreshold,
+    examTagFilter: APP_STATE.examTagFilter,
+    sortMode: APP_STATE.sortMode,
+    pageSize: APP_STATE.pageSize,
+    selfTestMode: APP_STATE.selfTestMode,
+    mode: APP_STATE.mode,
+    sprintScope: APP_STATE.sprintScope
+  };
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+      await window.notebookAppApi.setAppState(payload);
+    }
+    setSyncStatus('进度已自动保存', false);
+  } catch (err) {
+    setSyncStatus('保存异常，请勿立即关闭', true);
+  }
+}
+
+async function loadPersistedState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+      const saved = await window.notebookAppApi.getAppState();
+      if (saved && typeof saved === 'object') {
+        if (saved.counts && typeof saved.counts === 'object') {
+          const cleanCounts = {};
+          Object.keys(saved.counts).forEach(function (k) {
+            const val = Number(saved.counts[k]);
+            if (WORD_BY_ID[k] && Number.isFinite(val) && val > 0) {
+              cleanCounts[k] = Math.min(99, Math.floor(val));
+            }
+          });
+          APP_STATE.counts = cleanCounts;
+        }
+        const today = getLocalDateKey();
+        if (saved.todayDate === today) {
+          APP_STATE.todayDate = today;
+          APP_STATE.todayTicks = Number(saved.todayTicks) || 0;
+        } else {
+          APP_STATE.todayDate = today;
+          APP_STATE.todayTicks = 0;
+        }
+        APP_STATE.totalTicks = Number(saved.totalTicks) || 0;
+        if (typeof saved.activeCategory === 'string') APP_STATE.activeCategory = saved.activeCategory;
+        if (typeof saved.masteryFilter === 'string') APP_STATE.masteryFilter = saved.masteryFilter;
+        if (typeof saved.customOp === 'string') APP_STATE.customOp = saved.customOp;
+        if (Number.isFinite(Number(saved.customThreshold))) APP_STATE.customThreshold = Number(saved.customThreshold);
+        if (typeof saved.examTagFilter === 'string') APP_STATE.examTagFilter = saved.examTagFilter;
+        if (typeof saved.sortMode === 'string') APP_STATE.sortMode = saved.sortMode;
+        if (Number.isFinite(Number(saved.pageSize))) APP_STATE.pageSize = Number(saved.pageSize);
+        if (typeof saved.selfTestMode === 'boolean') APP_STATE.selfTestMode = saved.selfTestMode;
+        if (saved.mode === 'list' || saved.mode === 'sprint') APP_STATE.mode = saved.mode;
+        if (typeof saved.sprintScope === 'string') APP_STATE.sprintScope = saved.sprintScope;
+        setSyncStatus('已恢复上次学习记录', false);
+      }
+    }
+  } catch (err) {
+    setSyncStatus('自动存档已就绪', false);
+  }
+}
+
+function getMasteryInfo(count) {
+  if (count >= 3) {
+    return {
+      status: 'mastered',
+      badgeClass: 'badge-mastered',
+      label: '已熟练 ' + count + '次',
+      cardClass: 'is-mastered'
+    };
+  }
+  if (count >= 1) {
+    return {
+      status: 'reinforce',
+      badgeClass: 'badge-learning',
+      label: '巩固中 ' + count + '次',
+      cardClass: 'is-learning'
+    };
+  }
+  return {
+    status: 'unseen',
+    badgeClass: 'badge-unseen',
+    label: '未打卡 0次',
+    cardClass: ''
+  };
+}
+
+function matchesMasteryCondition(count) {
+  const filter = APP_STATE.masteryFilter;
+  if (filter === 'all') return true;
+  if (filter === 'weak') return count < 3;
+  if (filter === 'unseen') return count === 0;
+  if (filter === 'reinforce') return count >= 1 && count <= 2;
+  if (filter === 'mastered') return count >= 3;
+  if (filter === 'custom') {
+    const threshold = Math.max(0, Math.min(20, Number(APP_STATE.customThreshold) || 0));
+    const op = APP_STATE.customOp;
+    if (op === 'lt') return count < threshold;
+    if (op === 'lte') return count <= threshold;
+    if (op === 'eq') return count === threshold;
+    if (op === 'gte') return count >= threshold;
+  }
+  return true;
+}
+
+function getFilteredWords() {
+  const q = searchQuery.trim().toLowerCase();
+  const filtered = WORDS.filter(function (w) {
+    if (APP_STATE.activeCategory !== 'all' && w.category !== APP_STATE.activeCategory) {
+      return false;
+    }
+    if (APP_STATE.examTagFilter === 'synonym' && !w.isSyn) {
+      return false;
+    }
+    const count = getWordCount(w.id);
+    if (!matchesMasteryCondition(count)) {
+      return false;
+    }
+    if (q) {
+      const haystack = (w.word + ' ' + w.def + ' ' + w.syn + ' ' + w.colloc).toLowerCase();
+      if (haystack.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  const sortMode = APP_STATE.sortMode;
+  if (sortMode === 'count-asc') {
+    filtered.sort(function (a, b) {
+      return getWordCount(a.id) - getWordCount(b.id) || a.order - b.order;
+    });
+  } else if (sortMode === 'count-desc') {
+    filtered.sort(function (a, b) {
+      return getWordCount(b.id) - getWordCount(a.id) || a.order - b.order;
+    });
+  } else if (sortMode === 'alpha') {
+    filtered.sort(function (a, b) {
+      return a.word.localeCompare(b.word);
+    });
+  }
+  return filtered;
+}
+
+function updateDashboard() {
+  const total = WORDS.length;
+  let mastered = 0;
+  let learning = 0;
+  let unseen = 0;
+
+  const catStats = {};
+  CATEGORY_META.forEach(function (c) {
+    catStats[c.key] = { total: 0, mastered: 0, weak: 0 };
+  });
+
+  WORDS.forEach(function (w) {
+    const c = getWordCount(w.id);
+    if (c >= 3) {
+      mastered += 1;
+      catStats[w.category].mastered += 1;
+    } else {
+      catStats[w.category].weak += 1;
+      if (c >= 1) learning += 1;
+      else unseen += 1;
+    }
+    catStats[w.category].total += 1;
+  });
+
+  const touched = mastered + learning;
+  const pct = total > 0 ? ((mastered / total) * 100).toFixed(1) : '0.0';
+  const masteredPctWidth = total > 0 ? (mastered / total) * 100 : 0;
+  const learningPctWidth = total > 0 ? (learning / total) * 100 : 0;
+
+  const statMasteredEl = document.getElementById('stat-mastered');
+  const statMasteredPctEl = document.getElementById('stat-mastered-pct');
+  const barMasteredEl = document.getElementById('bar-mastered');
+  const barLearningEl = document.getElementById('bar-learning');
+  const progressBarEl = document.getElementById('total-progressbar');
+  const countMasteredEl = document.getElementById('count-mastered');
+  const countLearningEl = document.getElementById('count-learning');
+  const countUnseenEl = document.getElementById('count-unseen');
+  const totalTicksEl = document.getElementById('stat-total-ticks');
+  const todayTicksEl = document.getElementById('stat-today-ticks');
+  const touchedEl = document.getElementById('stat-touched');
+
+  if (statMasteredEl) statMasteredEl.innerHTML = mastered + '<span class="sub-unit">/ ' + total + ' 词</span>';
+  if (statMasteredPctEl) statMasteredPctEl.textContent = pct + '%';
+  if (barMasteredEl) barMasteredEl.style.width = masteredPctWidth.toFixed(2) + '%';
+  if (barLearningEl) barLearningEl.style.width = learningPctWidth.toFixed(2) + '%';
+  if (progressBarEl) {
+    progressBarEl.setAttribute('aria-valuemax', String(total));
+    progressBarEl.setAttribute('aria-valuenow', String(mastered));
+  }
+  if (countMasteredEl) countMasteredEl.textContent = String(mastered);
+  if (countLearningEl) countLearningEl.textContent = String(learning);
+  if (countUnseenEl) countUnseenEl.textContent = String(unseen);
+  if (totalTicksEl) totalTicksEl.innerHTML = APP_STATE.totalTicks + '<span class="sub-unit">次</span>';
+  if (todayTicksEl) todayTicksEl.textContent = APP_STATE.todayTicks + ' 次';
+  if (touchedEl) touchedEl.textContent = touched + ' / ' + total;
+
+  // Update category breakdown in dashboard
+  const breakdownEl = document.getElementById('cat-breakdown');
+  if (breakdownEl) {
+    breakdownEl.innerHTML = CATEGORY_META.map(function (c) {
+      const st = catStats[c.key];
+      const ratio = st.total > 0 ? Math.round((st.mastered / st.total) * 100) : 0;
+      return (
+        '<div class="cat-row" role="button" tabindex="0" onclick="selectCategoryFromDash(\'' + c.key + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectCategoryFromDash(\'' + c.key + '\');}">' +
+          '<span class="cat-row-name">' + escapeHtml(c.shortLabel) + '</span>' +
+          '<div class="cat-mini-track" aria-hidden="true"><div class="cat-mini-fill" style="width:' + ratio + '%"></div></div>' +
+          '<span class="cat-row-stat">' + st.mastered + '/' + st.total + '</span>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  // Update category filter pills
+  const catTabsEl = document.getElementById('category-tabs');
+  if (catTabsEl) {
+    const allActive = APP_STATE.activeCategory === 'all' ? ' is-active' : '';
+    let html = '<button type="button" class="pill-btn' + allActive + '" onclick="setCategoryFilter(\'all\')">全部分类 <span class="pill-count">' + total + '</span></button>';
+    CATEGORY_META.forEach(function (c) {
+      const st = catStats[c.key];
+      const act = APP_STATE.activeCategory === c.key ? ' is-active' : '';
+      html += '<button type="button" class="pill-btn' + act + '" onclick="setCategoryFilter(\'' + c.key + '\')">' +
+        escapeHtml(c.label) + ' <span class="pill-count">' + st.total + '</span></button>';
+    });
+    catTabsEl.innerHTML = html;
+  }
+
+  // Update mastery counts within active category
+  let scopeWords = WORDS;
+  if (APP_STATE.activeCategory !== 'all') {
+    scopeWords = WORDS.filter(function (w) { return w.category === APP_STATE.activeCategory; });
+  }
+  let fAll = scopeWords.length;
+  let fWeak = 0;
+  let fUnseen = 0;
+  let fReinforce = 0;
+  let fMastered = 0;
+  scopeWords.forEach(function (w) {
+    const cnt = getWordCount(w.id);
+    if (cnt >= 3) {
+      fMastered += 1;
+    } else {
+      fWeak += 1;
+      if (cnt === 0) fUnseen += 1;
+      else fReinforce += 1;
+    }
+  });
+  const fcAll = document.getElementById('fc-all');
+  const fcWeak = document.getElementById('fc-weak');
+  const fcUnseen = document.getElementById('fc-unseen');
+  const fcReinforce = document.getElementById('fc-reinforce');
+  const fcMastered = document.getElementById('fc-mastered');
+  if (fcAll) fcAll.textContent = String(fAll);
+  if (fcWeak) fcWeak.textContent = String(fWeak);
+  if (fcUnseen) fcUnseen.textContent = String(fUnseen);
+  if (fcReinforce) fcReinforce.textContent = String(fReinforce);
+  if (fcMastered) fcMastered.textContent = String(fMastered);
+}
+
+function renderDotsHtml(count) {
+  let dots = '';
+  for (let i = 1; i <= 3; i += 1) {
+    dots += '<span class="tick-dot' + (count >= i ? ' is-filled' : '') + '"></span>';
+  }
+  return '<span class="tick-dots" aria-hidden="true">' + dots + '</span>';
+}
+
+function renderCards() {
+  const filtered = getFilteredWords();
+  const totalFiltered = filtered.length;
+  const pageSize = APP_STATE.pageSize >= 999 ? Math.max(1, totalFiltered) : APP_STATE.pageSize;
+  const totalPages = Math.max(1, Math.ceil(totalFiltered / pageSize));
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const startIdx = (currentPage - 1) * pageSize;
+  const endIdx = Math.min(totalFiltered, startIdx + pageSize);
+  const pageItems = filtered.slice(startIdx, endIdx);
+
+  const gridEl = document.getElementById('word-grid');
+  const gridWrapEl = document.getElementById('word-grid-container');
+  const emptyEl = document.getElementById('empty-state');
+  const paginationEl = document.getElementById('pagination-bar');
+  const summaryEl = document.getElementById('results-summary');
+  const pageInfoEl = document.getElementById('pagination-info');
+  const pageBadgeEl = document.getElementById('page-num-badge');
+  const prevBtn = document.getElementById('prev-page-btn');
+  const nextBtn = document.getElementById('next-page-btn');
+
+  if (totalFiltered === 0) {
+    if (gridWrapEl) gridWrapEl.classList.add('is-hidden');
+    if (emptyEl) emptyEl.classList.remove('is-hidden');
+    if (paginationEl) paginationEl.classList.add('is-hidden');
+    if (summaryEl) summaryEl.textContent = '共找到 0 个匹配词条';
+    return;
+  }
+
+  if (gridWrapEl) gridWrapEl.classList.remove('is-hidden');
+  if (emptyEl) emptyEl.classList.add('is-hidden');
+  if (paginationEl) paginationEl.classList.remove('is-hidden');
+
+  if (summaryEl) {
+    summaryEl.textContent = '显示第 ' + (startIdx + 1) + '–' + endIdx + ' 词，共 ' + totalFiltered + ' 词';
+  }
+  if (pageInfoEl) {
+    pageInfoEl.textContent = '第 ' + currentPage + ' / ' + totalPages + ' 页（每页 ' + (APP_STATE.pageSize >= 999 ? '全部' : pageSize) + ' 词）';
+  }
+  if (pageBadgeEl) pageBadgeEl.textContent = currentPage + ' / ' + totalPages;
+  if (prevBtn) prevBtn.disabled = currentPage <= 1;
+  if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+  if (!gridEl) return;
+
+  gridEl.innerHTML = pageItems.map(function (w) {
+    const count = getWordCount(w.id);
+    const info = getMasteryInfo(count);
+    const isHiddenInSelfTest = APP_STATE.selfTestMode && !revealedIds.has(w.id);
+    const safeId = escapeHtml(w.id);
+    const catShort = CATEGORY_MAP[w.category] ? CATEGORY_MAP[w.category].shortLabel : w.categoryLabel;
+
+    const answerBlock = isHiddenInSelfTest
+      ? '<button type="button" class="reveal-mask" onclick="revealSingleCard(\'' + safeId + '\')">' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>' +
+          '点击翻牌显示释义与真题搭配' +
+        '</button>'
+      : '<div class="word-def">' + escapeHtml(w.def) + '</div>' +
+        (w.syn ? '<div class="word-syn">' + escapeHtml(w.syn) + '</div>' : '') +
+        (w.colloc ? '<div class="word-colloc">' + escapeHtml(w.colloc) + '</div>' : '');
+
+    return (
+      '<article class="word-card ' + info.cardClass + '" data-word-id="' + safeId + '">' +
+        '<div class="card-top">' +
+          '<div class="card-tags">' +
+            '<span class="tag-sage">' + escapeHtml(catShort) + '</span>' +
+            (w.isSyn ? '<span class="tag-syn">同义替换高频</span>' : '') +
+          '</div>' +
+          '<span class="mastery-badge ' + info.badgeClass + '">' + escapeHtml(info.label) + '</span>' +
+        '</div>' +
+        '<div class="word-head">' +
+          '<div class="word-title-wrap">' +
+            '<h3 class="word-title">' + escapeHtml(w.word) + '</h3>' +
+            (w.ipa ? '<span class="word-ipa">' + escapeHtml(w.ipa) + '</span>' : '') +
+          '</div>' +
+          '<button type="button" class="speak-btn" aria-label="朗读 ' + escapeHtml(w.word) + '" onclick="speakWordById(\'' + safeId + '\')">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="card-body">' + answerBlock + '</div>' +
+        '<div class="card-actions">' +
+          '<button type="button" class="btn-minus" aria-label="减少一次打卡" title="撤回一次打卡" ' + (count <= 0 ? 'disabled' : '') + ' onclick="adjustWordCount(\'' + safeId + '\', -1)">−1</button>' +
+          '<button type="button" class="btn-checkin ' + (count >= 3 ? 'is-mastered-btn' : '') + '" onclick="adjustWordCount(\'' + safeId + '\', 1)">' +
+            '<span>' + (count >= 3 ? '✓ 巩固 +1' : '✓ 打卡 +1') + '</span>' +
+            renderDotsHtml(count) +
+          '</button>' +
+        '</div>' +
+      '</article>'
+    );
+  }).join('');
+}
+
+function syncFilterButtonsUI() {
+  const filterBtns = document.querySelectorAll('#mastery-filters .pill-btn');
+  filterBtns.forEach(function (btn) {
+    const f = btn.getAttribute('data-filter');
+    if (f === APP_STATE.masteryFilter) btn.classList.add('is-active');
+    else btn.classList.remove('is-active');
+  });
+
+  const customBar = document.getElementById('custom-filter-bar');
+  if (customBar) {
+    if (APP_STATE.masteryFilter === 'custom') customBar.classList.remove('is-hidden');
+    else customBar.classList.add('is-hidden');
+  }
+
+  const opEl = document.getElementById('custom-op');
+  const thrEl = document.getElementById('custom-threshold');
+  const tagEl = document.getElementById('exam-tag-filter');
+  const sortEl = document.getElementById('sort-select');
+  const pageSizeEl = document.getElementById('page-size-select');
+  const scopeEl = document.getElementById('sprint-scope');
+
+  if (opEl) opEl.value = APP_STATE.customOp;
+  if (thrEl) thrEl.value = String(APP_STATE.customThreshold);
+  if (tagEl) tagEl.value = APP_STATE.examTagFilter;
+  if (sortEl) sortEl.value = APP_STATE.sortMode;
+  if (pageSizeEl) pageSizeEl.value = String(APP_STATE.pageSize);
+  if (scopeEl) scopeEl.value = APP_STATE.sprintScope;
+
+  const selfTestBtn = document.getElementById('self-test-toggle');
+  const selfTestLbl = document.getElementById('self-test-label');
+  const revealAllBtn = document.getElementById('reveal-all-btn');
+  const hideAllBtn = document.getElementById('hide-all-btn');
+
+  if (selfTestBtn) {
+    selfTestBtn.setAttribute('aria-pressed', APP_STATE.selfTestMode ? 'true' : 'false');
+    if (APP_STATE.selfTestMode) selfTestBtn.classList.add('is-active');
+    else selfTestBtn.classList.remove('is-active');
+  }
+  if (selfTestLbl) {
+    selfTestLbl.textContent = APP_STATE.selfTestMode
+      ? '自测模式：已隐去释义（点击卡片翻牌）'
+      : '自测模式：当前显示释义（点击隐去）';
+  }
+  if (revealAllBtn && hideAllBtn) {
+    if (APP_STATE.selfTestMode) {
+      revealAllBtn.classList.remove('is-hidden');
+      hideAllBtn.classList.remove('is-hidden');
+    } else {
+      revealAllBtn.classList.add('is-hidden');
+      hideAllBtn.classList.add('is-hidden');
+    }
+  }
+}
+
+function adjustWordCount(wordId, delta) {
+  if (!WORD_BY_ID[wordId]) return;
+  const prev = getWordCount(wordId);
+  const next = Math.max(0, Math.min(99, prev + delta));
+  if (next === prev) return;
+
+  if (next === 0) delete APP_STATE.counts[wordId];
+  else APP_STATE.counts[wordId] = next;
+
+  const today = getLocalDateKey();
+  if (APP_STATE.todayDate !== today) {
+    APP_STATE.todayDate = today;
+    APP_STATE.todayTicks = 0;
+  }
+
+  if (delta > 0) {
+    APP_STATE.totalTicks += 1;
+    APP_STATE.todayTicks += 1;
+  } else if (delta < 0) {
+    APP_STATE.totalTicks = Math.max(0, APP_STATE.totalTicks - 1);
+    APP_STATE.todayTicks = Math.max(0, APP_STATE.todayTicks - 1);
+  }
+
+  updateDashboard();
+  renderCards();
+  if (APP_STATE.mode === 'sprint') {
+    renderSprintCard();
+  }
+  schedulePersistState();
+}
+
+function setCategoryFilter(catKey) {
+  APP_STATE.activeCategory = catKey;
+  currentPage = 1;
+  updateDashboard();
+  renderCards();
+  schedulePersistState();
+}
+
+function selectCategoryFromDash(catKey) {
+  if (APP_STATE.mode !== 'list') {
+    switchMode('list');
+  }
+  setCategoryFilter(catKey);
+  const viewListEl = document.getElementById('view-list');
+  if (viewListEl) {
+    viewListEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function setMasteryFilter(filterKey) {
+  APP_STATE.masteryFilter = filterKey;
+  currentPage = 1;
+  syncFilterButtonsUI();
+  renderCards();
+  schedulePersistState();
+}
+
+function applyFilters() {
+  const opEl = document.getElementById('custom-op');
+  const thrEl = document.getElementById('custom-threshold');
+  const tagEl = document.getElementById('exam-tag-filter');
+  const sortEl = document.getElementById('sort-select');
+
+  if (opEl) APP_STATE.customOp = opEl.value;
+  if (thrEl) {
+    const val = parseInt(thrEl.value, 10);
+    APP_STATE.customThreshold = Number.isFinite(val) ? Math.max(0, Math.min(20, val)) : 3;
+  }
+  if (tagEl) APP_STATE.examTagFilter = tagEl.value;
+  if (sortEl) APP_STATE.sortMode = sortEl.value;
+
+  currentPage = 1;
+  renderCards();
+  schedulePersistState();
+}
+
+function onSearchInput(val) {
+  searchQuery = val || '';
+  if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = setTimeout(function () {
+    currentPage = 1;
+    renderCards();
+  }, 150);
+}
+
+function changePageSize(val) {
+  const num = parseInt(val, 10);
+  APP_STATE.pageSize = Number.isFinite(num) ? num : 24;
+  currentPage = 1;
+  renderCards();
+  schedulePersistState();
+}
+
+function goPage(delta) {
+  currentPage += delta;
+  renderCards();
+  const gridEl = document.getElementById('view-list');
+  if (gridEl) {
+    gridEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function resetFilters() {
+  APP_STATE.activeCategory = 'all';
+  APP_STATE.masteryFilter = 'all';
+  APP_STATE.examTagFilter = 'all';
+  APP_STATE.sortMode = 'default';
+  searchQuery = '';
+  const searchEl = document.getElementById('search-input');
+  if (searchEl) searchEl.value = '';
+  currentPage = 1;
+  syncFilterButtonsUI();
+  updateDashboard();
+  renderCards();
+  schedulePersistState();
+}
+
+function toggleSelfTestMode() {
+  APP_STATE.selfTestMode = !APP_STATE.selfTestMode;
+  revealedIds.clear();
+  syncFilterButtonsUI();
+  renderCards();
+  schedulePersistState();
+}
+
+function revealSingleCard(wordId) {
+  revealedIds.add(wordId);
+  renderCards();
+}
+
+function revealAllCurrentPage() {
+  const filtered = getFilteredWords();
+  const pageSize = APP_STATE.pageSize >= 999 ? Math.max(1, filtered.length) : APP_STATE.pageSize;
+  const startIdx = (currentPage - 1) * pageSize;
+  const pageItems = filtered.slice(startIdx, startIdx + pageSize);
+  pageItems.forEach(function (w) {
+    revealedIds.add(w.id);
+  });
+  renderCards();
+}
+
+function hideAllCurrentPage() {
+  revealedIds.clear();
+  renderCards();
+}
+
+function speakWordText(text) {
+  if (!text || !('speechSynthesis' in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text.replace(/\.\.\./g, ' '));
+    utter.lang = 'en-US';
+    utter.rate = 0.92;
+    window.speechSynthesis.speak(utter);
+  } catch (err) {
+    // Ignore speech synthesis errors in restricted environments
+  }
+}
+
+function speakWordById(wordId) {
+  const w = WORD_BY_ID[wordId];
+  if (w) speakWordText(w.word);
+}
+
+function speakSprintWord() {
+  if (sprintQueue.length > 0 && sprintQueue[sprintIndex]) {
+    speakWordText(sprintQueue[sprintIndex].word);
+  }
+}
+
+function switchMode(targetMode) {
+  APP_STATE.mode = targetMode === 'sprint' ? 'sprint' : 'list';
+  const tabList = document.getElementById('tab-list');
+  const tabSprint = document.getElementById('tab-sprint');
+  const viewList = document.getElementById('view-list');
+  const viewSprint = document.getElementById('view-sprint');
+  const helperEl = document.getElementById('mode-helper-text');
+
+  if (APP_STATE.mode === 'sprint') {
+    if (tabList) { tabList.classList.remove('is-active'); tabList.setAttribute('aria-selected', 'false'); }
+    if (tabSprint) { tabSprint.classList.add('is-active'); tabSprint.setAttribute('aria-selected', 'true'); }
+    if (viewList) viewList.classList.add('is-hidden');
+    if (viewSprint) viewSprint.classList.remove('is-hidden');
+    if (helperEl) helperEl.textContent = '随机抽词冲刺模式 · 先回忆词义再翻牌核对，记住了即刻打卡 +1';
+    rebuildSprintQueue();
+  } else {
+    if (tabList) { tabList.classList.add('is-active'); tabList.setAttribute('aria-selected', 'true'); }
+    if (tabSprint) { tabSprint.classList.remove('is-active'); tabSprint.setAttribute('aria-selected', 'false'); }
+    if (viewList) viewList.classList.remove('is-hidden');
+    if (viewSprint) viewSprint.classList.add('is-hidden');
+    if (helperEl) helperEl.textContent = '共收录 ' + WORDS.length + ' 个核心词条 · 支持点击卡片发音与打卡累加';
+  }
+  schedulePersistState();
+}
+
+function shuffleArray(arr) {
+  const copy = arr.slice();
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = tmp;
+  }
+  return copy;
+}
+
+function rebuildSprintQueue() {
+  const scopeEl = document.getElementById('sprint-scope');
+  if (scopeEl) {
+    APP_STATE.sprintScope = scopeEl.value;
+  }
+  const scope = APP_STATE.sprintScope;
+  let pool = [];
+  if (scope === 'weak') {
+    pool = WORDS.filter(function (w) { return getWordCount(w.id) < 3; });
+  } else if (scope === 'unseen') {
+    pool = WORDS.filter(function (w) { return getWordCount(w.id) === 0; });
+  } else if (scope === 'category') {
+    pool = APP_STATE.activeCategory === 'all'
+      ? WORDS.slice()
+      : WORDS.filter(function (w) { return w.category === APP_STATE.activeCategory; });
+  } else {
+    pool = WORDS.slice();
+  }
+
+  sprintQueue = shuffleArray(pool);
+  sprintIndex = 0;
+  sprintRevealed = false;
+  const fbEl = document.getElementById('sprint-feedback');
+  if (fbEl) fbEl.classList.add('is-hidden');
+  renderSprintCard();
+  schedulePersistState();
+}
+
+function renderSprintCard() {
+  const cardEl = document.getElementById('sprint-card');
+  const emptyEl = document.getElementById('sprint-empty');
+  const statusEl = document.getElementById('sprint-queue-status');
+
+  if (sprintQueue.length === 0) {
+    if (cardEl) cardEl.classList.add('is-hidden');
+    if (emptyEl) emptyEl.classList.remove('is-hidden');
+    if (statusEl) statusEl.textContent = '0 / 0';
+    return;
+  }
+
+  if (sprintIndex >= sprintQueue.length) sprintIndex = 0;
+  if (sprintIndex < 0) sprintIndex = 0;
+
+  if (cardEl) cardEl.classList.remove('is-hidden');
+  if (emptyEl) emptyEl.classList.add('is-hidden');
+  if (statusEl) statusEl.textContent = (sprintIndex + 1) + ' / ' + sprintQueue.length;
+
+  const w = sprintQueue[sprintIndex];
+  const count = getWordCount(w.id);
+  const info = getMasteryInfo(count);
+
+  const catTagEl = document.getElementById('sprint-cat-tag');
+  const synTagEl = document.getElementById('sprint-syn-tag');
+  const badgeEl = document.getElementById('sprint-mastery-badge');
+  const wordEl = document.getElementById('sprint-word');
+  const ipaEl = document.getElementById('sprint-ipa');
+  const hiddenAreaEl = document.getElementById('sprint-hidden-area');
+  const answerAreaEl = document.getElementById('sprint-answer-area');
+  const defEl = document.getElementById('sprint-def');
+  const synEl = document.getElementById('sprint-syn');
+  const collocEl = document.getElementById('sprint-colloc');
+  const prevBtn = document.getElementById('sprint-prev-btn');
+
+  if (catTagEl) catTagEl.textContent = w.categoryLabel;
+  if (synTagEl) {
+    if (w.isSyn) synTagEl.classList.remove('is-hidden');
+    else synTagEl.classList.add('is-hidden');
+  }
+  if (badgeEl) {
+    badgeEl.className = 'mastery-badge ' + info.badgeClass;
+    badgeEl.textContent = info.label;
+  }
+  if (wordEl) wordEl.textContent = w.word;
+  if (ipaEl) ipaEl.textContent = w.ipa || '';
+
+  if (sprintRevealed) {
+    if (hiddenAreaEl) hiddenAreaEl.classList.add('is-hidden');
+    if (answerAreaEl) answerAreaEl.classList.remove('is-hidden');
+    if (defEl) defEl.textContent = w.def;
+    if (synEl) {
+      synEl.textContent = w.syn || '';
+      synEl.style.display = w.syn ? 'block' : 'none';
+    }
+    if (collocEl) {
+      collocEl.textContent = w.colloc || '';
+      collocEl.style.display = w.colloc ? 'block' : 'none';
+    }
+  } else {
+    if (hiddenAreaEl) hiddenAreaEl.classList.remove('is-hidden');
+    if (answerAreaEl) answerAreaEl.classList.add('is-hidden');
+  }
+
+  if (prevBtn) prevBtn.disabled = sprintIndex <= 0;
+}
+
+function revealSprintCard() {
+  sprintRevealed = true;
+  renderSprintCard();
+}
+
+function stepSprint(delta) {
+  if (sprintQueue.length === 0) return;
+  const nextIdx = sprintIndex + delta;
+  if (nextIdx >= sprintQueue.length) {
+    sprintQueue = shuffleArray(sprintQueue);
+    sprintIndex = 0;
+  } else if (nextIdx < 0) {
+    sprintIndex = 0;
+  } else {
+    sprintIndex = nextIdx;
+  }
+  sprintRevealed = false;
+  renderSprintCard();
+}
+
+function checkInSprintWord() {
+  if (sprintQueue.length === 0) return;
+  const w = sprintQueue[sprintIndex];
+  if (!w) return;
+
+  adjustWordCount(w.id, 1);
+  const newCount = getWordCount(w.id);
+
+  const fbEl = document.getElementById('sprint-feedback');
+  if (fbEl) {
+    fbEl.textContent = newCount >= 3
+      ? '「' + w.word + '」打卡成功（累计 ' + newCount + ' 次），已升级为“已熟练”！'
+      : '「' + w.word + '」打卡 +1（当前 ' + newCount + ' 次，再打卡 ' + (3 - newCount) + ' 次即达标）。';
+    fbEl.classList.remove('is-hidden');
+  }
+
+  // Advance queue cleanly; if filtering weak/unseen and word crossed threshold, remove it from queue
+  const scope = APP_STATE.sprintScope;
+  if ((scope === 'weak' && newCount >= 3) || (scope === 'unseen' && newCount >= 1)) {
+    sprintQueue.splice(sprintIndex, 1);
+    if (sprintIndex >= sprintQueue.length) sprintIndex = 0;
+    sprintRevealed = false;
+    renderSprintCard();
+  } else {
+    stepSprint(1);
+  }
+}
+
+function switchSprintToAll() {
+  const scopeEl = document.getElementById('sprint-scope');
+  if (scopeEl) scopeEl.value = 'all';
+  APP_STATE.sprintScope = 'all';
+  rebuildSprintQueue();
+}
+
+function handleResetProgress(btn) {
+  if (!resetArmed) {
+    resetArmed = true;
+    if (btn) btn.textContent = '再次点击确认清零';
+    if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
+    resetConfirmTimer = setTimeout(function () {
+      resetArmed = false;
+      if (btn) btn.textContent = '重置全部进度';
+    }, 4000);
+    return;
+  }
+
+  if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
+  resetArmed = false;
+  if (btn) btn.textContent = '重置全部进度';
+
+  APP_STATE.counts = {};
+  APP_STATE.todayTicks = 0;
+  APP_STATE.totalTicks = 0;
+  APP_STATE.todayDate = getLocalDateKey();
+  revealedIds.clear();
+
+  updateDashboard();
+  renderCards();
+  if (APP_STATE.mode === 'sprint') {
+    rebuildSprintQueue();
+  }
+  persistStateNow();
+}
+
+function csvEscape(val) {
+  const s = String(val || '');
+  if (s.indexOf(',') !== -1 || s.indexOf('"') !== -1 || s.indexOf('\n') !== -1) {
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  return s;
+}
+
+function exportProgressCsv() {
+  const header = ['单词', '音标', '分类', '核心释义', '打卡次数', '熟练状态', '同义替换/搭配'];
+  const rows = [header.map(csvEscape).join(',')];
+  WORDS.forEach(function (w) {
+    const cnt = getWordCount(w.id);
+    const status = cnt >= 3 ? '已熟练' : (cnt >= 1 ? '巩固中' : '未打卡');
+    const note = [w.syn, w.colloc].filter(Boolean).join(' | ');
+    rows.push([
+      w.word,
+      w.ipa,
+      w.categoryLabel,
+      w.def,
+      String(cnt),
+      status,
+      note
+    ].map(csvEscape).join(','));
+  });
+  const csvContent = '\uFEFF' + rows.join('\n');
+  if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === 'function') {
+    window.notebookAppApi.triggerFileDownload({
+      content: csvContent,
+      contentType: 'text/csv',
+      encoding: 'UTF-8',
+      filename: 'cet6-700-vocab-progress.csv'
+    });
+  } else {
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'cet6-700-vocab-progress.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
+
+document.addEventListener('keydown', function (e) {
+  if (APP_STATE.mode !== 'sprint') return;
+  const activeTag = document.activeElement ? document.activeElement.tagName : '';
+  if (activeTag === 'INPUT' || activeTag === 'SELECT' || activeTag === 'TEXTAREA') return;
+
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (!sprintRevealed) revealSprintCard();
+  } else if (e.code === 'Enter') {
+    e.preventDefault();
+    checkInSprintWord();
+  } else if (e.code === 'ArrowRight') {
+    e.preventDefault();
+    stepSprint(1);
+  } else if (e.code === 'ArrowLeft') {
+    e.preventDefault();
+    stepSprint(-1);
+  }
+});
+
+async function initApp() {
+  await loadPersistedState();
+  syncFilterButtonsUI();
+  updateDashboard();
+  renderCards();
+  if (APP_STATE.mode === 'sprint') {
+    switchMode('sprint');
+  }
+  if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+    window.notebookAppApi.notifyAppReady();
+  }
+}
+
+initApp();
+</script>
+</body>
+</html>
